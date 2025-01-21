@@ -1,5 +1,16 @@
 import exampleMoviePoster from "../../../images/exampleMoviePoster.jpg";
-import { Tile, MoviePoster, MovieTileHeader, MovieTileYear, GenresList, Genres } from "./styled";
+import {
+    Tile,
+    MoviePoster,
+    MovieTileHeader,
+    MovieTileYear,
+    GenresList,
+    Genres,
+    MovieRating,
+    StyledStarIcon,
+    Rating,
+    Votes,
+} from "./styled";
 
 const MovieTile = () => (
     <Tile>
@@ -12,6 +23,11 @@ const MovieTile = () => (
                 <Genres>Adventure</Genres>
                 <Genres>Drama</Genres>
             </GenresList>
+            <MovieRating>
+                <StyledStarIcon />
+                <Rating>7,8</Rating>
+                <Votes>35 votes</Votes>
+            </MovieRating>
         </div>
     </Tile>
 );

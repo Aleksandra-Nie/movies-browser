@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ReactComponent as StarIcon } from "../../../images/star.svg";
 
 export const Tile = styled.div`
     display: flex;
@@ -42,4 +43,21 @@ export const Genres = styled.li`
     border-radius: 5px;
 `;
 
+export const MovieRating = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 12px;
+`;
 
+export const StyledStarIcon = styled(StarIcon)`
+    width: 24px;
+    color: #FCD420;
+`;
+
+export const Rating = styled.span`
+    font-weight: 600;
+`;
+
+export const Votes = styled.span`
+    color: #7E839A;
+`;
