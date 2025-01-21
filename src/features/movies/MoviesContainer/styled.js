@@ -28,10 +28,6 @@ export const MovieTilesContainer = styled.div`
         gap: 16px;
     };
 
-    @media(max-width: 1024px){
-        grid-template-columns: 1fr 1fr;
-    };
-
     @media(max-width: 767px){
         grid-template-columns: 1fr;
     };
