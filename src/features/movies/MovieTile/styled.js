@@ -25,6 +25,7 @@ export const MoviePoster = styled.img`
 
     @media(max-width: 767px){
         width: 35vw;
+        min-width: 114px;
         height: auto;
     };
 `;
