@@ -24,7 +24,7 @@ const fetchData = async (url) => {
 export const fetchMovies = async () => {
     try {
         const moviesData = await fetchData("https://api.themoviedb.org/3/movie/popular?language=en-US&page=1");
-        return moviesData.results;
+        return moviesData;
     } catch (error) {
         console.error("Error fetching movies", error);
         return [];

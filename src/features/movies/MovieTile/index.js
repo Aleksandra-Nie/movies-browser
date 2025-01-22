@@ -22,8 +22,9 @@ const MovieTile = () => {
         dispatch(fetchMoviesRequest());
     }, []);
 
-    const movies = useSelector(selectMovies);
+    const moviesData = useSelector(selectMovies);
     const genres = useSelector(selectGenres);
+    const movies = moviesData.results || [];
 
     const genresMap = useGenresMap(genres);
 
