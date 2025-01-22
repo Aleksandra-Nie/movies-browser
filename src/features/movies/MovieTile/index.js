@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchMoviesRequest, selectGenres, selectMovies } from "../moviesSlice";
 import exampleMoviePoster from "../../../images/exampleMoviePoster.jpg";
 import {
     Tile,
@@ -13,24 +16,23 @@ import {
 } from "./styled";
 
 const MovieTile = () => {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchMoviesRequest());
+    }, []);
+
+    const movies = useSelector(selectMovies);
+    const genres = useSelector(selectGenres);
+
     return (
-        <Tile>
-            <MoviePoster src={exampleMoviePoster} alt="movie poster" />
-            <div>
-                <MovieTileHeader>Mulan</MovieTileHeader>
-                <MovieTileYear>2020</MovieTileYear>
-                <GenresList>
-                    <Genres>Action</Genres>
-                    <Genres>Adventure</Genres>
-                    <Genres>Drama</Genres>
-                </GenresList>
-                <MovieRating>
-                    <StyledStarIcon />
-                    <Rating>7,8</Rating>
-                    <Votes>35 votes</Votes>
-                </MovieRating>
-            </div>
-        </Tile>
+        <>
+            {movies.map((movie) => (
+                <Tile key={movie.id}>
+                    <MoviePoster src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
+                </Tile>
+            ))}
+        </>
     );
 };
 
