@@ -1,17 +1,18 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 import { fetchMoviesFailure, fetchMoviesRequest, fetchMoviesSuccess } from "./moviesSlice";
-import { fetchMovies } from "./fetchMovies";
+import { fetchGenres, fetchMovies } from "./fetchMoviesData";
 
-function* fetchMoviesHandler() {
+function* fetchMoviesDataHandler() {
     try {
         const movies = yield call(fetchMovies);
-        yield put(fetchMoviesSuccess(movies));
+        const genres = yield call(fetchGenres);
+        yield put(fetchMoviesSuccess({ movies, genres }));
 
     } catch (error) {
         yield put(fetchMoviesFailure(error));
-    }
+    };
 };
 
-export function* watchFetchMovies() {
-    yield takeLatest(fetchMoviesRequest.type, fetchMoviesHandler);
+export function* watchFetchMoviesData() {
+    yield takeLatest(fetchMoviesRequest.type, fetchMoviesDataHandler);
 };
