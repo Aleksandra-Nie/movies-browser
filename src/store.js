@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import moviesReducer from "./features/movies/moviesSlice";
 import createSagaMiddleware from "redux-saga";
-import { watchFetchMovies } from "./features/movies/moviesSaga";
+import { watchFetchMoviesData } from "./features/movies/moviesSaga";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -13,6 +13,6 @@ const store = configureStore({
         getDefaultMiddleware().concat(sagaMiddleware),
 });
 
-sagaMiddleware.run(watchFetchMovies);
+sagaMiddleware.run(watchFetchMoviesData);
 
 export default store;
