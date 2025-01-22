@@ -6,13 +6,6 @@ const MoviesContainer = () => (
         <Header>Popular movies</Header>
         <MovieTilesContainer>
             <MovieTile />
-            <MovieTile />
-            <MovieTile />
-            <MovieTile />
-            <MovieTile />
-            <MovieTile />
-            <MovieTile />
-            <MovieTile />
         </MovieTilesContainer>
     </StyledMoviesContainer>
 );
