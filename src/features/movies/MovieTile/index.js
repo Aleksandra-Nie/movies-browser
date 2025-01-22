@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMoviesRequest, selectGenres, selectMovies } from "../moviesSlice";
-import exampleMoviePoster from "../../../images/exampleMoviePoster.jpg";
 import {
     Tile,
     MoviePoster,
@@ -25,14 +24,37 @@ const MovieTile = () => {
     const movies = useSelector(selectMovies);
     const genres = useSelector(selectGenres);
 
+    const createGenresMap = (genres) => {
+        if (!Array.isArray(genres)) {
+            return {};
+        }
+
+        return genres.reduce((acc, genre) => {
+            acc[genre.id] = genre.name;
+            return acc;
+        }, {});
+    };
+
+    const genresMap = createGenresMap(genres);
+
     return (
         <>
             {movies.map((movie) => (
                 <Tile key={movie.id}>
-                    <MoviePoster src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
+                    <MoviePoster
+                        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                        alt={`${movie.title} poster`}
+                    />
                     <div>
                         <MovieTileHeader>{movie.title}</MovieTileHeader>
                         <MovieTileYear>{(movie.release_date).slice(0, 4)}</MovieTileYear>
+                        <GenresList>
+                            {movie.genre_ids.map((id) => (
+                                <Genres key={id}>
+                                    {genresMap[id] || "Unknown"}
+                                </Genres>
+                            ))}
+                        </GenresList>
                         <MovieRating>
                             <StyledStarIcon />
                             <Rating>{(movie.vote_average).toFixed(1)}</Rating>
