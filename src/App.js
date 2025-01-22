@@ -1,8 +1,8 @@
-import MoviesContainer from "./features/movies/MoviesContainer";
+import MoviesPage from "./features/movies/MoviesPage";
 
 function App() {
   return (
-    <MoviesContainer />
+    <MoviesPage />
   );
 }
 
