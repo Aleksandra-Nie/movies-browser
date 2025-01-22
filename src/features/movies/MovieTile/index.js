@@ -13,6 +13,7 @@ import {
     Rating,
     Votes,
 } from "./styled";
+import useGenresMap from "../useGenresMap";
 
 const MovieTile = () => {
     const dispatch = useDispatch();
@@ -24,18 +25,7 @@ const MovieTile = () => {
     const movies = useSelector(selectMovies);
     const genres = useSelector(selectGenres);
 
-    const createGenresMap = (genres) => {
-        if (!Array.isArray(genres)) {
-            return {};
-        }
-
-        return genres.reduce((acc, genre) => {
-            acc[genre.id] = genre.name;
-            return acc;
-        }, {});
-    };
-
-    const genresMap = createGenresMap(genres);
+    const genresMap = useGenresMap(genres);
 
     return (
         <>
