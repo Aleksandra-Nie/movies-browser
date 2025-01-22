@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 export const StyledMoviesContainer = styled.div`
-    max-width: 1368px;
-    margin: 56px auto 0 auto;
+    margin-top: 56px;
 
     @media(max-width: 1440px){
         margin: 16px;
