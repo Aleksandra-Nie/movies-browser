@@ -1,6 +1,6 @@
 import MoviesContainer from "../MoviesContainer";
 import MoviesScrollbar from "../MoviesScrollbar";
-import { Wrapper } from "./styled";
+import { Wrapper } from "../../../common/index";
 
 const MoviesPage = () => (
     <Wrapper>
