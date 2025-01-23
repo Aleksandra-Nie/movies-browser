@@ -1,8 +1,10 @@
 import MoviesPage from "./features/movies/MoviesPage";
+import PeoplePage from "./features/people/PeoplePage";
 
 function App() {
   return (
-    <MoviesPage />
+    // <MoviesPage />
+    <PeoplePage />
   );
 }
 
