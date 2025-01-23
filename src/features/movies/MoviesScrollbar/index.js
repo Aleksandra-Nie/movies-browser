@@ -1,7 +1,9 @@
+import { useWindowSize } from "./useWindowSize";
 import { usePagination } from "./usePagination";
-import { Wrapper, Vector, Button, PageCounter } from "./styled";
+import { Wrapper, Vector, Button, PageCounter, PageNumber } from "./styled";
 
 const MoviesScrollbar = () => {
+    const isMobile = useWindowSize();
     const {
         currentPage,
         totalPages,
@@ -17,24 +19,24 @@ const MoviesScrollbar = () => {
                 onClick={() => firstPage()}
                 disabled={currentPage === 1}
             >
-                <Vector />First
+                <Vector />{isMobile ? (<Vector />) : "First"}
             </Button>
 
             <Button
                 onClick={() => previousPage()}
                 disabled={currentPage === 1}
             >
-                <Vector />Previous
+                <Vector />{isMobile ? "" : "Previous"}
             </Button>
 
-            <PageCounter>Page {currentPage} of {totalPages}</PageCounter>
+            <PageCounter>Page <PageNumber>{currentPage}</PageNumber> of <PageNumber>{totalPages}</PageNumber></PageCounter>
 
             <Button
                 onClick={() => nextPage()}
                 disabled={currentPage === totalPages}
                 $blueButton
             >
-                Next<Vector $blueVector />
+                {isMobile ? "" : "Next"}<Vector $blueVector />
             </Button>
 
             <Button
@@ -42,7 +44,7 @@ const MoviesScrollbar = () => {
                 disabled={currentPage === totalPages}
                 $blueButton
             >
-                Last<Vector $blueVector />
+                {isMobile ? (<Vector $blueVector />) : "Last"}<Vector $blueVector />
             </Button>
         </Wrapper>
     );
