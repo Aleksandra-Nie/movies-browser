@@ -1,5 +1,18 @@
+import PersonTile from "../PersonTile";
+import { StyledPeopleContainer, Header, PeopleTilesContainer } from "./styled";
+
 const PeopleContainer = () => (
-    <div></div>
+    <StyledPeopleContainer>
+        <Header>Popular people</Header>
+        <PeopleTilesContainer>
+            <PersonTile />
+            <PersonTile />
+            <PersonTile />
+            <PersonTile />
+            <PersonTile />
+            <PersonTile />
+        </PeopleTilesContainer>
+    </StyledPeopleContainer>
 );
 
 export default PeopleContainer;
