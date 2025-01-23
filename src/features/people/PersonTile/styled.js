@@ -16,6 +16,8 @@ export const Tile = styled.div`
 
 export const PersonPhoto = styled.img`
     border-radius: 5px;
+    width: 100%;
+    height: auto;
 `;
 
 export const PersonName = styled.p`
