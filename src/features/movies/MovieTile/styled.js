@@ -6,13 +6,13 @@ export const Tile = styled.div`
     display: flex;
     flex-direction: column;
     padding: 16px;
-    background-color: white;
-    box-shadow: 0px 4px 12px 0px #BAC7D580;
+    background: ${({ theme }) => theme.color.white};
+    box-shadow: 0px 4px 12px 0px ${({ theme }) => theme.color.softBlue};
     font-size: 16px;
-    color: #18181B;
+    color: ${({ theme }) => theme.color.woodsmoke};
     border-radius: 5px;
 
-    @media(max-width: 767px){
+    @media(max-width: ${({ theme }) => theme.breakpoints.tablet}px){
         position: initial;
         display: grid;
         grid-template-columns: auto 1fr;
@@ -25,7 +25,7 @@ export const MoviePoster = styled.img`
     width: 100%;
     border-radius: 5px;
 
-    @media(max-width: 767px){
+    @media(max-width: ${({ theme }) => theme.breakpoints.tablet}px){
         width: 35vw;
         min-width: 114px;
         height: auto;
@@ -37,14 +37,14 @@ export const MovieTileHeader = styled.h2`
     font-weight: 500;
     margin: 16px 0 8px 0;
 
-    @media(max-width: 767px){
+    @media(max-width: ${({ theme }) => theme.breakpoints.tablet}px){
         font-size: 16px;
         margin: 0 0 6px 0;
     };
 `;
 
 export const MovieTileYear = styled.span`
-    color: #7E839A;
+    color: ${({ theme }) => theme.color.woodsmoke};
 `;
 
 export const GenresList = styled.ul`
@@ -55,18 +55,18 @@ export const GenresList = styled.ul`
     margin: 8px 0 39px 0;
     list-style: none;
 
-    @media(max-width: 767px){
+    @media(max-width: ${({ theme }) => theme.breakpoints.tablet}px){
         margin: 8px 0;
     };
 `;
 
 export const Genres = styled.li`
     font-size: 14px;
-    background-color: #E4E6F0;
+    background: ${({ theme }) => theme.color.mystic};
     padding: 8px 16px;
     border-radius: 5px;
 
-    @media(max-width: 767px){
+    @media(max-width: ${({ theme }) => theme.breakpoints.tablet}px){
         font-size: 10px;
         padding: 4px 8px;
     };
@@ -87,9 +87,9 @@ export const MovieRating = styled.div`
 
 export const StyledStarIcon = styled(StarIcon)`
     width: 24px;
-    color: #FCD420;
+    color: ${({ theme }) => theme.color.candlelight};
 
-    @media(max-width: 767px){
+    @media(max-width: ${({ theme }) => theme.breakpoints.tablet}px){
         width: 16px;
     };
 `;
@@ -99,5 +99,5 @@ export const Rating = styled.span`
 `;
 
 export const Votes = styled.span`
-    color: #7E839A;
+    color: ${({ theme }) => theme.color.waterloo};
 `;
