@@ -16,7 +16,7 @@ const PersonTile = () => {
     return (
         <>
             {people.map(person => (
-                <Tile>
+                <Tile key={person.id}>
                     <PersonPhoto src={`https://image.tmdb.org/t/p/w200${person.profile_path}`} />
                     <PersonName>{person.name}</PersonName>
                 </Tile>
