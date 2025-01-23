@@ -40,6 +40,11 @@ export const Button = styled.button`
         cursor: pointer;
         opacity: 85%;
     };
+
+    &:disabled{
+        cursor: not-allowed;
+        opacity: 60%;
+    };
 `;
 
 export const PageCounter = styled.p`
