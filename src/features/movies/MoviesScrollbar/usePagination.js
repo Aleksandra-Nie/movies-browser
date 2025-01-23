@@ -1,21 +1,19 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectCurrentPage, selectTotalPages, setCurrentPage, setMovies } from "../moviesSlice";
-import { fetchMovies } from "../fetchMoviesData";
 
-export const usePagination = () => {
+export const usePagination = ({ fetchData, setCurrentPage, selectCurrentPage, selectTotalPages, setData, }) => {
     const dispatch = useDispatch();
     const currentPage = useSelector(selectCurrentPage);
     const totalPages = useSelector(selectTotalPages);
 
     useEffect(() => {
-        const getMovies = async () => {
-            const moviesData = await fetchMovies(currentPage);
-            if (moviesData) {
-                dispatch(setMovies(moviesData));
+        const getData = async () => {
+            const data = await fetchData(currentPage);
+            if (data) {
+                dispatch(setData(data));
             }
         };
-        getMovies();
+        getData();
     }, [currentPage]);
 
     const nextPage = () => {
