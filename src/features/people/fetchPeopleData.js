@@ -21,9 +21,9 @@ const fetchData = async (url) => {
     };
 };
 
-export const fetchPeople = async () => {
+export const fetchPeople = async (page) => {
     try {
-        const peopleData = await fetchData("https://api.themoviedb.org/3/person/popular?language=en-US&page=1'");
+        const peopleData = await fetchData(`https://api.themoviedb.org/3/person/popular?language=en-US&page=${page || 1}`);
         return peopleData;
     } catch (error) {
         console.error("Error fetching people", error);
