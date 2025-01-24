@@ -45,4 +45,9 @@ export const selectPeople = (state) => selectPeopleState(state).people;
 export const selectCurrentPage = (state) => selectPeopleState(state).currentPage;
 export const selectTotalPages = (state) => selectPeopleState(state).totalPages;
 
+export const getPersonById = (state, personId) => {
+    const people = selectPeople(state).results;
+    return people.find(({ id }) => id === parseInt(personId));
+};
+
 export default peopleSlice.reducer;
