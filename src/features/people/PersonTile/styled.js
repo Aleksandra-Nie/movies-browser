@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Tile = styled.div`
     display: flex;
@@ -12,12 +12,24 @@ export const Tile = styled.div`
     @media(max-width: ${({ theme }) => theme.breakpoints.tablet}px){
         padding: 8px;
     };
+
+    ${({ $personDetails }) => $personDetails && css`
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 40px;
+        padding: 40px;
+    `};
 `;
 
 export const PersonPhoto = styled.img`
     border-radius: 5px;
     width: 100%;
     height: auto;
+
+    ${({ $personDetails }) => $personDetails && css`
+        width: 399px;
+        height: 564px;
+    `};
 `;
 
 export const PersonName = styled.p`
@@ -30,4 +42,11 @@ export const PersonName = styled.p`
         font-size: 14px;
         margin: 8px 0 16px 0;
     };
+
+    ${({ $personDetails }) => $personDetails && css`
+        color: ${({ theme }) => theme.color.black};
+        font-size: 36px;
+        font-weight: 600;
+        margin: 6px 0 0 0;
+    `};
 `;
