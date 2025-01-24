@@ -1,9 +1,10 @@
 export const theme = {
   color: {
-    black: "#18181B",
+    black: "#000000",
     white: "#FFFFFF",
     whisper: "#F5F5FA",
     mystic: "#E4E6F0",
+    stormGray: "#74788B",
     lynch: "#627489",
     candlelight: "#FCD420",
     mineShaft: "#333333",
