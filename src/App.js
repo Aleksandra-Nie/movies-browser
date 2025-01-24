@@ -3,8 +3,10 @@ import PeoplePage from "./features/people/PeoplePage";
 
 function App() {
   return (
-    // <MoviesPage />
-    <PeoplePage />
+    <>
+      <MoviesPage />
+      <PeoplePage />
+    </>
   );
 }
 
