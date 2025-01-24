@@ -2,7 +2,13 @@ import { useWindowSize } from "./useWindowSize";
 import { usePagination } from "./usePagination";
 import { Wrapper, Vector, Button, PageCounter, PageNumber } from "./styled";
 
-const MoviesScrollbar = () => {
+const Scrollbar = ({
+    fetchData,
+    setCurrentPage,
+    selectCurrentPage,
+    selectTotalPages,
+    setData,
+}) => {
     const isMobile = useWindowSize();
     const {
         currentPage,
@@ -11,7 +17,13 @@ const MoviesScrollbar = () => {
         previousPage,
         firstPage,
         lastPage,
-    } = usePagination();
+    } = usePagination({
+        fetchData,
+        setCurrentPage,
+        selectCurrentPage,
+        selectTotalPages,
+        setData,
+    });
 
     return (
         <Wrapper>
@@ -50,4 +62,4 @@ const MoviesScrollbar = () => {
     );
 };
 
-export default MoviesScrollbar;
+export default Scrollbar;
