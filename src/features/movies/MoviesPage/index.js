@@ -1,11 +1,11 @@
 import MoviesContainer from "../MoviesContainer";
-import MoviesScrollbar from "../MoviesScrollbar";
+import Scrollbar from "../../Scrollbar";
 import { Wrapper } from "../../../common/index";
 
 const MoviesPage = () => (
     <Wrapper>
         <MoviesContainer />
-        <MoviesScrollbar />
+        <Scrollbar />
     </Wrapper>
 );
 

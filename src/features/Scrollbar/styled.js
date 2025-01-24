@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { ReactComponent as scrollbarVector } from "../../../images/scrollbarVector.svg";
+import { ReactComponent as scrollbarVector } from "../../images/scrollbarVector.svg";
 
 export const Wrapper = styled.div`
     display: flex;
