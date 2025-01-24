@@ -23,13 +23,22 @@ const peopleSlice = createSlice({
             state.loading = false;
             state.error = true;
         },
+        setPeople: (state, { payload }) => {
+            state.people = payload;
+        },
         setCurrentPage: (state, { payload }) => {
             state.currentPage = payload;
         },
     },
 });
 
-export const { fetchPeopleFailure, fetchPeopleSuccess, fetchPeopleRequest } = peopleSlice.actions;
+export const {
+    fetchPeopleFailure,
+    fetchPeopleSuccess,
+    fetchPeopleRequest,
+    setPeople,
+    setCurrentPage,
+} = peopleSlice.actions;
 
 export const selectPeopleState = (state) => state.people;
 export const selectPeople = (state) => selectPeopleState(state).people;
