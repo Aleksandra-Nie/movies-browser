@@ -42,7 +42,7 @@ export const MovieTileHeader = styled.h2`
 `;
 
 export const MovieTileYear = styled.span`
-    color: #7E839A;
+    color:${({ theme }) => theme.color.waterloo};
 `;
 
 export const GenresList = styled.ul`
@@ -60,7 +60,7 @@ export const GenresList = styled.ul`
 
 export const Genres = styled.li`
     font-size: 14px;
-    background-color: #E4E6F0;
+    background-color:${({ theme }) => theme.color.mystic};
     padding: 8px 16px;
     border-radius: 5px;
 
@@ -82,7 +82,7 @@ export const MovieRating = styled.div`
 
 export const StyledStarIcon = styled(StarIcon)`
     width: 24px;
-    color: #FCD420;
+    color:${({ theme }) => theme.color.candleLight};
 
     @media(max-width: 767px){
         width: 16px;
@@ -94,5 +94,5 @@ export const Rating = styled.span`
 `;
 
 export const Votes = styled.span`
-    color: #7E839A;
+    color:${({ theme }) => theme.color.waterloo};
 `;
