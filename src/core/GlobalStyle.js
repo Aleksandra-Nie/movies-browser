@@ -13,5 +13,6 @@ export const GlobalStyle = createGlobalStyle`
         font-family: "Poppins", sans-serif;
         margin: 0 auto;
         height: 100vh; 
+        background-color: ${({ theme }) => theme.color.whisper};
 }
 `;
