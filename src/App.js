@@ -1,8 +1,14 @@
+import MovieDetails from "./features/movies/MovieDetails";
 import MoviesContainer from "./features/movies/MoviesContainer";
+import IntroductionLayer from "./features/movies/MovieDetails/IntroductionLayer";
 
 function App() {
   return (
-    <MoviesContainer />
+    <div>
+      <MoviesContainer />
+      <IntroductionLayer />
+      <MovieDetails />
+    </div>
   );
 }
 
