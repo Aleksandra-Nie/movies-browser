@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { ReactComponent as StarIcon } from "../../../images/star.svg";
 
 export const Tile = styled.div`
+    position: relative;
     display: flex;
     flex-direction: column;
     padding: 16px;
@@ -12,6 +13,7 @@ export const Tile = styled.div`
     border-radius: 5px;
 
     @media(max-width: 767px){
+        position: initial;
         display: grid;
         grid-template-columns: auto 1fr;
         gap: 16px;
@@ -71,11 +73,14 @@ export const Genres = styled.li`
 `;
 
 export const MovieRating = styled.div`
+    position: absolute;
+    bottom: 16px;
     display: flex;
     align-items: center;
     gap: 12px;
 
     @media(max-width: 767px){
+        position: initial;
         gap: 8px;
     };
 `;
