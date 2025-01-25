@@ -24,7 +24,7 @@ export const IconWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-left: 15%;
+  margin-left: 2%;
   gap: 12px;
 
   @media (max-width: 1086px) {
