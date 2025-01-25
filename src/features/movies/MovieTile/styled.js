@@ -44,7 +44,7 @@ export const MovieTileHeader = styled.h2`
 `;
 
 export const MovieTileYear = styled.span`
-    color: ${({ theme }) => theme.color.woodsmoke};
+    color: ${({ theme }) => theme.color.waterloo};
 `;
 
 export const GenresList = styled.ul`
