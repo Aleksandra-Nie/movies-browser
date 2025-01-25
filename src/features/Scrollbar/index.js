@@ -9,7 +9,7 @@ const Scrollbar = ({
     selectTotalPages,
     setData,
 }) => {
-    const isMobile = useWindowSize();
+    const isMobile = useWindowSize(480);
     const {
         currentPage,
         totalPages,
