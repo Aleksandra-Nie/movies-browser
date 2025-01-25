@@ -7,10 +7,11 @@ import PersonPage from "./features/people/PersonPage";
 function App() {
   return (
     <>
-      {/* <MoviesPage /> */}
       <HashRouter>
-        <PeoplePage />
+        <MoviesPage />
         <Routes>
+          <Route path="/movies" element={<MoviesPage />} />
+          <Route path="/" element={<PeoplePage />} />
           <Route path="/person/:id" element={<PersonPage />} />
         </Routes>
       </HashRouter>
