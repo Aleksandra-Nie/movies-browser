@@ -51,7 +51,7 @@ export const selectCurrentPage = (state) => selectPeopleState(state).currentPage
 export const selectTotalPages = (state) => selectPeopleState(state).totalPages;
 export const selectPersonDetails = (state) => selectPeopleState(state).personDetails;
 
-export const getPersonById = (state, personId) => {
+export const getPersonDetailsById = (state, personId) => {
     const peopleWithDetails = selectPersonDetails(state);
     return peopleWithDetails.find(({ id }) => id === parseInt(personId));
 };
