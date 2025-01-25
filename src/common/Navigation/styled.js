@@ -6,10 +6,27 @@ export const Background = styled.div`
 
 export const Wrapper = styled.div`
   width: 100%;
-  max-width: 1370px;
+  max-width: 1368px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 25px;
-  margin: 0 auto;
+  margin: auto;
+
+  @media (max-width: 1086px) {
+    flex-direction: column;
+    padding: 16px;
+  }
+`;
+
+export const SearchInput = styled.input`
+  flex-grow: 1;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  border: none;
+
+  @media (max-width: 1086px) {
+    font-size: 14.5px;
+    line-height: 20px;
+  }
 `;
