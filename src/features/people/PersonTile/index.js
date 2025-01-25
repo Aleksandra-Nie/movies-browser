@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPeopleRequest, selectPeople } from "../../people/peopleSlice";
-import { Link, Tile, PersonPhoto, PersonName } from "./styled";
+import { Tile, PersonName, PersonPhoto } from "../personStyles";
+import { Link } from "./styled";
 
 const PersonTile = () => {
     const dispatch = useDispatch();
