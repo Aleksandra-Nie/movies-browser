@@ -5,7 +5,6 @@ export const PersonInformation = styled.div`
     flex-direction: column;
     align-items: flex-start;
     gap: 24px;
-    color: ${({ theme }) => theme.color.black};
 `;
 
 export const BirthInfo = styled.div`
@@ -21,6 +20,7 @@ export const BirthLabel = styled.p`
 
 export const BirthData = styled.span`
     margin-left: 10px;
+    color: ${({ theme }) => theme.color.black};
 `;
 
 export const PersonProfile = styled.p`
