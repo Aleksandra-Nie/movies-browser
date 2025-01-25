@@ -4,14 +4,14 @@ import PeoplePage from "./features/people/PeoplePage";
 import PersonPage from "./features/people/PersonPage";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./core/theme";
-import { Header } from "./common/Navigation/Header";
+import Navigation from "./common/Navigation";
 import MoviesContainer from "./features/movies/MoviesContainer";
 
 function App() {
   return (
 
     <ThemeProvider theme={theme}>
-      <Header />
+      <Navigation />
       <MoviesContainer />
       <HashRouter>
         <MoviesPage />
