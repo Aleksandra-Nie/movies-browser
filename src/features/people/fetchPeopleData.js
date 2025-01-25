@@ -30,3 +30,23 @@ export const fetchPeople = async (page) => {
         return [];
     };
 };
+
+export const fetchPersonDetails = async (personId) => {
+    try {
+        const personDetails = await fetchData(`https://api.themoviedb.org/3/person/${personId}?language=en-US`);
+        return personDetails;
+    } catch (error) {
+        console.error("Error fetching person details", error);
+        return [];
+    };
+};
+
+export const fetchPeopleCredits = async (personId) => {
+    try {
+        const peopleCredits = await fetchData(`https://api.themoviedb.org/3/person/${personId}/combined_credits?language=en-US`);
+        return peopleCredits;
+    } catch (error) {
+        console.error("Error fetching people credits", error);
+        return [];
+    };
+};

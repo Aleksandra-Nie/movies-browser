@@ -1,5 +1,5 @@
-import { useWindowSize } from "./useWindowSize";
-import { usePagination } from "./usePagination";
+import useWindowSize from "./useWindowSize";
+import usePagination from "./usePagination";
 import { Wrapper, Vector, Button, PageCounter, PageNumber } from "./styled";
 
 const Scrollbar = ({
@@ -9,7 +9,7 @@ const Scrollbar = ({
     selectTotalPages,
     setData,
 }) => {
-    const isMobile = useWindowSize();
+    const isMobile = useWindowSize(480);
     const {
         currentPage,
         totalPages,

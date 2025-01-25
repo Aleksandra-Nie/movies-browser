@@ -1,6 +1,3 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchMoviesRequest, selectGenres, selectMovies } from "../moviesSlice";
 import {
     Tile,
     MoviePoster,
@@ -13,48 +10,40 @@ import {
     Rating,
     Votes,
 } from "./styled";
-import useGenresMap from "../useGenresMap";
 
-const MovieTile = () => {
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(fetchMoviesRequest());
-    }, []);
-
-    const moviesData = useSelector(selectMovies);
-    const genres = useSelector(selectGenres);
-    const movies = moviesData.results || [];
-
-    const genresMap = useGenresMap(genres);
-
+const MovieTile = ({
+    id,
+    title,
+    poster_path,
+    release_date,
+    genre_ids,
+    genresMap,
+    vote_average,
+    vote_count,
+}) => {
     return (
-        <>
-            {movies.map((movie) => (
-                <Tile key={movie.id}>
-                    <MoviePoster
-                        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                        alt={`${movie.title} poster`}
-                    />
-                    <div>
-                        <MovieTileHeader>{movie.title}</MovieTileHeader>
-                        <MovieTileYear>{(movie.release_date).slice(0, 4)}</MovieTileYear>
-                        <GenresList>
-                            {movie.genre_ids.map((id) => (
-                                <Genres key={id}>
-                                    {genresMap[id] || "Unknown"}
-                                </Genres>
-                            ))}
-                        </GenresList>
-                        <MovieRating>
-                            <StyledStarIcon />
-                            <Rating>{(movie.vote_average).toFixed(1)}</Rating>
-                            <Votes>{movie.vote_count} votes</Votes>
-                        </MovieRating>
-                    </div>
-                </Tile>
-            ))}
-        </>
+        <Tile key={id}>
+            <MoviePoster
+                src={`https://image.tmdb.org/t/p/w400${poster_path}`}
+                alt={`${title} poster`}
+            />
+            <div>
+                <MovieTileHeader>{title}</MovieTileHeader>
+                <MovieTileYear>{release_date?.slice(0, 4)}</MovieTileYear>
+                <GenresList>
+                    {genre_ids.map((id) => (
+                        <Genres key={id}>
+                            {genresMap[id] || "Unknown"}
+                        </Genres>
+                    ))}
+                </GenresList>
+                <MovieRating>
+                    <StyledStarIcon />
+                    <Rating>{vote_average.toFixed(1)}</Rating>
+                    <Votes>{vote_count} votes</Votes>
+                </MovieRating>
+            </div>
+        </Tile>
     );
 };
 

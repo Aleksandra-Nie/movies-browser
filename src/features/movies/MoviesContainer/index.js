@@ -1,13 +1,45 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchMoviesRequest, selectGenres, selectMovies } from "../moviesSlice";
+import useGenresMap from "../useGenresMap";
 import MovieTile from "../MovieTile";
-import { StyledMoviesContainer, Header, MovieTilesContainer } from "./styled";
+import { MovieTilesContainer, Header } from "../../sharedStyles";
+import { StyledMoviesContainer } from "./styled";
 
-const MoviesContainer = () => (
-    <StyledMoviesContainer>
-        <Header>Popular movies</Header>
-        <MovieTilesContainer>
-            <MovieTile />
-        </MovieTilesContainer>
-    </StyledMoviesContainer>
-);
+const MoviesContainer = () => {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchMoviesRequest());
+    }, []);
+
+    const moviesData = useSelector(selectMovies);
+    const genres = useSelector(selectGenres);
+    const movies = moviesData.results || [];
+
+    const genresMap = useGenresMap(genres);
+
+    return (
+
+        <StyledMoviesContainer>
+            <Header>Popular movies</Header>
+            <MovieTilesContainer>
+                {movies.map((movie, index) => (
+                    <MovieTile
+                        key={index}
+                        id={movie.id}
+                        title={movie.title}
+                        poster_path={movie.poster_path}
+                        release_date={movie.release_date}
+                        genre_ids={movie.genre_ids}
+                        vote_average={movie.vote_average}
+                        vote_count={movie.vote_count}
+                        genresMap={genresMap}
+                    />
+                ))}
+            </MovieTilesContainer>
+        </StyledMoviesContainer>
+    );
+};
 
 export default MoviesContainer;
