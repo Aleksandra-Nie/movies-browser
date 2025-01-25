@@ -4,6 +4,7 @@ const peopleSlice = createSlice({
     name: "people",
     initialState: {
         people: [],
+        personDetails: [],
         currentPage: 1,
         totalPages: 500,
         loading: false,
@@ -29,6 +30,9 @@ const peopleSlice = createSlice({
         setCurrentPage: (state, { payload }) => {
             state.currentPage = payload;
         },
+        setPersonDetails: (state, { payload }) => {
+            state.personDetails = payload;
+        },
     },
 });
 
@@ -38,16 +42,18 @@ export const {
     fetchPeopleRequest,
     setPeople,
     setCurrentPage,
+    setPersonDetails,
 } = peopleSlice.actions;
 
 export const selectPeopleState = (state) => state.people;
 export const selectPeople = (state) => selectPeopleState(state).people;
 export const selectCurrentPage = (state) => selectPeopleState(state).currentPage;
 export const selectTotalPages = (state) => selectPeopleState(state).totalPages;
+export const selectPersonDetails = (state) => selectPeopleState(state).personDetails;
 
 export const getPersonById = (state, personId) => {
-    const people = selectPeople(state).results;
-    return people.find(({ id }) => id === parseInt(personId));
+    const peopleWithDetails = selectPersonDetails(state);
+    return peopleWithDetails.find(({ id }) => id === parseInt(personId));
 };
 
 export default peopleSlice.reducer;
