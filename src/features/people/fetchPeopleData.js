@@ -40,3 +40,13 @@ export const fetchPersonDetails = async (personId) => {
         return [];
     };
 };
+
+export const fetchPeopleCredits = async (personId) => {
+    try {
+        const peopleCredits = await fetchData(`https://api.themoviedb.org/3/person/${personId}/combined_credits?language=en-US`);
+        return peopleCredits;
+    } catch (error) {
+        console.error("Error fetching people credits", error);
+        return [];
+    };
+};
