@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-export const usePagination = ({ fetchData, setCurrentPage, selectCurrentPage, selectTotalPages, setData, }) => {
+const usePagination = ({ fetchData, setCurrentPage, selectCurrentPage, selectTotalPages, setData, }) => {
     const dispatch = useDispatch();
     const currentPage = useSelector(selectCurrentPage);
     const totalPages = useSelector(selectTotalPages);
@@ -45,3 +45,5 @@ export const usePagination = ({ fetchData, setCurrentPage, selectCurrentPage, se
         firstPage,
     };
 };
+
+export default usePagination;

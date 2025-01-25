@@ -1,5 +1,5 @@
-import { useWindowSize } from "./useWindowSize";
-import { usePagination } from "./usePagination";
+import useWindowSize from "./useWindowSize";
+import usePagination from "./usePagination";
 import { Wrapper, Vector, Button, PageCounter, PageNumber } from "./styled";
 
 const Scrollbar = ({
