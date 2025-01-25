@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchMoviesRequest, selectGenres, selectMovies } from "../moviesSlice";
 import useGenresMap from "../useGenresMap";
 import MovieTile from "../MovieTile";
-import { StyledMoviesContainer, Header, MovieTilesContainer } from "./styled";
+import { MovieTilesContainer, Header } from "../../sharedStyles";
+import { StyledMoviesContainer } from "./styled";
 
 const MoviesContainer = () => {
     const dispatch = useDispatch();
