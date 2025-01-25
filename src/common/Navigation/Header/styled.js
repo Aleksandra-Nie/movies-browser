@@ -23,8 +23,9 @@ export const StyledVideoIcon = styled(VideoIcon)`
 export const IconWrapper = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  margin-left: 15%;
   gap: 12px;
-  margin-left: 293px;
 
   @media (max-width: 1086px) {
     font-size: 18px;
