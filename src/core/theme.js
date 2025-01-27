@@ -4,6 +4,7 @@ export const theme = {
     white: "#FFFFFF",
     whisper: "#F5F5FA",
     mystic: "#E4E6F0",
+    snuff: "#DDDDEE",
     stormGray: "#74788B",
     lynch: "#627489",
     candlelight: "#FCD420",
