@@ -3,7 +3,6 @@ import MoviesPage from "./features/movies/MoviesPage";
 import PeoplePage from "./features/people/PeoplePage";
 import PersonPage from "./features/people/PersonPage";
 
-
 function App() {
   return (
     <>
