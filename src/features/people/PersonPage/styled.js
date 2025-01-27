@@ -1,9 +1,5 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-    margin: 16px;
-`;
-
 export const PersonInformation = styled.div`
     display: flex;
     flex-direction: column;

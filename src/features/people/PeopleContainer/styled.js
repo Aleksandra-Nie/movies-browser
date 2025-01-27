@@ -2,10 +2,6 @@ import styled from "styled-components";
 
 export const StyledPeopleContainer = styled.div`
     margin-top: 56px;
-
-    @media(max-width: ${({ theme }) => theme.breakpoints.tablet}px){
-        margin: 0 16px;
-    };
 `;
 
 export const Header = styled.h2`
