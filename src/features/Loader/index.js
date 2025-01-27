@@ -1,11 +1,12 @@
 import { Wrapper } from "../../common";
+import { Title, LoaderContainer, StyledLoader } from "./styled";
 
 const Loader = () => (
     <Wrapper>
-        <h2>Search results for "Mulan"</h2>
-        <div>
-            <div></div>
-        </div>
+        <Title>Search results for "Mulan"</Title>
+        <LoaderContainer>
+            <StyledLoader />
+        </LoaderContainer>
     </Wrapper>
 );
 
