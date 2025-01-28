@@ -46,12 +46,13 @@ export const ErrorText = styled.p`
     };
 `;
 
-export const HomeButton = styled.button`
+export const HomeButton = styled.a`
     padding: 16px 24px;
     color: ${({ theme }) => theme.color.white};
     background: ${({ theme }) => theme.color.scienceBlue};
     font-size: 14px;
     font-weight: 700;
+    text-decoration: none;
     border: none;
     border-radius: 5px;
     transition: transform 0.5s;

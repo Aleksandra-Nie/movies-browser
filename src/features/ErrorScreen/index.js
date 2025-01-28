@@ -7,7 +7,7 @@ const ErrorScreen = () => (
             <ErrorIcon />
             <ErrorTitle>Ooops! Something went wrong...</ErrorTitle>
             <ErrorText>Please check your network connection <br /> and try again.</ErrorText>
-            <HomeButton>Back to homepage</HomeButton>
+            <HomeButton href="/">Back to homepage</HomeButton>
         </ErrorContainer>
     </Wrapper>
 );
