@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { ReactComponent as SearchIcon } from "../../../icons/Search.svg"; // Poprawiony import
+import { ReactComponent as SearchIcon } from "../../../icons/Search.svg";
 
 export const Wrapper = styled.div`
-  width: 500px;
+  width: 432px;
   height: 48px;
   display: flex;
   gap: 16px;
@@ -11,15 +11,19 @@ export const Wrapper = styled.div`
   border: 1px solid ${({ theme }) => theme.color.mystic};
   border-radius: 50px;
   padding: 0 24px;
-  margin-left: auto;
 
-  @media (max-width: 1086px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     width: 100%;
-    height: 46px;
+    height: 44px;
+    margin-top: 20px;
+    padding: 0 20px;
   }
 
-  @media (max-width: 768px) {
-    padding: 0 16px;
+  @media (${({ theme }) => theme.breakpoints.mobile}) {
+    width: 100%:
+    height: 44px;
+    margin-top: 30px;
+    padding: 0 20px;
   }
 `;
 
@@ -29,10 +33,16 @@ export const SearchInput = styled.input`
   font-size: 16px;
   line-height: 24px;
   border: none;
+  border-radius: 30px;
 
-  @media (max-width: 1086px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     font-size: 14.5px;
     line-height: 20px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    font-size: 13px;
+    line-height: 17px;
   }
 `;
 
@@ -40,13 +50,13 @@ export const StyledSearchIcon = styled(SearchIcon)`
   width: 24px;
   height: 24px;
 
-  @media (max-width: 1086px) {
-    width: 23px;
-    height: 23px;
-  }
-
-  @media (max-width: 767px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     width: 22px;
     height: 22px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
+    width: 20px;
+    height: 20px;
   }
 `;

@@ -1,5 +1,5 @@
 import {
-  StyledHeader,
+  HeaderContainer,
   IconWrapper,
   StyledVideoIcon,
   TextLogo,
@@ -8,16 +8,14 @@ import {
 } from "./styled";
 
 export const Header = () => (
-  <StyledHeader>
+  <HeaderContainer>
     <IconWrapper>
       <StyledVideoIcon />
       <TextLogo>Movies Browser</TextLogo>
     </IconWrapper>
-    <nav>
-      <NavSection>
-        <NavItem>MOVIES</NavItem>
-        <NavItem>PEOPLE</NavItem>
-      </NavSection>
-    </nav>
-  </StyledHeader>
+    <NavSection>
+      <NavItem>MOVIES</NavItem>
+      <NavItem>PEOPLE</NavItem>
+    </NavSection>
+  </HeaderContainer>
 );
