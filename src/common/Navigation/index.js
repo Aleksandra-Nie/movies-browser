@@ -1,14 +1,14 @@
-import { Background, Wrapper} from "./styled.js";
+import { Background, MainWrapper } from "./styled.js";
 import { Header } from "./Header";
 import  SearchInput from "./Search";
 
 export const Navigation = () => {
   return (
     <Background>
-      <Wrapper>
+      <MainWrapper>
         <Header />
         <SearchInput />
-      </Wrapper>
+      </MainWrapper>
     </Background>
   );
 };

@@ -1,16 +1,20 @@
 import styled from "styled-components";
 import { ReactComponent as VideoIcon } from "../../../icons/Video.svg";
 
-export const StyledHeader = styled.header`
-  width: 100%;
-  height: 94px;
+export const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
   gap: 80px;
-  background: ${({ theme }) => theme.color.black};
+  justify-content: space-between;
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    width: 288px;
+    height: 44px;
+    justify-content: space-between;
+  }
 
-  @media (max-width: 1086px) {
-    width: 100%;
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
+    width: 288px;
+    height: 44px;
     gap: 15px;
   }
 `;
@@ -20,30 +24,26 @@ export const StyledVideoIcon = styled(VideoIcon)`
   height: 40px;
 `;
 
-export const IconWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-left: 2%;
-  gap: 12px;
-
-  @media (max-width: 1086px) {
-    font-size: 18px;
-  }
-`;
-
 export const TextLogo = styled.h1`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-weight: 700;
+  font-weight: 500;
   font-size: 24px;
+  line-height: 1.5;
   margin: 0;
   color: ${({ theme }) => theme.color.white};
 
-  @media (max-width: 1086px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     font-size: 18px;
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
+    font-size: 16px;
+  }
+`;
+
+export const IconWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 12px;
 `;
 
 export const NavSection = styled.ul`
@@ -53,13 +53,23 @@ export const NavSection = styled.ul`
   margin: 0;
   padding: 0;
   list-style: none;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    gap: 16px;
+    justify-content: space-between;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
+    gap: 12px;
+    justify-content: space-between;
+  }
 `;
 
 export const NavItem = styled.li`
-  font-weight: 700;
+  font-weight: 600;
   font-size: 14px;
   line-height: 20px;
-  padding: 13px 24px;
+  padding: 13px 25px;
   border-radius: 30px;
   border: 1px solid transparent;
   color: ${({ theme }) => theme.color.white};
@@ -68,10 +78,16 @@ export const NavItem = styled.li`
     background-color 0.5s,
     color 0.5s;
 
-  @media (max-width: 1086px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     font-size: 13px;
     line-height: 19.5px;
-    padding: 10px 18px;
+    padding: 10px 19px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
+    font-size: 12px;
+    line-height: 18px;
+    padding: 8px 14px;
   }
 
   &.active {

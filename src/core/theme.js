@@ -24,4 +24,11 @@ export const theme = {
     tabletLandscape: 1180,
     desktop: 1440,
   },
+
+ breakpoints: {
+        desktop: 1500,
+        tablet: 1086,
+        mobile: 767,
+        mobileSmall: 480,
+    },
 };
