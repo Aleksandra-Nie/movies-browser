@@ -1,4 +1,16 @@
-import { Wrapper, LayerContainer, InfoContainer, Title, RateContainer, Rating, MaxRating, Votes, StyledStarIcon } from "./styled";
+import {
+    Wrapper,
+    LayerContainer,
+    InfoContainer,
+    Title,
+    RateContainer,
+    Rating,
+    MaxRating,
+    Votes,
+    StyledStarIcon
+} from "./styled";
+
+
 
 const IntroductionLayer = () => (
     <Wrapper>
