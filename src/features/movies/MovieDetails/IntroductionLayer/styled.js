@@ -3,7 +3,7 @@ import { ReactComponent as StarIcon } from "../../../../images/star.svg";
 import exampleBigPoster from "../../../../images/exampleBigPoster.png";
 
 export const Wrapper = styled.div`
-  background-color: ${({ theme }) => theme.color.black};
+  background-color: ${({ theme }) => theme.color.blackSmoke};
 `;
 
 export const LayerContainer = styled.div`
