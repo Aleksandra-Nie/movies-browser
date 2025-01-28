@@ -12,19 +12,38 @@ export const ErrorContainer = styled.div`
 `;
 
 export const ErrorIcon = styled(Danger)`
-
+    @media(max-width: ${({ theme }) => theme.breakpoints.mobile}px){
+        width: 70px;
+        height: 70px;
+    };
 `;
 
 export const ErrorTitle = styled.h2`
     font-size: 36px;
     font-weight: 600;
     margin: 0;
+
+    @media(max-width: ${({ theme }) => theme.breakpoints.tablet}px){
+        font-size: 26px;
+    };
+
+    @media(max-width: ${({ theme }) => theme.breakpoints.mobile}px){
+        font-size: 18px;
+    };
 `;
 
 export const ErrorText = styled.p`
     font-size: 22px;
     font-weight: 500;
     margin: 0;
+
+    @media(max-width: ${({ theme }) => theme.breakpoints.tablet}px){
+        font-size: 18px;
+    };
+
+    @media(max-width: ${({ theme }) => theme.breakpoints.mobile}px){
+        font-size: 14px;
+    };
 `;
 
 export const HomeButton = styled.button`
@@ -36,6 +55,15 @@ export const HomeButton = styled.button`
     border: none;
     border-radius: 5px;
     transition: transform 0.5s;
+
+    @media(max-width: ${({ theme }) => theme.breakpoints.tablet}px){
+        padding: 14px 22px;
+    };
+
+    @media(max-width: ${({ theme }) => theme.breakpoints.mobile}px){
+        padding: 10px 18px;
+        font-weight: 500;
+    };
 
     &:hover{
         cursor: pointer;
