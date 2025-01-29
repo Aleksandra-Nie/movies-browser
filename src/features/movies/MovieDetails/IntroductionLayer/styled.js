@@ -162,11 +162,11 @@ export const Rating = styled.p`
   gap: 8px;
 
   @media(max-width:${({ theme }) => theme.breakpoint.mobileMax}px){
-   font-size: 25px;
+    font-size: 25px;
   }
 
   @media(max-width:${({ theme }) => theme.breakpoint.mobileS}px){
-   font-size: 14px;
+    font-size: 14px;
   }
 
   @media(max-width:${({ theme }) => theme.breakpoint.mobileXS}px){
@@ -180,8 +180,8 @@ export const MaxRating = styled.p`
   
 
   @media(max-width:${({ theme }) => theme.breakpoint.mobileS}px){
-   font-size: 10px;
-   padding-bottom: 2px;
+    font-size: 10px;
+    padding-bottom: 2px;
   }
 
   @media(max-width:${({ theme }) => theme.breakpoint.mobileXS}px){
@@ -196,7 +196,7 @@ export const Votes = styled.p`
   margin: 0;
 
   @media(max-width:${({ theme }) => theme.breakpoint.mobileS}px){
-   font-size: 10px;
+    font-size: 10px;
   }
 
   @media(max-width:${({ theme }) => theme.breakpoint.mobileXS}px){

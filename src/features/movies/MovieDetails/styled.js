@@ -56,7 +56,7 @@ export const Poster = styled.img`
   }
 
   @media(max-width:${({ theme }) => theme.breakpoint.mobileS}px){
-    max-height: 163px;
+    max-height: 169px;
   }
 `;
 
@@ -75,13 +75,13 @@ export const MovieSection = styled.section`
   `;
 
 export const Header = styled.h1`
-font-size: 36px;
-font-weight: 600;
-color: ${({ theme }) => theme.color.blackSmoke};
-margin: 0;
+  font-size: 36px;
+  font-weight: 600;
+  color: ${({ theme }) => theme.color.blackSmoke};
+  margin: 0;
 
-@media(max-width:${({ theme }) => theme.breakpoint.mobileS}px){
-    font-size: 16px;
+  @media(max-width:${({ theme }) => theme.breakpoint.mobileS}px){
+    font-size: 24px;
     font-weight: 500;
     color: ${({ theme }) => theme.color.black};
   }
@@ -100,19 +100,15 @@ export const Year = styled.p`
   `;
 
 export const DetailsContainer = styled.div`
-display: flex;
-flex-direction: column;
-gap: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 
-@media(max-width:${({ theme }) => theme.breakpoint.tabletVerticalMax}px){
+  @media(max-width:${({ theme }) => theme.breakpoint.tabletVerticalMax}px){
     gap: 0;
   }
 
   @media(max-width:${({ theme }) => theme.breakpoint.mobileMax}px){
-    gap: 10px;
-  }
-  
-  @media(max-width:${({ theme }) => theme.breakpoint.mobileS}px){
     gap: 10px;
   }
 `;
@@ -133,12 +129,12 @@ export const LineContainer = styled.div`
   `;
 
 export const Caption = styled.p`
-font-size: 18px;
-font-weight: 400;
-color:${({ theme }) => theme.color.stormGray};
-margin: 0;
+  font-size: 18px;
+  font-weight: 400;
+  color:${({ theme }) => theme.color.stormGray};
+  margin: 0;
 
-@media(max-width:${({ theme }) => theme.breakpoint.mobileMax}px){
+  @media(max-width:${({ theme }) => theme.breakpoint.mobileMax}px){
     display: none;
   }
 `;
@@ -156,31 +152,31 @@ export const Text = styled.p`
   `;
 
 export const GenresList = styled.ul`
-display: flex;
-flex-wrap: wrap;
-gap: 8px;
-padding: 0;
-margin: 8px 0;
-list-style: none;
-color: ${({ theme }) => theme.color.black};
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0;
+  margin: 8px 0;
+  list-style: none;
+  color: ${({ theme }) => theme.color.black};
+`;
 
-@media(max-width:${({ theme }) => theme.breakpoint.mobileMax}px){
+export const Genres = styled.li`
+  font-size: 14px;
+  background-color: ${({ theme }) => theme.color.mystic};
+  padding: 8px 16px;
+  border-radius: 5px;
+
+  @media(max-width:${({ theme }) => theme.breakpoint.mobileMax}px){
+    padding: 4px 8px;
+  }
+
+  @media(max-width:${({ theme }) => theme.breakpoint.mobileMax}px){
     font-size: 13px;
   }
 
   @media(max-width:${({ theme }) => theme.breakpoint.mobileS}px){
     font-size: 10px;
-  }
-`;
-
-export const Genres = styled.li`
-font-size: 14px;
-background-color: ${({ theme }) => theme.color.mystic};
-padding: 8px 16px;
-border-radius: 5px;
-
-@media(max-width:${({ theme }) => theme.breakpoint.mobileMax}px){
-    padding: 4px 8px;
   }
 `;
 
@@ -190,8 +186,8 @@ export const MovieRating = styled.div`
     gap: 12px;
 
     @media(max-width:${({ theme }) => theme.breakpoint.mobileS}px){
-    font-size: 13px;
-    flex-wrap: wrap;
+      font-size: 13px;
+      flex-wrap: wrap;
   }
 `;
 
@@ -200,8 +196,8 @@ export const StyledStarIcon = styled(StarIcon)`
     color: ${({ theme }) => theme.color.candleLight};
 
     @media(max-width:${({ theme }) => theme.breakpoint.mobileS}px){
-    width: 16px;
-    height: 16px;
+      width: 16px;
+      height: 16px;
   }
 `;
 
@@ -212,9 +208,9 @@ export const Rating = styled.span`
     color: ${({ theme }) => theme.color.blackSmoke};
 
     @media(max-width:${({ theme }) => theme.breakpoint.mobileS}px){
-    font-size: 13px;
-    font-weight: 600;
-    color: ${({ theme }) => theme.color.black};
+      font-size: 13px;
+      font-weight: 600;
+      color: ${({ theme }) => theme.color.black};
   }
 `;
 
@@ -224,9 +220,9 @@ export const Votes = styled.span`
     font-size: 14px;
 
     @media(max-width:${({ theme }) => theme.breakpoint.mobileS}px){
-    font-size: 13px;
-    line-height: 22.4px;
-    color: ${({ theme }) => theme.color.waterloo};
+      font-size: 13px;
+      line-height: 22.4px;
+      color: ${({ theme }) => theme.color.waterloo};
   }
 `;
 
@@ -283,19 +279,19 @@ export const PeopleContainer = styled.section`
   `;
 
 export const PeopleTile = styled.a`
-background-color: ${({ theme }) => theme.color.white};
-padding: 16px;
-box-shadow: ${({ theme }) => theme.shadow.tile};
-border-radius: 5px;
-height: 100%;
-transition: 0.5s;
-text-decoration: none;
+  background-color: ${({ theme }) => theme.color.white};
+  padding: 16px;
+  box-shadow: ${({ theme }) => theme.shadow.tile};
+  border-radius: 5px;
+  height: 100%;
+  transition: 0.5s;
+  text-decoration: none;
 
-&:hover{
-  transform: translateY(-3%);
-}
+  &:hover{
+    transform: translateY(-3%);
+  }
 
-@media (max-width: ${({ theme }) => theme.breakpoint.mobileS}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileS}px) {
     padding: 8px;
   }
 `;
@@ -308,20 +304,20 @@ export const Image = styled.img`
 `;
 
 export const PeopleName = styled.p`
-font-size: 22px;
-font-weight: 500;
-margin-bottom: 8px;
-margin-top: 12px;
-color: ${({ theme }) => theme.color.black};
-text-align: center;
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  margin-top: 12px;
+  color: ${({ theme }) => theme.color.black};
+  text-align: center;
 
-@media (max-width: ${({ theme }) => theme.breakpoint.mobileS}px) {
-  font-size: 14px;
-}
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileS}px) {
+    font-size: 14px;
+  }
 
-@media (max-width: ${({ theme }) => theme.breakpoint.mobileXS}px) {
-  font-size: 12px;
-}
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileXS}px) {
+    font-size: 12px;
+  }
 `;
 
 export const PeopleRole = styled.p`
