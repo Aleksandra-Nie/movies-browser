@@ -8,7 +8,7 @@ import useWindowSize from "../../Scrollbar/useWindowSize";
 import MovieTile from "../../movies/MovieTile";
 import { Wrapper } from "../../../common/index";
 import { Tile, PersonName, PersonPhoto } from "../personStyles";
-import { BirthInfo, BirthLabel, BirthData, PersonProfile, PersonInformation, Container } from "./styled";
+import { BirthInfo, BirthLabel, BirthData, PersonProfile, PersonInformation } from "./styled";
 import { MovieTilesContainer, Header } from "../../sharedStyles";
 
 const PersonPage = () => {
@@ -25,7 +25,7 @@ const PersonPage = () => {
     console.log(personCredits);
     return (
         <Wrapper>
-            <Container>
+            <>
                 {personDetails && (
                     <Tile $personDetails>
                         <PersonPhoto
@@ -83,7 +83,7 @@ const PersonPage = () => {
                         </MovieTilesContainer>
                     </>
                 )}
-            </Container>
+            </>
         </Wrapper>
     );
 };

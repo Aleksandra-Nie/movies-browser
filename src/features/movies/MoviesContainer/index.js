@@ -4,7 +4,6 @@ import { fetchMoviesRequest, selectGenres, selectMovies } from "../moviesSlice";
 import useGenresMap from "../useGenresMap";
 import MovieTile from "../MovieTile";
 import { MovieTilesContainer, Header } from "../../sharedStyles";
-import { StyledMoviesContainer } from "./styled";
 
 const MoviesContainer = () => {
     const dispatch = useDispatch();
@@ -21,7 +20,7 @@ const MoviesContainer = () => {
 
     return (
 
-        <StyledMoviesContainer>
+        <>
             <Header>Popular movies</Header>
             <MovieTilesContainer>
                 {movies.map((movie, index) => (
@@ -38,7 +37,7 @@ const MoviesContainer = () => {
                     />
                 ))}
             </MovieTilesContainer>
-        </StyledMoviesContainer>
+        </>
     );
 };
 
