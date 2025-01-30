@@ -31,7 +31,19 @@ export const SearchInput = styled.input`
   line-height: 24px;
   border: none;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tabletMobileMax}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletVericalMax}px) {
+    max-width: 100%;
+    font-size: 14.5px;
+    line-height: 20px;
+  }
+
+  @media (max-width: ${({ theme }) =>
+      theme.breakpoints.tabletHorizontalMax}px) {
+    max-width: 100%;
+    font-size: 14.5px;
+    line-height: 20px;
+  }
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
     width: 100%;
     font-size: 14.5px;
     line-height: 20px;
