@@ -11,6 +11,7 @@ export const Wrapper = styled.div`
   background: ${({ theme }) => theme.color.white};
   border: 1px solid ${({ theme }) => theme.color.mystic};
   border-radius: 50px;
+  padding-left: 24px;
  
   @media (max-width: ${({ theme }) => theme.breakpoints.tabletVerticalMax}px) {
     max-width: 100%;
@@ -28,6 +29,7 @@ export const SearchInput = styled.input`
   border-radius: 33px;
   width: 100%;
   font-family: "Poppins", sans-serif;
+  outline: none;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tabletVertialMax}px) {
     font-size: 14.5px;
@@ -45,7 +47,6 @@ export const SearchInput = styled.input`
 export const StyledSearchIcon = styled(SearchIcon)`
   width: 24px;
   height: 24px;
-  padding-left: 24px;
   color: ${({ theme }) => theme.color.waterloo};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tabletVertialMax}px) {
