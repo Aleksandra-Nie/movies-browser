@@ -6,13 +6,13 @@ export const HeaderContainer = styled.header`
   align-items: center;
   gap: 80px;
   justify-content: space-between;
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletVerticalMax}px) {
     width: 288px;
     height: 44px;
     justify-content: space-between;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
     width: 288px;
     height: 44px;
     gap: 15px;
@@ -31,11 +31,11 @@ export const TextLogo = styled.h1`
   margin: 0;
   color: ${({ theme }) => theme.color.white};
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletVerticalMax}px) {
     font-size: 18px;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
     font-size: 16px;
   }
 `;
@@ -54,12 +54,12 @@ export const NavSection = styled.ul`
   padding: 0;
   list-style: none;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletVerticalMax}px) {
     gap: 16px;
     justify-content: space-between;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
     gap: 12px;
     justify-content: space-between;
   }
@@ -78,13 +78,13 @@ export const NavItem = styled.li`
     background-color 0.5s,
     color 0.5s;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletVerticalMax}px) {
     font-size: 13px;
     line-height: 19.5px;
     padding: 10px 19px;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
     font-size: 12px;
     line-height: 18px;
     padding: 8px 14px;
