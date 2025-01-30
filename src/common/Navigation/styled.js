@@ -22,6 +22,10 @@ export const MainWrapper = styled.div`
     flex-direction: column;
     padding: 16px;
   }
+  @media (max-width: ${({ theme }) => theme.breakpoints.laptopMax}px) {
+    flex-direction: column;
+    padding: 16px;
+  }
 `;
 
 export const SearchInput = styled.input`
@@ -31,6 +35,11 @@ export const SearchInput = styled.input`
   line-height: 24px;
   border: none;
 
+  @media (max-width: ${({ theme }) => theme.breakpoints.laptopMax}px) {
+    font-size: 14.5px;
+    line-height: 20px;
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.tabletVericalMax}px) {
     max-width: 100%;
     font-size: 14.5px;
@@ -39,12 +48,12 @@ export const SearchInput = styled.input`
 
   @media (max-width: ${({ theme }) =>
       theme.breakpoints.tabletHorizontalMax}px) {
-    max-width: 100%;
+    width: 100%;
     font-size: 14.5px;
     line-height: 20px;
   }
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
-    width: 100%;
+    max-width: 288px;
     font-size: 14.5px;
     line-height: 20px;
   }
