@@ -12,14 +12,14 @@ export const Wrapper = styled.div`
   border-radius: 50px;
   padding: 0 24px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletVertialMax}) {
     width: 100%;
     height: 44px;
     margin-top: 20px;
     padding: 0 20px;
   }
 
-  @media (${({ theme }) => theme.breakpoints.mobile}) {
+  @media (${({ theme }) => theme.breakpoints.mobileMax}) {
     width: 100%:
     height: 44px;
     margin-top: 30px;
@@ -35,12 +35,12 @@ export const SearchInput = styled.input`
   border: none;
   border-radius: 30px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletVertialMax}) {
     font-size: 14.5px;
     line-height: 20px;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
     font-size: 13px;
     line-height: 17px;
   }
@@ -50,12 +50,12 @@ export const StyledSearchIcon = styled(SearchIcon)`
   width: 24px;
   height: 24px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletVertialMax}px) {
     width: 22px;
     height: 22px;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
     width: 20px;
     height: 20px;
   }
