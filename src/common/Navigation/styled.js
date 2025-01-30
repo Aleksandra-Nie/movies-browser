@@ -5,26 +5,17 @@ export const Background = styled.div`
 `;
 
 export const MainWrapper = styled.div`
-  width: 100%;
   max-width: 1368px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 23px;
+  padding: 23px 16px 23px 16px;
   margin: 0 auto;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tabletVerticalMax}px) {
     flex-direction: column;
-    padding: 16px;
-  }
-  @media (max-width: ${({ theme }) =>
-      theme.breakpoints.tabletHorizontalMax}px) {
-    flex-direction: column;
-    padding: 16px;
-  }
-  @media (max-width: ${({ theme }) => theme.breakpoints.laptopMax}px) {
-    flex-direction: column;
-    padding: 16px;
+    padding: 32px 16px 16px 16px; 
+    gap: 24px;  
   }
 `;
 
@@ -46,12 +37,6 @@ export const SearchInput = styled.input`
     line-height: 20px;
   }
 
-  @media (max-width: ${({ theme }) =>
-      theme.breakpoints.tabletHorizontalMax}px) {
-    width: 100%;
-    font-size: 14.5px;
-    line-height: 20px;
-  }
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
     max-width: 288px;
     font-size: 14.5px;
