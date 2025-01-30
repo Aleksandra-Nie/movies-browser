@@ -20,7 +20,7 @@ export const Wrapper = styled.div`
   }
 
   @media (${({ theme }) => theme.breakpoints.mobileMax}) {
-    width: 100%:
+    max-width: 288px;
     height: 44px;
     margin-top: 30px;
     padding: 0 20px;
@@ -41,6 +41,7 @@ export const SearchInput = styled.input`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
+    max-width: 288px;
     font-size: 13px;
     line-height: 17px;
   }
