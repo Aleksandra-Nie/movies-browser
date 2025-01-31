@@ -1,20 +1,29 @@
 import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useQueryCurrentPage } from "../../useQueryCurrentPage";
-import { fetchPeopleRequest, selectPeople } from "../../people/peopleSlice";
+import { fetchPeopleByQueryRequest, fetchPeopleRequest, selectPeopleByQuery } from "../../people/peopleSlice";
 import { Tile, PersonName, PersonPhoto } from "../personStyles";
 import { Link } from "./styled";
 
 const PersonTile = () => {
     const dispatch = useDispatch();
+    const location = useLocation();
     const currentPage = useQueryCurrentPage();
 
-    useEffect(() => {
-        dispatch(fetchPeopleRequest({ page: currentPage }));
-    }, []);
+    const searchParams = new URLSearchParams(location.search);
+    const query = searchParams.get("search");
 
-    const peopleData = useSelector(selectPeople);
-    const people = peopleData.results || [];
+    useEffect(() => {
+        if (!query) {
+            dispatch(fetchPeopleRequest({ page: currentPage }));
+        } else {
+            dispatch(fetchPeopleByQueryRequest(query));
+        }
+    }, [query]);
+
+    const peopleData = useSelector(state => selectPeopleByQuery(state, query));
+    const people = peopleData || [];
 
     return (
         <>
