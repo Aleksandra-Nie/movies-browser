@@ -16,15 +16,6 @@ function* fetchPeopleDataHandler(action) {
         const people = yield call(fetchPeople, page);
         yield put(fetchPeopleSuccess(people));
 
-        const personDetails = yield all(people.results.map(person =>
-            call(fetchPersonDetails, person.id),
-        ));
-        const peopleCredits = yield all(people.results.map(person =>
-            call(fetchPeopleCredits, person.id),
-        ));
-        yield put(setPersonDetails(personDetails));
-        yield put(setPeopleCredits(peopleCredits));
-
     } catch (error) {
         yield put(fetchPeopleFailure(error));
     };
