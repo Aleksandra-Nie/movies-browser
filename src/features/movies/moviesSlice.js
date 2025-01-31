@@ -11,15 +11,17 @@ const moviesSlice = createSlice({
         error: null,
     },
     reducers: {
-        fetchMoviesRequest: (state) => {
+        fetchMoviesRequest: (state, action) => {
             state.loading = true;
             state.error = null;
+            state.currentPage = action.payload.page;
         },
         fetchMoviesSuccess: (state, { payload }) => {
-            const { movies, genres } = payload;
+            const { movies, genres, page } = payload;
 
             state.movies = movies;
             state.genres = genres;
+            state.currentPage = page;
             state.loading = false;
             state.error = false;
         },
