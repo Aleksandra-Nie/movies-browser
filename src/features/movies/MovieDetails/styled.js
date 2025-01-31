@@ -25,6 +25,7 @@ export const MovieTile = styled.section`
   grid-template-columns: auto 1fr;
   grid-template-rows: auto 1fr;
   row-gap: 24px;
+  box-shadow: ${({ theme }) => theme.shadow.tile};
 
   @media(max-width:${({ theme }) => theme.breakpoint.tabletVerticalMax}px){
     row-gap: 0;

@@ -6,7 +6,7 @@ export const Tile = styled.div`
     flex-direction: column;
     padding: 16px;
     background-color: white;
-    box-shadow: 0px 4px 12px 0px #BAC7D580;
+    box-shadow: ${({ theme }) => theme.shadow.tile};
     font-size: 16px;
     color: #18181B;
     border-radius: 5px;
