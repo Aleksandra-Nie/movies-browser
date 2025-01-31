@@ -12,9 +12,10 @@ const peopleSlice = createSlice({
         error: null,
     },
     reducers: {
-        fetchPeopleRequest: (state) => {
+        fetchPeopleRequest: (state, action) => {
             state.loading = true;
             state.error = null;
+            state.currentPage = action.payload.page;
         },
         fetchPeopleSuccess: (state, { payload }) => {
             state.people = payload;
