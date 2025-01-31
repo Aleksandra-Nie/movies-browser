@@ -4,8 +4,6 @@ import { Wrapper, Vector, Button, PageCounter, PageNumber } from "./styled";
 
 const Scrollbar = ({
     fetchData,
-    setCurrentPage,
-    selectCurrentPage,
     selectTotalPages,
     setData,
 }) => {
@@ -19,8 +17,6 @@ const Scrollbar = ({
         lastPage,
     } = usePagination({
         fetchData,
-        setCurrentPage,
-        selectCurrentPage,
         selectTotalPages,
         setData,
     });

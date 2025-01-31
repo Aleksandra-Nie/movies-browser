@@ -1,47 +1,56 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { setCurrentPage } from "../people/peopleSlice";
 
-const usePagination = ({ fetchData, setCurrentPage, selectCurrentPage, selectTotalPages, setData, }) => {
+const usePagination = ({ fetchData, setData, selectTotalPages }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const currentPage = useSelector(selectCurrentPage);
+    const location = useLocation();
+
+    const queryParams = new URLSearchParams(location.search);
+    const urlPage = parseInt(queryParams.get("page")) || 1;
+
     const totalPages = useSelector(selectTotalPages);
 
     useEffect(() => {
+        dispatch(setCurrentPage(urlPage));
+    }, [urlPage]);
+
+    useEffect(() => {
         const getData = async () => {
-            const data = await fetchData(currentPage);
+            const data = await fetchData(urlPage);
             if (data) {
                 dispatch(setData(data));
             }
         };
         getData();
-
-        navigate(`?page=${currentPage}`, { replace: true });
-    }, [currentPage]);
+    }, [urlPage]);
 
     const nextPage = () => {
-        if (currentPage < totalPages) {
-            dispatch(setCurrentPage(currentPage + 1));
+        if (urlPage < totalPages) {
+            const next = urlPage + 1;
+            navigate(`${location.pathname}?page=${next}`, { replace: true });
         }
     };
 
     const previousPage = () => {
-        if (currentPage > 1) {
-            dispatch(setCurrentPage(currentPage - 1));
+        if (urlPage > 1) {
+            const prev = urlPage - 1;
+            navigate(`${location.pathname}?page=${prev}`, { replace: true });
         }
     };
 
     const lastPage = () => {
-        dispatch(setCurrentPage(totalPages));
+        navigate(`${location.pathname}?page=${totalPages}`, { replace: true });
     };
 
     const firstPage = () => {
-        dispatch(setCurrentPage(1));
+        navigate(`${location.pathname}?page=1`, { replace: true });
     };
 
     return {
-        currentPage,
+        currentPage: urlPage,
         totalPages,
         nextPage,
         previousPage,
