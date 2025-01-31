@@ -1,13 +1,14 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import { setCurrentPage } from "../people/peopleSlice";
+import { selectSearchQuery, setCurrentPage } from "../people/peopleSlice";
 import { setCurrentPage as setMoviesCurrentPage } from "../movies/moviesSlice";
 
 const usePagination = ({ fetchData, setData, selectTotalPages }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const location = useLocation();
+    const query = useSelector(selectSearchQuery);
 
     const queryParams = new URLSearchParams(location.search);
     const urlPage = parseInt(queryParams.get("page")) || 1;
@@ -25,13 +26,16 @@ const usePagination = ({ fetchData, setData, selectTotalPages }) => {
 
     useEffect(() => {
         const getData = async () => {
-            const data = await fetchData(urlPage);
+            const data = query
+                ? await fetchData(query, urlPage)
+                : await fetchData(urlPage);
+
             if (data) {
                 dispatch(setData(data));
             }
         };
         getData();
-    }, [urlPage]);
+    }, [urlPage, query]);
 
     const nextPage = () => {
         if (urlPage < totalPages) {
