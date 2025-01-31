@@ -6,6 +6,7 @@ const peopleSlice = createSlice({
         people: [],
         personDetails: [],
         peopleCredits: [],
+        searchQuery: "",
         currentPage: 1,
         totalPages: 500,
         loading: false,
@@ -23,6 +24,20 @@ const peopleSlice = createSlice({
             state.error = null;
         },
         fetchPeopleFailure: (state) => {
+            state.loading = false;
+            state.error = true;
+        },
+        fetchPeopleByQueryRequest: (state, { payload }) => {
+            state.loading = true;
+            state.error = null;
+            state.searchQuery = payload;
+        },
+        fetchPeopleByQuerySuccess: (state, { payload }) => {
+            state.loading = false;
+            state.error = null;
+            state.people = payload;
+        },
+        fetchPeopleByQueryFailure: (state) => {
             state.loading = false;
             state.error = true;
         },
@@ -45,6 +60,9 @@ export const {
     fetchPeopleFailure,
     fetchPeopleSuccess,
     fetchPeopleRequest,
+    fetchPeopleByQueryFailure,
+    fetchPeopleByQuerySuccess,
+    fetchPeopleByQueryRequest,
     setPeople,
     setCurrentPage,
     setPersonDetails,
@@ -66,6 +84,16 @@ export const getPersonCreditsById = (state, personId) => {
 export const getPersonDetailsById = (state, personId) => {
     const peopleWithDetails = selectPersonDetails(state);
     return peopleWithDetails.find(({ id }) => id === parseInt(personId));
+};
+
+export const selectPeopleByQuery = (state, query) => {
+    const people = selectPeople(state).results;
+
+    if (query) {
+        return people.filter(({ name }) => name.includes(query.trim()));
+    }
+
+    return people;
 };
 
 export default peopleSlice.reducer;
