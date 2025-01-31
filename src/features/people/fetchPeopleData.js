@@ -50,3 +50,13 @@ export const fetchPeopleCredits = async (personId) => {
         return [];
     };
 };
+
+export const fetchPeopleByQuery = async (query, page) => {
+    try {
+        const people = await fetchData(`https://api.themoviedb.org/3/search/person?query=${query}&include_adult=false&language=en-US&page=${page || 1}`);
+        return people;
+    } catch (error) {
+        console.error("Error fetching people by query", error);
+        return [];
+    };
+};
