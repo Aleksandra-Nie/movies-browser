@@ -91,11 +91,11 @@ export const getPersonDetailsById = (state, personId) => {
 export const selectPeopleByQuery = (state, query) => {
     const people = selectPeople(state).results;
 
-    if (query) {
-        return people.filter(({ name }) => name.includes(query.trim()));
+    if (!query || query.trim() === "") {
+        return people;
     }
 
-    return people;
+    return people.filter(({ name }) => name.includes(query.trim()));
 };
 
 export default peopleSlice.reducer;
