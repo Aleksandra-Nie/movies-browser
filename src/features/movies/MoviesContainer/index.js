@@ -1,15 +1,20 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 import { fetchMoviesRequest, selectGenres, selectMovies } from "../moviesSlice";
 import useGenresMap from "../useGenresMap";
 import MovieTile from "../MovieTile";
 import { MovieTilesContainer, Header } from "../../sharedStyles";
 
 const MoviesContainer = () => {
+    const location = useLocation();
     const dispatch = useDispatch();
 
+    const queryParams = new URLSearchParams(location.search);
+    const currentPage = parseInt(queryParams.get("page")) || 1;
+
     useEffect(() => {
-        dispatch(fetchMoviesRequest());
+        dispatch(fetchMoviesRequest({ page: currentPage }));
     }, []);
 
     const moviesData = useSelector(selectMovies);
