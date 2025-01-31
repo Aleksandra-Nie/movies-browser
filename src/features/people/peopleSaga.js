@@ -1,6 +1,9 @@
 import { put, call, takeLatest, all, select } from "redux-saga/effects";
-import { fetchPeople, fetchPeopleCredits, fetchPersonDetails } from "./fetchPeopleData";
+import { fetchPeople, fetchPeopleByQuery, fetchPeopleCredits, fetchPersonDetails } from "./fetchPeopleData";
 import {
+    fetchPeopleByQueryFailure,
+    fetchPeopleByQueryRequest,
+    fetchPeopleByQuerySuccess,
     fetchPeopleFailure,
     fetchPeopleRequest,
     fetchPeopleSuccess,
@@ -40,10 +43,24 @@ function* fetchPeopleDataOnPageChangeHandler() {
     };
 };
 
+function* fetchPeopleByQueryHandler(action) {
+    try {
+        const searchParams = action.payload;
+        const peopleByQuery = yield call(fetchPeopleByQuery, searchParams);
+        yield put(fetchPeopleByQuerySuccess(peopleByQuery));
+    } catch (error) {
+        yield put(fetchPeopleByQueryFailure(error));
+    }
+};
+
+export function* watchFetchPeopleByQuery() {
+    yield takeLatest(fetchPeopleByQueryRequest.type, fetchPeopleByQueryHandler);
+};
+
 export function* watchFetchPeopleData() {
     yield takeLatest(fetchPeopleRequest.type, fetchPeopleDataHandler);
 };
 
 export function* watchFetchPeopleDataOnPageChange() {
     yield takeLatest(setCurrentPage.type, fetchPeopleDataOnPageChangeHandler);
-}
+};
