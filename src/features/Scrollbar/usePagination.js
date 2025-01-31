@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { setCurrentPage } from "../people/peopleSlice";
+import { setCurrentPage as setMoviesCurrentPage } from "../movies/moviesSlice";
 
 const usePagination = ({ fetchData, setData, selectTotalPages }) => {
     const dispatch = useDispatch();
@@ -14,7 +15,12 @@ const usePagination = ({ fetchData, setData, selectTotalPages }) => {
     const totalPages = useSelector(selectTotalPages);
 
     useEffect(() => {
-        dispatch(setCurrentPage(urlPage));
+        if (location.pathname === "/people") {
+            dispatch(setCurrentPage(urlPage));
+        }
+        if (location.pathname === "/movies") {
+            dispatch(setMoviesCurrentPage(urlPage));
+        }
     }, [urlPage]);
 
     useEffect(() => {
