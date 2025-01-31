@@ -1,8 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const usePagination = ({ fetchData, setCurrentPage, selectCurrentPage, selectTotalPages, setData, }) => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const currentPage = useSelector(selectCurrentPage);
     const totalPages = useSelector(selectTotalPages);
 
@@ -14,6 +16,8 @@ const usePagination = ({ fetchData, setCurrentPage, selectCurrentPage, selectTot
             }
         };
         getData();
+
+        navigate(`?page=${currentPage}`, { replace: true });
     }, [currentPage]);
 
     const nextPage = () => {
