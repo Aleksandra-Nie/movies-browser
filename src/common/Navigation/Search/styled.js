@@ -36,7 +36,7 @@ export const SearchInput = styled.input`
     line-height: 20px;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     max-width: 288px;
     font-size: 13px;
     line-height: 17px;
@@ -54,7 +54,7 @@ export const StyledSearchIcon = styled(SearchIcon)`
     height: 22px;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     width: 20px;
     height: 20px;
   }

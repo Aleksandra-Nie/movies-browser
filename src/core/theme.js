@@ -17,17 +17,16 @@ export const theme = {
   },
 
   breakpoints: {
+    mobileXS: 319,
     mobile: 480,
+    mobileS: 510,
     mobileLarge: 638,
     tablet: 767,
+    tabletVerticalMax: 991,
     tabletMedium: 1024,
     tabletLandscape: 1180,
-    desktop: 1440,
-    mobileXS: 319,
-    mobileS: 510,
-    mobileMax: 767,
-    tabletVerticalMax: 991,
     tabletHorizontalMax: 1199,
     laptopMax: 1400,
+    desktop: 1440,
   },
 };

@@ -14,7 +14,7 @@ export const HeaderContainer = styled.header`
     gap: 24px;  
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     width: 100%;
     height: 44px;
     gap: 24px; 
@@ -25,7 +25,7 @@ export const StyledVideoIcon = styled(VideoIcon)`
   width: 40px;
   height: 40px;
 
-  @media(max-width:${({ theme }) => theme.breakpoints.mobileMax}px){
+  @media(max-width:${({ theme }) => theme.breakpoints.tablet}px){
     width: 17px;
     height: 17px;
   }
@@ -48,7 +48,7 @@ export const TextLogo = styled.h1`
     font-size: 18px;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     font-size: 13px;
     letter-spacing: -0.5px;
   }
@@ -63,7 +63,7 @@ export const IconWrapper = styled.div`
   align-items: center;
   gap: 12px;
 
-  @media(max-width:${({ theme }) => theme.breakpoints.mobileMax}px){
+  @media(max-width:${({ theme }) => theme.breakpoints.tablet}px){
     font-size: 13px;
     line-height: 16.9pxpx;
     letter-spacing: -0.5px;
@@ -110,7 +110,7 @@ export const NavItem = styled.li`
     padding: 10px 19px;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileMax}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     font-size: 12px;
     line-height: 18px;
     padding: 8px 14px;
