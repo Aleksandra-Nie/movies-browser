@@ -10,9 +10,10 @@ import {
     setPersonDetails,
 } from "./peopleSlice";
 
-function* fetchPeopleDataHandler() {
+function* fetchPeopleDataHandler(action) {
     try {
-        const people = yield call(fetchPeople);
+        const page = action.payload.page;
+        const people = yield call(fetchPeople, page);
         yield put(fetchPeopleSuccess(people));
 
         const personDetails = yield all(people.results.map(person =>
