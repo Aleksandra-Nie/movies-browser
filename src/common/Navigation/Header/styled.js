@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { ReactComponent as VideoIcon } from "../../../icons/Video.svg";
 
@@ -58,6 +59,10 @@ export const TextLogo = styled.h1`
   }
 `;
 
+export const HomepageLink = styled(Link)`
+  text-decoration: none;
+`;
+
 export const IconWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -91,12 +96,13 @@ export const NavSection = styled.ul`
   }
 `;
 
-export const NavItem = styled.li`
+export const NavItem = styled(Link)`
   font-weight: 600;
   font-size: 14px;
   line-height: 20px;
   padding: 13px 25px;
   border-radius: 24px;
+  text-decoration: none;
   border: 1px solid transparent;
   color: ${({ theme }) => theme.color.white};
   background: ${({ theme }) => theme.color.black};

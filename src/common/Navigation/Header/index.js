@@ -5,17 +5,20 @@ import {
   TextLogo,
   NavSection,
   NavItem,
+  HomepageLink,
 } from "./styled";
 
 export const Header = () => (
   <HeaderContainer>
-    <IconWrapper>
-      <StyledVideoIcon />
-      <TextLogo>Movies Browser</TextLogo>
-    </IconWrapper>
+    <HomepageLink to="/movies">
+      <IconWrapper>
+        <StyledVideoIcon />
+        <TextLogo>Movies Browser</TextLogo>
+      </IconWrapper>
+    </HomepageLink>
     <NavSection>
-      <NavItem>MOVIES</NavItem>
-      <NavItem>PEOPLE</NavItem>
+      <NavItem to="/movies">MOVIES</NavItem>
+      <NavItem to="/people">PEOPLE</NavItem>
     </NavSection>
   </HeaderContainer>
 );
