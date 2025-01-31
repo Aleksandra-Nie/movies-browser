@@ -36,6 +36,7 @@ const peopleSlice = createSlice({
             state.loading = false;
             state.error = null;
             state.people = payload;
+            state.totalPages = payload.total_pages;
         },
         fetchPeopleByQueryFailure: (state) => {
             state.loading = false;
@@ -75,6 +76,7 @@ export const selectCurrentPage = (state) => selectPeopleState(state).currentPage
 export const selectTotalPages = (state) => selectPeopleState(state).totalPages;
 export const selectPersonDetails = (state) => selectPeopleState(state).personDetails || [];
 export const selectPeopleCredits = (state) => selectPeopleState(state).peopleCredits || [];
+export const selectSearchQuery = (state) => selectPeopleState(state).searchQuery;
 
 export const getPersonCreditsById = (state, personId) => {
     const peopleCredits = selectPeopleCredits(state);
