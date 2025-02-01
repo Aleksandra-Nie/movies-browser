@@ -31,32 +31,39 @@ const Scrollbar = ({
                 onClick={() => firstPage()}
                 disabled={currentPage === 1}
             >
-                <Vector />{isMobile ? (<Vector />) : "First"}
+                <Vector $buttonDisabled={currentPage === 1} />
+                {isMobile ? (<Vector $buttonDisabled={currentPage === 1} />) : "First"}
             </Button>
-
             <Button
                 onClick={() => previousPage()}
                 disabled={currentPage === 1}
             >
-                <Vector />{isMobile ? "" : "Previous"}
+                <Vector $buttonDisabled={currentPage === 1} />
+                {isMobile ? "" : "Previous"}
             </Button>
-
-            <PageCounter>Page <PageNumber>{currentPage}</PageNumber> of <PageNumber>{totalPages}</PageNumber></PageCounter>
-
+            <PageCounter>
+                Page <PageNumber>{currentPage} </PageNumber>
+                of <PageNumber>{totalPages}</PageNumber>
+            </PageCounter>
             <Button
                 onClick={() => nextPage()}
                 disabled={currentPage === totalPages}
-                $blueButton
             >
-                {isMobile ? "" : "Next"}<Vector $blueVector />
+                {isMobile ? "" : "Next"}
+                <Vector
+                    $rightVector
+                    $buttonDisabled={currentPage === totalPages}
+                />
             </Button>
-
             <Button
                 onClick={() => lastPage()}
                 disabled={currentPage === totalPages}
-                $blueButton
             >
-                {isMobile ? (<Vector $blueVector />) : "Last"}<Vector $blueVector />
+                {isMobile ? (<Vector $rightVector $buttonDisabled={currentPage === totalPages} />) : "Last"}
+                <Vector
+                    $rightVector
+                    $buttonDisabled={currentPage === totalPages}
+                />
             </Button>
         </Wrapper>
     );
