@@ -54,6 +54,9 @@ const peopleSlice = createSlice({
         setPeopleCredits: (state, { payload }) => {
             state.peopleCredits = payload;
         },
+        resetSearchQuery: (state) => {
+            state.searchQuery = "";
+        },
     },
 });
 
@@ -68,10 +71,12 @@ export const {
     setCurrentPage,
     setPersonDetails,
     setPeopleCredits,
+    resetSearchQuery,
 } = peopleSlice.actions;
 
 export const selectPeopleState = (state) => state.people;
 export const selectPeople = (state) => selectPeopleState(state).people;
+export const selectLoading = (state) => selectPeopleState(state).loading;
 export const selectCurrentPage = (state) => selectPeopleState(state).currentPage;
 export const selectTotalPages = (state) => selectPeopleState(state).totalPages;
 export const selectPersonDetails = (state) => selectPeopleState(state).personDetails || [];
