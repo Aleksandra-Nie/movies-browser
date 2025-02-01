@@ -47,7 +47,18 @@ function* fetchPeopleByQueryHandler(action) {
     try {
         const searchParams = action.payload;
         const peopleByQuery = yield call(fetchPeopleByQuery, searchParams);
+
         yield put(fetchPeopleByQuerySuccess(peopleByQuery));
+
+        const personDetails = yield all(peopleByQuery.results.map(person =>
+            call(fetchPersonDetails, person.id),
+        ));
+        const personCredits = yield all(peopleByQuery.results.map(person =>
+            call(fetchPeopleCredits, person.id),
+        ));
+        yield put(setPersonDetails(personDetails));
+        yield put(setPeopleCredits(personCredits));
+
     } catch (error) {
         yield put(fetchPeopleByQueryFailure(error));
     }
