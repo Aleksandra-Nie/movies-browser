@@ -21,8 +21,7 @@ const PersonPage = () => {
     const crew = personCredits.crew;
 
     const genresMap = useGenresMap(genres);
-
-    console.log(personCredits);
+    
     return (
         <Wrapper>
             <>
