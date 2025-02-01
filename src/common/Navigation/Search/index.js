@@ -17,7 +17,6 @@ const Search = () => {
   useEffect(() => {
     if (!query) {
       setSearchQuery("");
-      dispatch(resetSearchQuery());
     }
   }, [query]);
 
@@ -32,6 +31,7 @@ const Search = () => {
       if (searchQuery.trim() === "") {
         searchParams.delete(searchQueryParamName);
       } else {
+        searchParams.set("page", 1);
         searchParams.set(searchQueryParamName, searchQuery);
       }
 
