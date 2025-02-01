@@ -27,10 +27,9 @@ const peopleSlice = createSlice({
             state.loading = false;
             state.error = true;
         },
-        fetchPeopleByQueryRequest: (state, { payload }) => {
+        fetchPeopleByQueryRequest: (state) => {
             state.loading = true;
             state.error = null;
-            state.searchQuery = payload;
         },
         fetchPeopleByQuerySuccess: (state, { payload }) => {
             state.loading = false;
@@ -86,16 +85,6 @@ export const getPersonCreditsById = (state, personId) => {
 export const getPersonDetailsById = (state, personId) => {
     const peopleWithDetails = selectPersonDetails(state);
     return peopleWithDetails.find(({ id }) => id === parseInt(personId));
-};
-
-export const selectPeopleByQuery = (state, query) => {
-    const people = selectPeople(state).results;
-
-    if (!query || query.trim() === "") {
-        return people;
-    }
-
-    return people.filter(({ name }) => name.toUpperCase().includes(query.toUpperCase().trim()));
 };
 
 export default peopleSlice.reducer;
