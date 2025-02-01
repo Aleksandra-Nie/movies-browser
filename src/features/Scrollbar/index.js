@@ -34,7 +34,6 @@ const Scrollbar = ({
                 <Vector $buttonDisabled={currentPage === 1} />
                 {isMobile ? (<Vector $buttonDisabled={currentPage === 1} />) : "First"}
             </Button>
-
             <Button
                 onClick={() => previousPage()}
                 disabled={currentPage === 1}
@@ -42,12 +41,10 @@ const Scrollbar = ({
                 <Vector $buttonDisabled={currentPage === 1} />
                 {isMobile ? "" : "Previous"}
             </Button>
-
             <PageCounter>
                 Page <PageNumber>{currentPage} </PageNumber>
                 of <PageNumber>{totalPages}</PageNumber>
             </PageCounter>
-
             <Button
                 onClick={() => nextPage()}
                 disabled={currentPage === totalPages}
@@ -58,7 +55,6 @@ const Scrollbar = ({
                     $buttonDisabled={currentPage === totalPages}
                 />
             </Button>
-
             <Button
                 onClick={() => lastPage()}
                 disabled={currentPage === totalPages}
