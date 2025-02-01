@@ -95,7 +95,7 @@ export const selectPeopleByQuery = (state, query) => {
         return people;
     }
 
-    return people.filter(({ name }) => name.includes(query.trim()));
+    return people.filter(({ name }) => name.toUpperCase().includes(query.toUpperCase().trim()));
 };
 
 export default peopleSlice.reducer;
