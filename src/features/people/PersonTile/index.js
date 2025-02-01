@@ -19,9 +19,9 @@ const PersonTile = () => {
         if (!query) {
             dispatch(fetchPeopleRequest({ page: currentPage }));
         } else {
-            dispatch(fetchPeopleByQueryRequest(query));
+            dispatch(fetchPeopleByQueryRequest(query, { page: currentPage }));
         }
-    }, [query]);
+    }, [query, currentPage]);
 
     const peopleData = useSelector(selectPeople).results;
     const people = peopleData || [];
