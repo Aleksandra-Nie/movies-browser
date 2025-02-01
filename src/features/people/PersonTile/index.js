@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useQueryCurrentPage } from "../../useQueryCurrentPage";
 import searchQueryParamName from "../../searchQueryParamName";
-import { fetchPeopleByQueryRequest, fetchPeopleRequest, resetSearchQuery, selectPeopleByQuery } from "../../people/peopleSlice";
+import { fetchPeopleByQueryRequest, fetchPeopleRequest, selectPeopleByQuery } from "../../people/peopleSlice";
 import { Tile, PersonName, PersonPhoto } from "../personStyles";
 import { Link } from "./styled";
 
@@ -18,7 +18,6 @@ const PersonTile = () => {
     useEffect(() => {
         if (!query) {
             dispatch(fetchPeopleRequest({ page: currentPage }));
-            dispatch(resetSearchQuery());
         } else {
             dispatch(fetchPeopleByQueryRequest(query));
         }
