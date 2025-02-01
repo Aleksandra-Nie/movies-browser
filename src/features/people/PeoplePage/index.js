@@ -1,17 +1,19 @@
-import { useSelector } from "react-redux";
 import { fetchPeople, fetchPeopleByQuery } from "../fetchPeopleData";
-import { selectSearchQuery, selectTotalPages, setPeople } from "../peopleSlice";
+import { selectTotalPages, setPeople } from "../peopleSlice";
 import PeopleContainer from "../PeopleContainer";
 import Scrollbar from "../../Scrollbar";
 import { Wrapper } from "../../../common/index";
+import { useLocation } from "react-router-dom";
+import searchQueryParamName from "../../searchQueryParamName";
 
 const PeoplePage = () => {
-    const searchQuery = useSelector(selectSearchQuery);
+    const location = useLocation();
+    const searchParams = new URLSearchParams(location.search).get(searchQueryParamName);
 
     return (
         <Wrapper>
             <PeopleContainer />
-            {searchQuery ? (
+            {searchParams ? (
                 <Scrollbar
                     fetchData={fetchPeopleByQuery}
                     setData={setPeople}
