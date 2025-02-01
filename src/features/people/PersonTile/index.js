@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useQueryCurrentPage } from "../../useQueryCurrentPage";
+import searchQueryParamName from "../../searchQueryParamName";
 import { fetchPeopleByQueryRequest, fetchPeopleRequest, selectPeopleByQuery } from "../../people/peopleSlice";
 import { Tile, PersonName, PersonPhoto } from "../personStyles";
 import { Link } from "./styled";
@@ -12,7 +13,7 @@ const PersonTile = () => {
     const currentPage = useQueryCurrentPage();
 
     const searchParams = new URLSearchParams(location.search);
-    const query = searchParams.get("search");
+    const query = searchParams.get(searchQueryParamName);
 
     useEffect(() => {
         if (!query) {
