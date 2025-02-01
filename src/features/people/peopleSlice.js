@@ -6,7 +6,6 @@ const peopleSlice = createSlice({
         people: [],
         personDetails: [],
         peopleCredits: [],
-        searchQuery: "",
         currentPage: 1,
         totalPages: 500,
         loading: false,
@@ -22,6 +21,7 @@ const peopleSlice = createSlice({
             state.people = payload;
             state.loading = false;
             state.error = null;
+            state.totalPages = 500;
         },
         fetchPeopleFailure: (state) => {
             state.loading = false;
@@ -54,9 +54,6 @@ const peopleSlice = createSlice({
         setPeopleCredits: (state, { payload }) => {
             state.peopleCredits = payload;
         },
-        resetSearchQuery: (state) => {
-            state.searchQuery = "";
-        },
     },
 });
 
@@ -71,7 +68,6 @@ export const {
     setCurrentPage,
     setPersonDetails,
     setPeopleCredits,
-    resetSearchQuery,
 } = peopleSlice.actions;
 
 export const selectPeopleState = (state) => state.people;
@@ -81,7 +77,6 @@ export const selectCurrentPage = (state) => selectPeopleState(state).currentPage
 export const selectTotalPages = (state) => selectPeopleState(state).totalPages;
 export const selectPersonDetails = (state) => selectPeopleState(state).personDetails || [];
 export const selectPeopleCredits = (state) => selectPeopleState(state).peopleCredits || [];
-export const selectSearchQuery = (state) => selectPeopleState(state).searchQuery;
 
 export const getPersonCreditsById = (state, personId) => {
     const peopleCredits = selectPeopleCredits(state);
