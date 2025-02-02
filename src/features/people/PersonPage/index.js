@@ -1,52 +1,119 @@
-
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { getPersonCreditsById, getPersonDetailsById } from "../peopleSlice";
-import { selectGenres } from "../../movies/moviesSlice";
-import useGenresMap from "../../movies/useGenresMap";
-import useWindowSize from "../../Scrollbar/useWindowSize";
-import MovieTile from "../../movies/MovieTile";
-import { Wrapper } from "../../../common/index";
-import { Tile, PersonName, PersonPhoto } from "../personStyles";
-import { BirthInfo, BirthLabel, BirthData, PersonProfile, PersonInformation } from "./styled";
-import { MovieTilesContainer, Header } from "../../sharedStyles";
+import { setPersonDetails, setPeopleCredits } from "../peopleSlice"; // Akcje Redux
+import { getPersonDetailsById, getPersonCreditsById } from "../peopleSlice"; // Selektory Redux
+import { selectGenres } from "../../movies/moviesSlice"; // Wybór gatunków
+import useGenresMap from "../../movies/useGenresMap"; // Mapa gatunków
+import useWindowSize from "../../Scrollbar/useWindowSize"; // Hook na rozmiar okna
+import MovieTile from "../../movies/MovieTile"; // Komponent wyświetlający filmy
+import { Wrapper } from "../../../common/index"; // Wrapper dla komponentu
+import { PersonPageTile, PersonName, PersonPhoto } from "../personStyles"; // Stylizacje
+import { BirthInfo, BirthLabel, BirthData, PersonProfile, PersonInformation } from "./styled"; // Dodatkowe stylizacje
+import { MovieTilesContainer, Header } from "../../sharedStyles"; // Stylizacja dla sekcji filmów
+import { fetchPersonDetails, fetchPeopleCredits } from "../fetchPeopleData"; // Funkcje do pobierania danych
+import Loader from "../../Loader";
+import ErrorScreen from "../../ErrorScreen";
+import personPlaceholder from "../../../images/person.png";
 
 const PersonPage = () => {
-    const { id } = useParams();
-    const isTablet = useWindowSize(767);
+    const { id } = useParams(); // Pobranie id osoby z URL
+    const dispatch = useDispatch();
+
+    const isTablet = useWindowSize(767); // Sprawdzamy, czy to urządzenie mobilne
+    const [loading, setLoading] = useState(true); // Stan ładowania danych
+    const [error, setError] = useState(null); // Stan błędu
+
+    // Dane pobrane z Redux
     const personDetails = useSelector(state => getPersonDetailsById(state, id));
     const personCredits = useSelector(state => getPersonCreditsById(state, id));
     const genres = useSelector(selectGenres);
-    const casts = personCredits.cast;
-    const crew = personCredits.crew;
 
     const genresMap = useGenresMap(genres);
-    
-    return (
-        <Wrapper>
-            <>
-                {personDetails && (
-                    <Tile $personDetails>
-                        <PersonPhoto
-                            $personDetails
-                            src={`https://image.tmdb.org/t/p/w400${personDetails.profile_path}`}
-                        />
-                        <PersonInformation>
-                            <PersonName $personDetails>{personDetails.name}</PersonName>
-                            <BirthInfo>
-                                <BirthLabel>Date of birth:<BirthData>{personDetails.birthday}</BirthData></BirthLabel>
-                                <BirthLabel>Place of birth:<BirthData>{personDetails.place_of_birth}</BirthData></BirthLabel>
-                            </BirthInfo>
-                            {!isTablet && (<PersonProfile>{personDetails.biography}</PersonProfile>)}
-                        </PersonInformation>
-                        {isTablet && (<PersonProfile>{personDetails.biography}</PersonProfile>)}
-                    </Tile>
-                )}
-                {casts && (
+
+    const formatDateToPL = (dateString) => {
+        const date = new Date(dateString);
+        return new Intl.DateTimeFormat('pl-PL', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric',
+        }).format(date);
+    };
+
+    // Asynchroniczne ładowanie danych po zamontowaniu komponentu
+    useEffect(() => {
+        const loadData = async () => {
+            setLoading(true); // Ustawiamy loading na true przed pobraniem danych
+            try {
+                const details = await fetchPersonDetails(id);  // Pobieramy dane osoby
+                dispatch(setPersonDetails(details));  // Zapisujemy dane w Redux
+
+                const credits = await fetchPeopleCredits(id);  // Pobieramy kredyty osoby (filmy)
+                dispatch(setPeopleCredits(credits));  // Zapisujemy kredyty w Redux
+            } catch (error) {
+                setError(error);  // Obsługujemy błąd
+                console.error("Error loading data:", error);
+            } finally {
+                setTimeout(() => setLoading(false), 1000);  // Po zakończeniu ładowania
+            }
+        };
+
+        loadData();
+    }, [id, dispatch]); // Uruchamiamy efekt przy zmianie id osoby
+
+    // Jeżeli dane są w trakcie ładowania, wyświetlamy komunikat
+    if (loading) {
+        return <Loader />;
+    }
+
+    // Jeśli wystąpił błąd, wyświetlamy komunikat
+    if (loading) {
+        return <Loader />;
+    } else if (error) {
+        return <ErrorScreen />;
+    } else if (!personDetails || !personCredits) {
+        return <div>No data available</div>;  // Nowy warunek
+    } else {
+
+        // Renderowanie komponentu, gdy dane są załadowane
+        return (
+            <Wrapper>
+                <PersonPageTile $personDetails>
+                    <PersonPhoto
+                        $personDetails
+                        src={
+                            personDetails.profile_path
+                                ? `https://image.tmdb.org/t/p/w400${personDetails.profile_path}`
+                                : personPlaceholder}
+                    />
+                    <PersonInformation>
+                        <PersonName $personDetails>{personDetails.name}</PersonName>
+                        <BirthInfo>
+                            <BirthLabel>
+                                Date of birth:
+                                <BirthData>{personDetails.birthday ? formatDateToPL(personDetails.birthday) : "Unknown"}</BirthData>
+                            </BirthLabel>
+                            <BirthLabel>
+                                Place of birth:
+                                <BirthData>{personDetails.place_of_birth ? personDetails.place_of_birth : "Unknown"}</BirthData>
+                            </BirthLabel>
+                        </BirthInfo>
+                        {!isTablet && (
+                            <PersonProfile>
+                                {personDetails.biography ? personDetails.biography : `We don't have a biography for ${personDetails.name}.`}
+                            </PersonProfile>)}
+                    </PersonInformation>
+                    {isTablet && (
+                        <PersonProfile>
+                            {personDetails.biography ? personDetails.biography : `We don't have a biography for ${personDetails.name}.`}
+                        </PersonProfile>)}
+                </PersonPageTile>
+
+                {personCredits.cast && (
                     <>
-                        <Header>Movies - cast {`(`}{casts.length}{`)`}</Header>
+                        <Header>Movies - Cast {`(${personCredits.cast.length})`}</Header>
                         <MovieTilesContainer>
-                            {casts.map((cast, index) => (
+                            {personCredits.cast.map((cast, index) => (
                                 <MovieTile
                                     key={index}
                                     id={cast.id}
@@ -62,11 +129,12 @@ const PersonPage = () => {
                         </MovieTilesContainer>
                     </>
                 )}
-                {crew && (
+
+                {personCredits.crew && (
                     <>
-                        <Header>Movies - crew {`(`}{crew.length}{`)`}</Header>
+                        <Header>Movies - Crew {`(${personCredits.crew.length})`}</Header>
                         <MovieTilesContainer>
-                            {crew.map((crewMember, index) => (
+                            {personCredits.crew.map((crewMember, index) => (
                                 <MovieTile
                                     key={index}
                                     id={crewMember.id}
@@ -82,9 +150,9 @@ const PersonPage = () => {
                         </MovieTilesContainer>
                     </>
                 )}
-            </>
-        </Wrapper>
-    );
+            </Wrapper>
+        );
+    }
 };
 
 export default PersonPage;
