@@ -1,4 +1,3 @@
-import exampleMoviePoster from "../../../images/exampleMoviePoster.jpg";
 import {
     Tile,
     MoviePoster,
@@ -11,23 +10,38 @@ import {
     Rating,
     Votes,
 } from "./styled";
+import cameraIcon from "../../../images/camera.png";
 
-const MovieTile = () => {
+const MovieTile = ({
+    id,
+    title,
+    poster_path,
+    release_date,
+    genre_ids,
+    genresMap,
+    vote_average,
+    vote_count,
+}) => {
     return (
-        <Tile>
-            <MoviePoster src={exampleMoviePoster} alt="movie poster" />
+        <Tile key={id}>
+            <MoviePoster
+                src={poster_path ? `https://image.tmdb.org/t/p/w400${poster_path}` : cameraIcon}
+                alt={`${title} poster`}
+            />
             <div>
-                <MovieTileHeader>Mulan</MovieTileHeader>
-                <MovieTileYear>2020</MovieTileYear>
+                <MovieTileHeader>{title}</MovieTileHeader>
+                <MovieTileYear>{release_date?.slice(0, 4)}</MovieTileYear>
                 <GenresList>
-                    <Genres>Action</Genres>
-                    <Genres>Adventure</Genres>
-                    <Genres>Drama</Genres>
+                    {genre_ids.map((id) => (
+                        <Genres key={id}>
+                            {genresMap[id] || "Unknown"}
+                        </Genres>
+                    ))}
                 </GenresList>
                 <MovieRating>
                     <StyledStarIcon />
-                    <Rating>7,8</Rating>
-                    <Votes>35 votes</Votes>
+                    <Rating>{vote_average.toFixed(1)}</Rating>
+                    <Votes>{vote_count} votes</Votes>
                 </MovieRating>
             </div>
         </Tile>

@@ -1,14 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { Provider } from 'react-redux';
-import store from './store';
-import { ThemeProvider } from 'styled-components';
-import { theme } from './core/theme';
-import { GlobalStyle } from './core/GlobalStyle';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { Provider } from "react-redux";
+import { GlobalStyles } from "./core/globalStyles";
+import { ThemeProvider } from "styled-components";
+import { theme } from "./core/theme";
+import store from "./store";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
