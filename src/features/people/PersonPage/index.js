@@ -1,30 +1,30 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { setPersonDetails, setPeopleCredits } from "../peopleSlice"; // Akcje Redux
-import { getPersonDetailsById, getPersonCreditsById } from "../peopleSlice"; // Selektory Redux
-import { selectGenres } from "../../movies/moviesSlice"; // Wybór gatunków
-import useGenresMap from "../../movies/useGenresMap"; // Mapa gatunków
-import useWindowSize from "../../Scrollbar/useWindowSize"; // Hook na rozmiar okna
-import MovieTile from "../../movies/MovieTile"; // Komponent wyświetlający filmy
-import { Wrapper } from "../../../common/index"; // Wrapper dla komponentu
-import { PersonPageTile, PersonName, PersonPhoto } from "../personStyles"; // Stylizacje
-import { BirthInfo, BirthLabel, BirthData, PersonProfile, PersonInformation } from "./styled"; // Dodatkowe stylizacje
-import { MovieTilesContainer, Header } from "../../sharedStyles"; // Stylizacja dla sekcji filmów
-import { fetchPersonDetails, fetchPeopleCredits } from "../fetchPeopleData"; // Funkcje do pobierania danych
+import { setPersonDetails, setPeopleCredits } from "../peopleSlice";
+import { getPersonDetailsById, getPersonCreditsById } from "../peopleSlice";
+import { selectGenres } from "../../movies/moviesSlice";
+import useGenresMap from "../../movies/useGenresMap";
+import useWindowSize from "../../Scrollbar/useWindowSize";
+import MovieTile from "../../movies/MovieTile";
+import { Wrapper } from "../../../common/index";
+import { PersonPageTile, PersonName, PersonPhoto } from "../personStyles";
+import { BirthInfo, BirthLabel, BirthData, PersonProfile, PersonInformation } from "./styled";
+import { MovieTilesContainer, Header } from "../../sharedStyles";
+import { fetchPersonDetails, fetchPeopleCredits } from "../fetchPeopleData";
 import Loader from "../../Loader";
 import ErrorScreen from "../../ErrorScreen";
 import personPlaceholder from "../../../images/person.png";
 
 const PersonPage = () => {
-    const { id } = useParams(); // Pobranie id osoby z URL
+    const { id } = useParams();
     const dispatch = useDispatch();
 
-    const isTablet = useWindowSize(767); // Sprawdzamy, czy to urządzenie mobilne
-    const [loading, setLoading] = useState(true); // Stan ładowania danych
-    const [error, setError] = useState(null); // Stan błędu
+    const isTablet = useWindowSize(767);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-    // Dane pobrane z Redux
+
     const personDetails = useSelector(state => getPersonDetailsById(state, id));
     const personCredits = useSelector(state => getPersonCreditsById(state, id));
     const genres = useSelector(selectGenres);
@@ -40,42 +40,38 @@ const PersonPage = () => {
         }).format(date);
     };
 
-    // Asynchroniczne ładowanie danych po zamontowaniu komponentu
     useEffect(() => {
         const loadData = async () => {
-            setLoading(true); // Ustawiamy loading na true przed pobraniem danych
+            setLoading(true);
             try {
-                const details = await fetchPersonDetails(id);  // Pobieramy dane osoby
-                dispatch(setPersonDetails(details));  // Zapisujemy dane w Redux
+                const details = await fetchPersonDetails(id);
+                dispatch(setPersonDetails(details));
 
-                const credits = await fetchPeopleCredits(id);  // Pobieramy kredyty osoby (filmy)
-                dispatch(setPeopleCredits(credits));  // Zapisujemy kredyty w Redux
+                const credits = await fetchPeopleCredits(id);
+                dispatch(setPeopleCredits(credits));
             } catch (error) {
-                setError(error);  // Obsługujemy błąd
+                setError(error);
                 console.error("Error loading data:", error);
             } finally {
-                setTimeout(() => setLoading(false), 1000);  // Po zakończeniu ładowania
+                setTimeout(() => setLoading(false), 1000);
             }
         };
 
         loadData();
-    }, [id, dispatch]); // Uruchamiamy efekt przy zmianie id osoby
+    }, [id, dispatch]);
 
-    // Jeżeli dane są w trakcie ładowania, wyświetlamy komunikat
     if (loading) {
         return <Loader />;
     }
 
-    // Jeśli wystąpił błąd, wyświetlamy komunikat
     if (loading) {
         return <Loader />;
     } else if (error) {
         return <ErrorScreen />;
     } else if (!personDetails || !personCredits) {
-        return <div>No data available</div>;  // Nowy warunek
+        return <div>No data available</div>;
     } else {
 
-        // Renderowanie komponentu, gdy dane są załadowane
         return (
             <Wrapper>
                 <PersonPageTile $personDetails>
