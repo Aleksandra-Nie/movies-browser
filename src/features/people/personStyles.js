@@ -8,6 +8,7 @@ export const Tile = styled.div`
     padding: 16px;
     border-radius: 5px;
     box-shadow: 0px 4px 12px 0px ${({ theme }) => theme.color.softBlue};
+   
 
     @media(max-width: ${({ theme }) => theme.breakpoints.tablet}px){
         padding: 16px;
@@ -19,6 +20,10 @@ export const Tile = styled.div`
         gap: 40px;
         padding: 40px;
     `};
+`;
+
+export const PersonPageTile = styled(Tile)`
+    margin-top: 64px;  
 `;
 
 export const PersonPhoto = styled.img`
