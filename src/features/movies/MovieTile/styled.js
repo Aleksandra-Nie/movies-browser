@@ -7,7 +7,7 @@ export const Tile = styled.div`
     flex-direction: column;
     padding: 16px;
     background: ${({ theme }) => theme.color.white};
-    box-shadow: 0px 4px 12px 0px ${({ theme }) => theme.color.softBlue};
+    box-shadow: ${({ theme }) => theme.shadow.tile};
     font-size: 16px;
     color: ${({ theme }) => theme.color.woodsmoke};
     border-radius: 5px;
@@ -99,5 +99,6 @@ export const Rating = styled.span`
 `;
 
 export const Votes = styled.span`
-    color: ${({ theme }) => theme.color.waterloo};
+    color:${({ theme }) => theme.color.waterloo};
+
 `;

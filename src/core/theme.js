@@ -14,8 +14,11 @@ export const theme = {
     softBlue: "#BAC7D580",
     scienceBlue: "#0044CC",
     woodsmoke: "#18181B",
+    blackPearl: "#03121F",
   },
-
+  shadow: {
+    tile: "0px 4px 12px 0px #BAC7D580",
+  },
   breakpoints: {
     mobileXS: 319,
     mobile: 480,
