@@ -21,12 +21,8 @@ export const PeopleTilesContainer = styled.div`
     grid-template-columns: repeat(6, 1fr);
     gap: 24px;
 
-    @media(max-width: ${({ theme }) => theme.breakpoints.desktop}px){
-        grid-template-columns: repeat(5, 1fr);
-    };
-
     @media(max-width: ${({ theme }) => theme.breakpoints.tabletLandscape}px){
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(5, 1fr);
     };
 
     @media(max-width: ${({ theme }) => theme.breakpoints.tabletMedium}px){

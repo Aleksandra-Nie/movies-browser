@@ -19,13 +19,16 @@ export const Vector = styled(scrollbarVector)`
     width: 7px;
     height: 11px;
     padding-right: 6px;
-    color: ${({ theme }) => theme.color.waterloo};
+    color: ${({ theme }) => theme.color.scienceBlue};
     
-    ${({ $blueVector }) => $blueVector && css`
+    ${({ $rightVector }) => $rightVector && css`
         width: 7px;
         height: 11px;
         transform: rotate(180deg) translateY(-0.8px);
-        color: ${({ theme }) => theme.color.scienceBlue};
+    `};
+
+    ${({ $buttonDisabled }) => $buttonDisabled && css`
+        color: ${({ theme }) => theme.color.waterloo};
     `};
 
     @media(max-width: ${({ theme }) => theme.breakpoints.tablet}px){
@@ -42,13 +45,9 @@ export const Button = styled.button`
     padding: 8px 16px;
     border: none;
     border-radius: 5px;
-    background: ${({ theme }) => theme.color.mystic};
+    background: ${({ theme }) => theme.color.pattensBlue};
     color: ${({ theme }) => theme.color.mineShaft};
     font-size: 14px;
-
-    ${({ $blueButton }) => $blueButton && css`
-        background: ${({ theme }) => theme.color.pattensBlue};
-    `};
 
     &:hover{
         cursor: pointer;
@@ -58,6 +57,7 @@ export const Button = styled.button`
     &:disabled{
         cursor: not-allowed;
         opacity: 60%;
+        background: ${({ theme }) => theme.color.mystic};
     };
 
     @media(max-width: ${({ theme }) => theme.breakpoints.tablet}px){
