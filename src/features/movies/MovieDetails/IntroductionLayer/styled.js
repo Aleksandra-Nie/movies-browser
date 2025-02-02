@@ -6,6 +6,10 @@ export const Wrapper = styled.div`
   background-color: ${({ theme }) => theme.color.blackSmoke};
   height: 100vh;
 
+  @media(max-width: ${({ theme }) => theme.breakpoint.laptopMax}px){
+    height: 85vh;
+  };
+
   @media(max-width: ${({ theme }) => theme.breakpoint.tabletHorizontalMax}px){
     height: 75vh;
   };
@@ -65,6 +69,11 @@ export const LayerContainer = styled.div`
   background-size: 1920px 770px, 1920px 770px, 1920px 770px, 1920px 770px, 1368px 769px;
   background-repeat: no-repeat;
   background-position: center;
+
+  @media(max-width: ${({ theme }) => theme.breakpoint.laptopMax}px){
+    background-size: 1500px 630px, 1500px 630px, 1500px 630px, 1500px 630px, 1184px 630px;
+    height: 85vh;
+  };
 
   @media(max-width: ${({ theme }) => theme.breakpoint.tabletHorizontalMax}px){
     background-size: 1300px 550px, 1300px 550px, 1300px 550px, 1300px 550px, 1024px 550px;
