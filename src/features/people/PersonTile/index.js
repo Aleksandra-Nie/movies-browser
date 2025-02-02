@@ -6,6 +6,7 @@ import searchQueryParamName from "../../searchQueryParamName";
 import { fetchPeopleByQueryRequest, fetchPeopleRequest, selectPeople } from "../../people/peopleSlice";
 import { Tile, PersonName, PersonPhoto } from "../personStyles";
 import { Link } from "./styled";
+import personPlaceholder from "../../../images/person.png";
 
 const PersonTile = () => {
     const dispatch = useDispatch();
@@ -34,7 +35,9 @@ const PersonTile = () => {
                     key={person.id}
                 >
                     <Tile>
-                        <PersonPhoto src={`https://image.tmdb.org/t/p/w200${person.profile_path}`} />
+                        <PersonPhoto src={person.profile_path ? `https://image.tmdb.org/t/p/w200${person.profile_path}` : personPlaceholder}
+                            alt={person.name}
+                        />
                         <PersonName>{person.name}</PersonName>
                     </Tile>
                 </Link>
