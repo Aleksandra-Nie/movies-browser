@@ -13,7 +13,7 @@ export const theme = {
   shadow: {
     tile: "0px 4px 12px 0px #BAC7D580",
   },
-  breakpoint: {
+  breakpoints: {
     mobileXS: 319,
     mobileS: 510,
     tablet: 767,
