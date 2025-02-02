@@ -8,11 +8,11 @@ export const Wrapper = styled.main`
   grid-template-rows: auto;
   gap: 64px;
 
-  @media(max-width:${({ theme }) => theme.breakpoint.laptopMax}px){
+  @media(max-width:${({ theme }) => theme.breakpoint.desktop}px){
     margin: 56px 16px;
   }
 
-  @media(max-width:${({ theme }) => theme.breakpoint.mobileMax}px){
+  @media(max-width:${({ theme }) => theme.breakpoint.tablet}px){
     margin: 23px 10px;
   }
 `;
@@ -31,7 +31,7 @@ export const MovieTile = styled.section`
     row-gap: 0;
   }
 
-  @media(max-width:${({ theme }) => theme.breakpoint.mobileMax}px){
+  @media(max-width:${({ theme }) => theme.breakpoint.tablet}px){
     padding: 20px;
     row-gap: 24px;
   }
@@ -51,7 +51,7 @@ export const Poster = styled.img`
     max-height: 440px;
   }
 
-  @media(max-width:${({ theme }) => theme.breakpoint.mobileMax}px){
+  @media(max-width:${({ theme }) => theme.breakpoint.tablet}px){
     grid-row: span 1;
     max-height: 300px;
   }
@@ -70,7 +70,7 @@ export const MovieSection = styled.section`
     gap: 4px;
   }
 
-  @media(max-width:${({ theme }) => theme.breakpoint.mobileMax}px){
+  @media(max-width:${({ theme }) => theme.breakpoint.tablet}px){
     gap: 8px;
   }
   `;
@@ -78,20 +78,20 @@ export const MovieSection = styled.section`
 export const Header = styled.h1`
   font-size: 36px;
   font-weight: 600;
-  color: ${({ theme }) => theme.color.blackSmoke};
+  color: ${({ theme }) => theme.color.black};
   margin: 0;
 
   @media(max-width:${({ theme }) => theme.breakpoint.mobileS}px){
     font-size: 24px;
     font-weight: 500;
-    color: ${({ theme }) => theme.color.black};
+    color: ${({ theme }) => theme.color.woodsmoke};
   }
 `;
 
 export const Year = styled.p`
   font-size: 22px;
   font-weight: 400;
-  color: ${({ theme }) => theme.color.blackSmoke};
+  color: ${({ theme }) => theme.color.black};
   margin: 0;
 
   @media(max-width:${({ theme }) => theme.breakpoint.mobileS}px){
@@ -109,7 +109,7 @@ export const DetailsContainer = styled.div`
     gap: 0;
   }
 
-  @media(max-width:${({ theme }) => theme.breakpoint.mobileMax}px){
+  @media(max-width:${({ theme }) => theme.breakpoint.tablet}px){
     gap: 10px;
   }
 `;
@@ -119,7 +119,7 @@ export const LineContainer = styled.div`
   gap: 10px;
   margin: 0;
 
-  @media(max-width:${({ theme }) => theme.breakpoint.mobileMax}px){
+  @media(max-width:${({ theme }) => theme.breakpoint.tablet}px){
     flex-wrap: wrap;
     row-gap: 2px;
   }
@@ -135,13 +135,13 @@ export const Caption = styled.p`
   color:${({ theme }) => theme.color.stormGray};
   margin: 0;
 
-  @media(max-width:${({ theme }) => theme.breakpoint.mobileMax}px){
+  @media(max-width:${({ theme }) => theme.breakpoint.tablet}px){
     display: none;
   }
 `;
 
 export const Text = styled.p`
-  color: ${({ theme }) => theme.color.blackSmoke};
+  color: ${({ theme }) => theme.color.black};
   font-size: 18px;
   font-weight: 400;
   margin: 0;
@@ -159,7 +159,7 @@ export const GenresList = styled.ul`
   padding: 0;
   margin: 8px 0;
   list-style: none;
-  color: ${({ theme }) => theme.color.black};
+  color: ${({ theme }) => theme.color.woodsmoke};
 `;
 
 export const Genres = styled.li`
@@ -168,11 +168,11 @@ export const Genres = styled.li`
   padding: 8px 16px;
   border-radius: 5px;
 
-  @media(max-width:${({ theme }) => theme.breakpoint.mobileMax}px){
+  @media(max-width:${({ theme }) => theme.breakpoint.tablet}px){
     padding: 4px 8px;
   }
 
-  @media(max-width:${({ theme }) => theme.breakpoint.mobileMax}px){
+  @media(max-width:${({ theme }) => theme.breakpoint.tablet}px){
     font-size: 13px;
   }
 
@@ -194,7 +194,7 @@ export const MovieRating = styled.div`
 
 export const StyledStarIcon = styled(StarIcon)`
     width: 24px;
-    color: ${({ theme }) => theme.color.candleLight};
+    color: ${({ theme }) => theme.color.candlelight};
 
     @media(max-width:${({ theme }) => theme.breakpoint.mobileS}px){
       width: 16px;
@@ -206,17 +206,17 @@ export const Rating = styled.span`
     font-size: 22px;
     font-weight: 500;
     margin: 0;
-    color: ${({ theme }) => theme.color.blackSmoke};
+    color: ${({ theme }) => theme.color.black};
 
     @media(max-width:${({ theme }) => theme.breakpoint.mobileS}px){
       font-size: 13px;
       font-weight: 600;
-      color: ${({ theme }) => theme.color.black};
+      color: ${({ theme }) => theme.color.woodsmoke};
   }
 `;
 
 export const Votes = styled.span`
-    color: ${({ theme }) => theme.color.blackSmoke};
+    color: ${({ theme }) => theme.color.black};
     font-weight: 400;
     font-size: 14px;
 
@@ -228,7 +228,7 @@ export const Votes = styled.span`
 `;
 
 export const MaxRating = styled.p`
-  color: ${({ theme }) => theme.color.blackSmoke};
+  color: ${({ theme }) => theme.color.black};
   font-size: 14px;
   font-weight: 400;
   margin: 0;
@@ -239,13 +239,13 @@ export const MaxRating = styled.p`
 `;
 
 export const Description = styled.p`
-  color: ${({ theme }) => theme.color.blackSmoke};
+  color: ${({ theme }) => theme.color.black};
   font-size: 20px;
   font-weight: 400;
   line-height: 32px;
   text-align: justify;
 
-  @media(max-width:${({ theme }) => theme.breakpoint.mobileMax}px){
+  @media(max-width:${({ theme }) => theme.breakpoint.tablet}px){
     grid-column: span 2;
   }
 
@@ -261,10 +261,10 @@ export const Section = styled.section`
 export const Title = styled.h1`
   font-size: 36px;
   font-weight: 600;
-  color: ${({ theme }) => theme.color.blackSmoke};
+  color: ${({ theme }) => theme.color.black};
   text-align: left;
 
-  @media(max-width:${({ theme }) => theme.breakpoint.mobileMax}px){
+  @media(max-width:${({ theme }) => theme.breakpoint.tablet}px){
     font-size: 20px;
   }
 `;
@@ -309,7 +309,7 @@ export const PeopleName = styled.p`
   font-weight: 500;
   margin-bottom: 8px;
   margin-top: 12px;
-  color: ${({ theme }) => theme.color.black};
+  color: ${({ theme }) => theme.color.woodsmoke};
   text-align: center;
 
   @media (max-width: ${({ theme }) => theme.breakpoint.mobileS}px) {

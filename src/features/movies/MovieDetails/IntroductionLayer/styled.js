@@ -3,10 +3,10 @@ import { ReactComponent as StarIcon } from "../../../../images/star.svg";
 import exampleBigPoster from "../../../../images/exampleBigPoster.png";
 
 export const Wrapper = styled.div`
-  background-color: ${({ theme }) => theme.color.blackSmoke};
+  background-color: ${({ theme }) => theme.color.black};
   height: 100vh;
 
-  @media(max-width: ${({ theme }) => theme.breakpoint.laptopMax}px){
+  @media(max-width: ${({ theme }) => theme.breakpoint.desktop}px){
     height: 85vh;
   };
 
@@ -18,7 +18,7 @@ export const Wrapper = styled.div`
     height: 60vh;
   };
 
-  @media(max-width:${({ theme }) => theme.breakpoint.mobileMax}px){
+  @media(max-width:${({ theme }) => theme.breakpoint.tablet}px){
     height: 40vh;
   };
 
@@ -70,7 +70,7 @@ export const LayerContainer = styled.div`
   background-repeat: no-repeat;
   background-position: center;
 
-  @media(max-width: ${({ theme }) => theme.breakpoint.laptopMax}px){
+  @media(max-width: ${({ theme }) => theme.breakpoint.desktop}px){
     background-size: 1500px 630px, 1500px 630px, 1500px 630px, 1500px 630px, 1184px 630px;
     height: 85vh;
   };
@@ -85,7 +85,7 @@ export const LayerContainer = styled.div`
     height: 60vh;
   };
 
-  @media(max-width:${({ theme }) => theme.breakpoint.mobileMax}px){
+  @media(max-width:${({ theme }) => theme.breakpoint.tablet}px){
     background-size: 700px 300px, 700px 300px, 700px 300px, 700px 300px, 550px 300px;
     height: 40vh;
   };
@@ -102,7 +102,7 @@ export const InfoContainer = styled.div`
   left: 50px;
   margin-bottom: 56px;
 
-  @media(max-width:${({ theme }) => theme.breakpoint.mobileMax}px){
+  @media(max-width:${({ theme }) => theme.breakpoint.tablet}px){
     margin-bottom: 35px;
   };
   
@@ -133,7 +133,7 @@ export const Title = styled.h1`
     font-size: 50px;
   };
 
-  @media(max-width:${({ theme }) => theme.breakpoint.mobileMax}px){
+  @media(max-width:${({ theme }) => theme.breakpoint.tablet}px){
     font-size: 24px;
   };
   
@@ -161,7 +161,7 @@ export const Rating = styled.p`
   align-items: center;
   gap: 8px;
 
-  @media(max-width:${({ theme }) => theme.breakpoint.mobileMax}px){
+  @media(max-width:${({ theme }) => theme.breakpoint.tablet}px){
     font-size: 25px;
   };
 
@@ -210,10 +210,10 @@ export const Votes = styled.p`
 export const StyledStarIcon = styled(StarIcon)`
   width: 40px;
   height: 40px;
-  color: ${({ theme }) => theme.color.candleLight};
+  color: ${({ theme }) => theme.color.candlelight};
   vertical-align: middle;
 
-  @media(max-width:${({ theme }) => theme.breakpoint.mobileMax}px){
+  @media(max-width:${({ theme }) => theme.breakpoint.tablet}px){
     width: 20px;
     height: 20px;
     align-self: center;

@@ -82,7 +82,7 @@ export const MovieRating = styled.div`
 
 export const StyledStarIcon = styled(StarIcon)`
     width: 24px;
-    color:${({ theme }) => theme.color.candleLight};
+    color:${({ theme }) => theme.color.candlelight};
 
     @media(max-width: 767px){
         width: 16px;
