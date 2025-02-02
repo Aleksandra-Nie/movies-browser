@@ -10,6 +10,7 @@ import {
     Rating,
     Votes,
 } from "./styled";
+import cameraIcon from "../../../images/camera.png";
 
 const MovieTile = ({
     id,
@@ -24,7 +25,7 @@ const MovieTile = ({
     return (
         <Tile key={id}>
             <MoviePoster
-                src={`https://image.tmdb.org/t/p/w400${poster_path}`}
+                src={poster_path ? `https://image.tmdb.org/t/p/w400${poster_path}` : cameraIcon}
                 alt={`${title} poster`}
             />
             <div>
