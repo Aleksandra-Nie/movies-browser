@@ -25,7 +25,7 @@ import {
     PeopleName,
     PeopleRole
 } from "./styled";
-import exampleMoviePoster from "../../../images/exampleMoviePoster.jpg";
+import exampleMoviePoster from "../../../images/exampleMoviePoster.png";
 import exampleCast from "../../../images/exampleCast.png";
 
 const MovieDetails = () => (
