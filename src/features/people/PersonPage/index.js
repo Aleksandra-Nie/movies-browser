@@ -31,9 +31,10 @@ const PersonPage = () => {
 
     const genresMap = useGenresMap(genres);
 
-    const formatDateToPL = (dateString) => {
+    const formatDateToLocale = (dateString) => {
         const date = new Date(dateString);
-        return new Intl.DateTimeFormat('pl-PL', {
+        const userLocale = navigator.language || 'pl-PL';
+        return new Intl.DateTimeFormat(userLocale, {
             day: '2-digit',
             month: '2-digit',
             year: 'numeric',
@@ -87,7 +88,7 @@ const PersonPage = () => {
                         <BirthInfo>
                             <BirthLabel>
                                 Date of birth:
-                                <BirthData>{personDetails.birthday ? formatDateToPL(personDetails.birthday) : "Unknown"}</BirthData>
+                                <BirthData>{personDetails.birthday ? formatDateToLocale(personDetails.birthday) : "Unknown"}</BirthData>
                             </BirthLabel>
                             <BirthLabel>
                                 Place of birth:
