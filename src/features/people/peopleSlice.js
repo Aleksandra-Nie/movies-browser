@@ -79,12 +79,18 @@ export const selectPeopleCredits = (state) => selectPeopleState(state).peopleCre
 
 export const getPersonCreditsById = (state, personId) => {
     const peopleCredits = selectPeopleCredits(state);
-    return peopleCredits.find(({ id }) => id === parseInt(personId));
+    if (Array.isArray(peopleCredits)) {
+        return peopleCredits.find(({ id }) => id === parseInt(personId));
+    }
+    return peopleCredits.id === parseInt(personId) ? peopleCredits : null;
 };
 
 export const getPersonDetailsById = (state, personId) => {
-    const peopleWithDetails = selectPersonDetails(state);
-    return peopleWithDetails.find(({ id }) => id === parseInt(personId));
+    const personDetails = selectPersonDetails(state);
+    if (Array.isArray(personDetails)) {
+        return personDetails.find(({ id }) => id === parseInt(personId));
+    }
+    return personDetails.id === parseInt(personId) ? personDetails : null;
 };
 
 export default peopleSlice.reducer;
