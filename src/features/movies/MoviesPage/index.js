@@ -5,14 +5,14 @@ import Scrollbar from "../../Scrollbar";
 import { Wrapper } from "../../../common/index";
 
 const MoviesPage = () => (
-    <Wrapper>
-        <MoviesContainer />
-        <Scrollbar
-            fetchData={fetchMovies}
-            setData={setMovies}
-            selectTotalPages={selectTotalPages}
-        />
-    </Wrapper>
+  <Wrapper>
+    <MoviesContainer />
+    <Scrollbar
+      fetchData={fetchMovies}
+      setData={setMovies}
+      selectTotalPages={selectTotalPages}
+    />
+  </Wrapper>
 );
 
 export default MoviesPage;
