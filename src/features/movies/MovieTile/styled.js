@@ -11,6 +11,11 @@ export const Tile = styled.div`
     font-size: 16px;
     color: ${({ theme }) => theme.color.woodsmoke};
     border-radius: 5px;
+    transition: 0.5s;
+
+    &:hover{
+        transform: translateY(-3%);
+    }
 
     @media(max-width: ${({ theme }) => theme.breakpoints.tablet}px){
         position: initial;
