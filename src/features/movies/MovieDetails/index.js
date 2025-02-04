@@ -11,7 +11,7 @@ import Loader from "../../Loader";
 import ErrorScreen from "../../ErrorScreen";
 import { fetchMovieDetails, fetchMovieCredits } from "../fetchMoviesData";
 import IntroductionLayer from "../MovieDetails/IntroductionLayer";
-
+import { Wrapper as Container } from "../../../common/index";
 import {
   Wrapper,
   MovieTile,
@@ -93,65 +93,67 @@ const MovieDetails = () => {
   }
 
   return (
-    <Wrapper>
+    <>
       <IntroductionLayer
         title={movieDetails.title}
         rating={movieDetails.vote_average}
         votes={movieDetails.vote_count}
-        posterPath={movieDetails.poster_path}
+        backdropPath={movieDetails.backdrop_path}
       />
 
-      <MovieTile $movieDetails>
-        <Poster
-          $movieDetails
-          src={
-            movieDetails.poster_path
-              ? `https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`
-              : exampleMoviePoster
-          }
-          alt={movieDetails.title}
-        />
-        <MovieSection>
-          <Header>{movieDetails.title}</Header>
-          <Year>
-            {movieDetails.release_date
-              ? movieDetails.release_date.split("-")[0]
-              : "Unknown"}
-          </Year>
-          <DetailsContainer>
-            <LineContainer>
-              <Caption>Production:</Caption>
-              <Text>
-                {movieDetails.production_countries
-                  ?.map((country) => country.name)
-                  .join(", ") || "Unknown"}
-              </Text>
-            </LineContainer>
-            <LineContainer>
-              <Caption>Release date:</Caption>
-              <Text>
-                {movieDetails.release_date
-                  ? formatDateToLocale(movieDetails.release_date)
-                  : "Unknown"}
-              </Text>
-            </LineContainer>
-          </DetailsContainer>
-          <GenresList>
-            {movieDetails.genres?.map((genre) => (
-              <Genres key={genre.id}>{genre.name}</Genres>
-            ))}
-          </GenresList>
-          <MovieRating>
-            <StyledStarIcon />
-            <Rating>{movieDetails.vote_average?.toFixed(1) || "N/A"}</Rating>
-            <MaxRating>/ 10</MaxRating>
-            <Votes>{movieDetails.vote_count} votes</Votes>
-          </MovieRating>
-        </MovieSection>
-        <Description>
-          {movieDetails.overview || "No description available."}
-        </Description>
-      </MovieTile>
+      <Container>
+        <MovieTile $movieDetails>
+          <Poster
+            $movieDetails
+            src={
+              movieDetails.poster_path
+                ? `https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`
+                : exampleMoviePoster
+            }
+            alt={movieDetails.title}
+          />
+          <MovieSection>
+            <Header>{movieDetails.title}</Header>
+            <Year>
+              {movieDetails.release_date
+                ? movieDetails.release_date.split("-")[0]
+                : "Unknown"}
+            </Year>
+            <DetailsContainer>
+              <LineContainer>
+                <Caption>Production:</Caption>
+                <Text>
+                  {movieDetails.production_countries
+                    ?.map((country) => country.name)
+                    .join(", ") || "Unknown"}
+                </Text>
+              </LineContainer>
+              <LineContainer>
+                <Caption>Release date:</Caption>
+                <Text>
+                  {movieDetails.release_date
+                    ? formatDateToLocale(movieDetails.release_date)
+                    : "Unknown"}
+                </Text>
+              </LineContainer>
+            </DetailsContainer>
+            <GenresList>
+              {movieDetails.genres?.map((genre) => (
+                <Genres key={genre.id}>{genre.name}</Genres>
+              ))}
+            </GenresList>
+            <MovieRating>
+              <StyledStarIcon />
+              <Rating>{movieDetails.vote_average?.toFixed(1) || "N/A"}</Rating>
+              <MaxRating>/ 10</MaxRating>
+              <Votes>{movieDetails.vote_count} votes</Votes>
+            </MovieRating>
+          </MovieSection>
+          <Description>
+            {movieDetails.overview || "No description available."}
+          </Description>
+        </MovieTile>
+      </Container>
 
       {movieCredits && (
         <>
@@ -196,7 +198,7 @@ const MovieDetails = () => {
           </Section>
         </>
       )}
-    </Wrapper>
+    </>
   );
 };
 
