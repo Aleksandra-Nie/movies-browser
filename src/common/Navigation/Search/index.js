@@ -46,12 +46,22 @@ const Search = () => {
     setSearchQuery(target.value);
   };
 
+  const getPlaceholder = () => {
+    if (location.pathname.includes("/movies")) {
+      return "Search for movies...";
+    } else if (location.pathname.includes("/people")) {
+      return "Search for people...";
+    } else {
+      return "Search...";
+    }
+  };
+
   return (
     <Wrapper>
       <StyledSearchIcon />
       <SearchInput
         type="text"
-        placeholder="Search for people..."
+        placeholder={getPlaceholder()}
         value={searchQuery || ""}
         onChange={onInputChange}
       />

@@ -8,6 +8,11 @@ export const Tile = styled.div`
     padding: 16px;
     border-radius: 5px;
     box-shadow: 0px 4px 12px 0px ${({ theme }) => theme.color.softBlue};
+    transition: 0.5s;
+
+    &:hover{
+        transform: translateY(-3%);
+    }
    
 
     @media(max-width: ${({ theme }) => theme.breakpoints.tablet}px){

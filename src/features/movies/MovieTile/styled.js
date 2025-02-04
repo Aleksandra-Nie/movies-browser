@@ -2,23 +2,28 @@ import styled from "styled-components";
 import { ReactComponent as StarIcon } from "../../../images/star.svg";
 
 export const Tile = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  padding: 16px;
-  background: ${({ theme }) => theme.color.white};
-  box-shadow: ${({ theme }) => theme.shadow.tile};
-  font-size: 16px;
-  color: ${({ theme }) => theme.color.woodsmoke};
-  border-radius: 5px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    background: ${({ theme }) => theme.color.white};
+    box-shadow: ${({ theme }) => theme.shadow.tile};
+    font-size: 16px;
+    color: ${({ theme }) => theme.color.woodsmoke};
+    border-radius: 5px;
+    transition: 0.5s;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
-    position: initial;
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 16px;
-    font-size: 13px;
-  }
+    &:hover{
+        transform: translateY(-3%);
+    }
+
+    @media(max-width: ${({ theme }) => theme.breakpoints.tablet}px){
+        position: initial;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 16px;
+        font-size: 13px;
+    };
 `;
 
 export const MoviePoster = styled.img`
