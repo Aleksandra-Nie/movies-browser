@@ -1,7 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { Wrapper } from "../../common/index";
-import { Container, Title } from "./styled";
-import { ReactComponent as NoResultsPhoto } from "../../images/noResults.svg";
+import { Container, Title, NoResultsImage } from "./styled";
 import searchQueryParamName from "../searchQueryParamName";
 
 const NoResults = () => {
@@ -12,7 +11,7 @@ const NoResults = () => {
         <Wrapper>
             <Container>
                 <Title>Sorry, there are no results for "{searchParam}"</Title>
-                <NoResultsPhoto />
+                <NoResultsImage />
             </Container>
         </Wrapper>
     );
