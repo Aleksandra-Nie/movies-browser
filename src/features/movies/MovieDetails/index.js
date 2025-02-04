@@ -41,7 +41,7 @@ import {
 } from "./styled";
 
 import exampleMoviePoster from "../../../images/exampleMoviePoster.png";
-import exampleCast from "../../../images/exampleCast.png";
+import exampleCast from "../../../images/person.png";
 
 const MovieDetails = () => {
   const { id } = useParams();
