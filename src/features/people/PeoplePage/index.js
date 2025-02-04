@@ -14,7 +14,7 @@ const PeoplePage = () => {
     const peopleData = useSelector(selectPeople);
     const people = peopleData.results;
 
-    if (people.length === 0) {
+    if (Array.isArray(people) && people.length === 0) {
         return (<NoResults />)
     }
 
