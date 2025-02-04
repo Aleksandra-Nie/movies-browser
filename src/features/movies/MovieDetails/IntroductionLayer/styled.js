@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { ReactComponent as StarIcon } from "../../../../images/star.svg";
-import exampleBigPoster from "../../../../images/exampleBigPoster.png";
 
 export const Wrapper = styled.div`
+  width: 100%;
   height: 100vh;
   background-color: ${({ theme }) => theme.color.black};
 
@@ -10,8 +10,7 @@ export const Wrapper = styled.div`
     height: 85vh;
   }
 
-  @media (max-width: ${({ theme }) =>
-      theme.breakpoints.tabletHorizontalMax}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletHorizontalMax}px) {
     height: 75vh;
   }
 
@@ -64,12 +63,17 @@ export const LayerContainer = styled.div`
       rgba(0, 0, 0, 0.740286) 85.86%,
       #000000 92.87%
     ),
-    url(${exampleBigPoster});
+    url(${({ src }) => src});
   position: relative;
   height: 100vh;
   background-repeat: no-repeat;
-  background-size: cover;
   background-position: center;
+  background-size: 
+    1920px 770px, 
+    1920px 770px, 
+    1920px 770px, 
+    1920px 770px, 
+    1368px 769px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.desktop}px) {
     background-size:
@@ -81,8 +85,7 @@ export const LayerContainer = styled.div`
     height: 85vh;
   }
 
-  @media (max-width: ${({ theme }) =>
-      theme.breakpoints.tabletHorizontalMax}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tabletHorizontalMax}px) {
     background-size:
       1300px 550px,
       1300px 550px,
