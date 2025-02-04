@@ -1,22 +1,6 @@
 import styled from "styled-components";
 import { ReactComponent as StarIcon } from "../../../images/star.svg";
 
-export const Wrapper = styled.main`
-  max-width: 1368px;
-  margin: 56px auto 220px;
-  display: grid;
-  grid-template-rows: auto;
-  gap: 64px;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.desktop}px) {
-    margin: 56px 16px;
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
-    margin: 23px 10px;
-  }
-`;
-
 export const MovieTile = styled.section`
   background-color: ${({ theme }) => theme.color.white};
   padding: 40px;
@@ -25,6 +9,7 @@ export const MovieTile = styled.section`
   grid-template-columns: auto 1fr;
   grid-template-rows: auto 1fr;
   row-gap: 24px;
+  margin-top: 64px;
   box-shadow: ${({ theme }) => theme.shadow.tile};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tabletVerticalMax}px) {
@@ -255,7 +240,10 @@ export const Description = styled.p`
   }
 `;
 
-export const Section = styled.section``;
+export const Section = styled.section`
+  max-width: 1368px;
+  margin: auto;
+`;
 
 export const Title = styled.h1`
   font-size: 36px;
