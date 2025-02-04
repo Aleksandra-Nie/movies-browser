@@ -7,40 +7,39 @@ import MovieTile from "../MovieTile";
 import { MovieTilesContainer, Header } from "../../sharedStyles";
 
 const MoviesContainer = () => {
-    const dispatch = useDispatch();
-    const currentPage = useQueryCurrentPage();
+  const dispatch = useDispatch();
+  const currentPage = useQueryCurrentPage();
 
-    useEffect(() => {
-        dispatch(fetchMoviesRequest({ page: currentPage }));
-    }, []);
+  useEffect(() => {
+    dispatch(fetchMoviesRequest({ page: currentPage }));
+  }, [currentPage, dispatch]);
 
-    const moviesData = useSelector(selectMovies);
-    const genres = useSelector(selectGenres);
-    const movies = moviesData.results || [];
+  const moviesData = useSelector(selectMovies);
+  const genres = useSelector(selectGenres);
+  const movies = moviesData.results || [];
 
-    const genresMap = useGenresMap(genres);
+  const genresMap = useGenresMap(genres);
 
-    return (
-
-        <>
-            <Header>Popular movies</Header>
-            <MovieTilesContainer>
-                {movies.map((movie, index) => (
-                    <MovieTile
-                        key={index}
-                        id={movie.id}
-                        title={movie.title}
-                        poster_path={movie.poster_path}
-                        release_date={movie.release_date}
-                        genre_ids={movie.genre_ids}
-                        vote_average={movie.vote_average}
-                        vote_count={movie.vote_count}
-                        genresMap={genresMap}
-                    />
-                ))}
-            </MovieTilesContainer>
-        </>
-    );
+  return (
+    <>
+      <Header>Popular movies</Header>
+      <MovieTilesContainer>
+        {movies.map((movie, index) => (
+          <MovieTile
+            key={index}
+            id={movie.id}
+            title={movie.title}
+            poster_path={movie.poster_path}
+            release_date={movie.release_date}
+            genre_ids={movie.genre_ids}
+            vote_average={movie.vote_average}
+            vote_count={movie.vote_count}
+            genresMap={genresMap}
+          />
+        ))}
+      </MovieTilesContainer>
+    </>
+  );
 };
 
 export default MoviesContainer;

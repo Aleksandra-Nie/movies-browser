@@ -1,30 +1,31 @@
 import {
-    Wrapper,
-    LayerContainer,
-    InfoContainer,
-    Title,
-    RateContainer,
-    Rating,
-    MaxRating,
-    Votes,
-    StyledStarIcon
+  Wrapper,
+  LayerContainer,
+  InfoContainer,
+  Title,
+  RateContainer,
+  Rating,
+  MaxRating,
+  Votes,
+  StyledStarIcon,
 } from "./styled";
 
-
-
-const IntroductionLayer = () => (
-    <Wrapper>
-        <LayerContainer>
-            <InfoContainer>
-                <Title>Mulan long title</Title>
-                <RateContainer>
-                    <Rating> <StyledStarIcon />7,8 </Rating>
-                    <MaxRating>&nbsp; / 10</MaxRating>
-                </RateContainer>
-                <Votes>335 votes</Votes>
-            </InfoContainer>
-        </LayerContainer>
-    </Wrapper>
+const IntroductionLayer = ({ title, rating, votes, backdropPath }) => (
+  <Wrapper>
+    <LayerContainer src={`https://image.tmdb.org/t/p/original${backdropPath}`}>
+      <InfoContainer>
+        <Title>{title}</Title>
+        <RateContainer>
+          <Rating>
+            <StyledStarIcon />
+            {rating ? rating.toFixed(1) : "N/A"}
+          </Rating>
+          <MaxRating>&nbsp;/ 10</MaxRating>
+        </RateContainer>
+        <Votes>{votes} votes</Votes>
+      </InfoContainer>
+    </LayerContainer>
+  </Wrapper>
 );
 
 export default IntroductionLayer;
