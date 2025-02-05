@@ -38,14 +38,18 @@ const MovieTile = ({
         <div>
           <MovieTileHeader>{title}</MovieTileHeader>
           <MovieTileYear>{release_date?.slice(0, 4)}</MovieTileYear>
-          <GenresList>
-            {genre_ids.map((id) => (
-              <Genres key={id}>{genresMap[id] || "Unknown"}</Genres>
-            ))}
-          </GenresList>
+          {genre_ids && (
+            <GenresList>
+              {genre_ids.map((id) => (
+                <Genres key={id}>{genresMap[id] || "Unknown"}</Genres>
+              ))}
+            </GenresList>
+          )}
           <MovieRating>
             <StyledStarIcon />
-            <Rating>{vote_average.toFixed(1)}</Rating>
+            {vote_average && (
+              <Rating>{vote_average.toFixed(1)}</Rating>
+            )}
             <Votes>{vote_count} votes</Votes>
           </MovieRating>
         </div>
