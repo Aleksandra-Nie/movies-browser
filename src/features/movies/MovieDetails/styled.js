@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { ReactComponent as StarIcon } from "../../../images/star.svg";
+import { Link } from "react-router-dom";
 
 export const MovieTile = styled.section`
   background-color: ${({ theme }) => theme.color.white};
@@ -243,6 +244,14 @@ export const Description = styled.p`
 export const Section = styled.section`
   max-width: 1368px;
   margin: auto;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    padding: 26px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileS}px) {
+    padding: 16px;
+  }
 `;
 
 export const Title = styled.h1`
@@ -321,5 +330,13 @@ export const PeopleRole = styled.p`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobileXS}px) {
     font-size: 11px;
+  }
+`;
+export const StyledLink = styled(Link)`
+  color: black;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
   }
 `;
