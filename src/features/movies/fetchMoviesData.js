@@ -54,7 +54,7 @@ export const fetchMovieDetails = async (movieId) => {
   } catch (error) {
     console.error("Error fetching movie details:", error);
     return null;
-  }
+  };
 };
 
 export const fetchMovieCredits = async (movieId) => {
@@ -66,5 +66,15 @@ export const fetchMovieCredits = async (movieId) => {
   } catch (error) {
     console.error("Error fetching movie credits:", error);
     return null;
-  }
+  };
+};
+
+export const fetchMoviesByQuery = async (query, page) => {
+  try {
+    const movies = await fetchData(`https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=${page || 1}`);
+    return movies;
+  } catch (error) {
+    console.error("Error fetching movies by query!", error);
+    return [];
+  };
 };
