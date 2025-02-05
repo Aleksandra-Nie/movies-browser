@@ -13,7 +13,6 @@ import { fetchMovieDetails, fetchMovieCredits } from "../fetchMoviesData";
 import IntroductionLayer from "../MovieDetails/IntroductionLayer";
 import { Wrapper as Container } from "../../../common/index";
 import {
-  Wrapper,
   MovieTile,
   Poster,
   MovieSection,
@@ -39,6 +38,7 @@ import {
   PeopleName,
   PeopleRole,
 } from "./styled";
+import { StyledLink } from "../MovieDetails/styled";
 
 import exampleMoviePoster from "../../../images/exampleMoviePoster.png";
 import exampleCast from "../../../images/person.png";
@@ -170,7 +170,11 @@ const MovieDetails = () => {
                     }
                     alt={actor.name}
                   />
-                  <PeopleName>{actor.name}</PeopleName>
+                  <PeopleName>
+                    <StyledLink to={`/people/${actor.id}`}>
+                      {actor.name}
+                    </StyledLink>
+                  </PeopleName>
                   <PeopleRole>{actor.character}</PeopleRole>
                 </PeopleTile>
               ))}
@@ -190,7 +194,11 @@ const MovieDetails = () => {
                     }
                     alt={crew.name}
                   />
-                  <PeopleName>{crew.name}</PeopleName>
+                  <PeopleName>
+                    <StyledLink to={`/people/${crew.id}`}>
+                      {crew.name}
+                    </StyledLink>
+                  </PeopleName>
                   <PeopleRole>{crew.job}</PeopleRole>
                 </PeopleTile>
               ))}
