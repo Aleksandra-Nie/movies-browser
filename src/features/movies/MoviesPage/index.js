@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { fetchMovies, fetchMoviesByQuery } from "../fetchMoviesData";
@@ -16,9 +17,11 @@ const MoviesPage = () => {
   const moviesData = useSelector(selectMovies);
   const movies = moviesData.results;
 
-  if (!searchParams) {
-    dispatch(setTotalPages(500));
-  }
+  useEffect(() => {
+    if (!searchParams) {
+      dispatch(setTotalPages(500));
+    }
+  }, [searchParams]);
 
   if (!searchParams) {
     return (
