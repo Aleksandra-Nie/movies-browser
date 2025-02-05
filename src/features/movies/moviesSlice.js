@@ -37,7 +37,7 @@ const moviesSlice = createSlice({
     fetchMoviesByQuerySuccess: (state, { payload }) => {
       state.loading = false;
       state.error = null;
-      state.movies = payload.results;
+      state.movies = payload;
       state.totalPages = payload.total_pages;
     },
     fetchMoviesByQueryFailure: (state) => {
