@@ -50,6 +50,9 @@ const moviesSlice = createSlice({
     setCurrentPage: (state, { payload }) => {
       state.currentPage = payload;
     },
+    setTotalPages: (state, { payload }) => {
+      state.totalPages = payload;
+    },
     setMovieDetails: (state, { payload }) => {
       state.movieDetails = payload;
     },
@@ -67,6 +70,7 @@ export const {
   fetchMoviesByQuerySuccess,
   fetchMoviesByQueryFailure,
   setCurrentPage,
+  setTotalPages,
   setMovies,
   setMovieDetails,
   setMovieCredits,
