@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import {
   Tile,
   MoviePoster,
@@ -10,6 +9,7 @@ import {
   StyledStarIcon,
   Rating,
   Votes,
+  StyledLink,
 } from "./styled";
 import cameraIcon from "../../../images/camera.png";
 
@@ -24,8 +24,7 @@ const MovieTile = ({
   vote_count,
 }) => {
   return (
-    <Link to={`/movies/${id}`}>
-      {" "}
+    <StyledLink to={`/movies/${id}`}>
       <Tile key={id}>
         <MoviePoster
           src={
@@ -54,7 +53,7 @@ const MovieTile = ({
           </MovieRating>
         </div>
       </Tile>
-    </Link>
+    </StyledLink>
   );
 };
 

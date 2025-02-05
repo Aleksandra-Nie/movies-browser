@@ -1,5 +1,10 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { ReactComponent as StarIcon } from "../../../images/star.svg";
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+`;
 
 export const Tile = styled.div`
     position: relative;
