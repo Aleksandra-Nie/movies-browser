@@ -13,7 +13,6 @@ import { fetchMovieDetails, fetchMovieCredits } from "../fetchMoviesData";
 import IntroductionLayer from "../MovieDetails/IntroductionLayer";
 import { Wrapper as Container } from "../../../common/index";
 import {
-  Wrapper,
   MovieTile,
   Poster,
   MovieSection,

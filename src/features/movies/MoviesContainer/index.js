@@ -1,18 +1,28 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 import { useQueryCurrentPage } from "../../useQueryCurrentPage";
-import { fetchMoviesRequest, selectGenres, selectMovies } from "../moviesSlice";
+import { fetchMoviesByQueryRequest, fetchMoviesRequest, selectGenres, selectMovies } from "../moviesSlice";
 import useGenresMap from "../useGenresMap";
 import MovieTile from "../MovieTile";
 import { MovieTilesContainer, Header } from "../../sharedStyles";
+import searchQueryParamName from "../../searchQueryParamName";
 
 const MoviesContainer = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
   const currentPage = useQueryCurrentPage();
 
+  const searchParams = new URLSearchParams(location.search);
+  const query = searchParams.get(searchQueryParamName);
+
   useEffect(() => {
-    dispatch(fetchMoviesRequest({ page: currentPage }));
-  }, [currentPage, dispatch]);
+    if (!query) {
+      dispatch(fetchMoviesRequest({ page: currentPage }));
+    } else {
+      dispatch(fetchMoviesByQueryRequest(query, { page: currentPage }));
+    }
+  }, [query, currentPage]);
 
   const moviesData = useSelector(selectMovies);
   const genres = useSelector(selectGenres);

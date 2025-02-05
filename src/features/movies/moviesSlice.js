@@ -37,14 +37,21 @@ const moviesSlice = createSlice({
     fetchMoviesByQuerySuccess: (state, { payload }) => {
       state.loading = false;
       state.error = null;
-      state.movies = payload.results;
+      state.movies = payload;
       state.totalPages = payload.total_pages;
+    },
+    fetchMoviesByQueryFailure: (state) => {
+      state.loading = false;
+      state.error = true;
     },
     setMovies: (state, { payload }) => {
       state.movies = payload;
     },
     setCurrentPage: (state, { payload }) => {
       state.currentPage = payload;
+    },
+    setTotalPages: (state, { payload }) => {
+      state.totalPages = payload;
     },
     setMovieDetails: (state, { payload }) => {
       state.movieDetails = payload;
@@ -61,7 +68,9 @@ export const {
   fetchMoviesFailure,
   fetchMoviesByQueryRequest,
   fetchMoviesByQuerySuccess,
+  fetchMoviesByQueryFailure,
   setCurrentPage,
+  setTotalPages,
   setMovies,
   setMovieDetails,
   setMovieCredits,
