@@ -24,35 +24,36 @@ const MovieTile = ({
   vote_count,
 }) => {
   return (
-    <StyledLink to={`/movies/${id}`}>
-      <Tile key={id}>
-        <MoviePoster
-          src={
-            poster_path
-              ? `https://image.tmdb.org/t/p/w400${poster_path}`
-              : cameraIcon
-          }
-          alt={`${title} poster`}
-        />
-        <div>
-          <MovieTileHeader>{title}</MovieTileHeader>
-          <MovieTileYear>{release_date?.slice(0, 4)}</MovieTileYear>
-          {genre_ids && (
-            <GenresList>
-              {genre_ids.map((id) => (
-                <Genres key={id}>{genresMap[id] || "Unknown"}</Genres>
-              ))}
-            </GenresList>
+    <StyledLink
+      to={`/movies/${id}`}
+      key={id}
+    >
+      <MoviePoster
+        src={
+          poster_path
+            ? `https://image.tmdb.org/t/p/w400${poster_path}`
+            : cameraIcon
+        }
+        alt={`${title} poster`}
+      />
+      <div>
+        <MovieTileHeader>{title}</MovieTileHeader>
+        <MovieTileYear>{release_date?.slice(0, 4)}</MovieTileYear>
+        {genre_ids && (
+          <GenresList>
+            {genre_ids.map((id) => (
+              <Genres key={id}>{genresMap[id] || "Unknown"}</Genres>
+            ))}
+          </GenresList>
+        )}
+        <MovieRating>
+          <StyledStarIcon />
+          {vote_average && (
+            <Rating>{vote_average.toFixed(1)}</Rating>
           )}
-          <MovieRating>
-            <StyledStarIcon />
-            {vote_average && (
-              <Rating>{vote_average.toFixed(1)}</Rating>
-            )}
-            <Votes>{vote_count} votes</Votes>
-          </MovieRating>
-        </div>
-      </Tile>
+          <Votes>{vote_count} votes</Votes>
+        </MovieRating>
+      </div>
     </StyledLink>
   );
 };
