@@ -14,6 +14,19 @@ const PeoplePage = () => {
     const peopleData = useSelector(selectPeople);
     const people = peopleData.results;
 
+    if (!searchParams) {
+        return (
+            <Wrapper>
+                <PeopleContainer />
+                <Scrollbar
+                    fetchData={fetchPeople}
+                    setData={setPeople}
+                    selectTotalPages={selectTotalPages}
+                />
+            </Wrapper>
+        );
+    }
+
     if (Array.isArray(people) && people.length === 0) {
         return (<NoResults />)
     }
