@@ -79,6 +79,7 @@ export const {
 export const selectMoviesState = (state) => state.movies;
 export const selectMovies = (state) => selectMoviesState(state).movies;
 export const selectGenres = (state) => selectMoviesState(state).genres;
+export const selectLoading = (state) => selectMoviesState(state).loading;
 export const selectCurrentPage = (state) =>
   selectMoviesState(state).currentPage;
 export const selectTotalPages = (state) => selectMoviesState(state).totalPages;
