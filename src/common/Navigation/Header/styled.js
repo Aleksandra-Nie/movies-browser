@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { ReactComponent as VideoIcon } from "../../../icons/Video.svg";
 
@@ -96,7 +96,7 @@ export const NavSection = styled.ul`
   }
 `;
 
-export const NavItem = styled(Link)`
+export const NavItem = styled(NavLink)`
   font-weight: 600;
   font-size: 14px;
   line-height: 20px;
