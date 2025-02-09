@@ -38,6 +38,7 @@ import {
   PeopleName,
   PeopleRole,
 } from "./styled";
+import { StyledLink } from "../MovieDetails/styled";
 
 import exampleMoviePoster from "../../../images/exampleMoviePoster.png";
 import exampleCast from "../../../images/person.png";
@@ -160,7 +161,11 @@ const MovieDetails = () => {
             <Title>Cast ({movieCredits.cast?.length || 0})</Title>
             <PeopleContainer>
               {movieCredits.cast?.map((actor) => (
-                <PeopleTile key={actor.id}>
+                <PeopleTile
+                  key={actor.id}
+                  as={StyledLink}
+                  to={`/people/person/${actor.id}`}
+                >
                   <Image
                     src={
                       actor.profile_path
@@ -180,7 +185,11 @@ const MovieDetails = () => {
             <Title>Crew ({movieCredits.crew?.length || 0})</Title>
             <PeopleContainer>
               {movieCredits.crew?.map((crew) => (
-                <PeopleTile key={crew.id}>
+                <PeopleTile
+                  key={crew.id}
+                  as={StyledLink}
+                  to={`/people/person/${crew.id}`}
+                >
                   <Image
                     src={
                       crew.profile_path
