@@ -161,22 +161,20 @@ const MovieDetails = () => {
             <Title>Cast ({movieCredits.cast?.length || 0})</Title>
             <PeopleContainer>
               {movieCredits.cast?.map((actor) => (
-                <PeopleTile key={actor.id}>
-                  <Image
-                    src={
-                      actor.profile_path
-                        ? `https://image.tmdb.org/t/p/w185${actor.profile_path}`
-                        : exampleCast
-                    }
-                    alt={actor.name}
-                  />
-                  <PeopleName>
-                    <StyledLink to={`/people/${actor.id}`}>
-                      {actor.name}
-                    </StyledLink>
-                  </PeopleName>
-                  <PeopleRole>{actor.character}</PeopleRole>
-                </PeopleTile>
+                <StyledLink key={actor.id} to={`/people/person/${actor.id}`}>
+                  <PeopleTile>
+                    <Image
+                      src={
+                        actor.profile_path
+                          ? `https://image.tmdb.org/t/p/w185${actor.profile_path}`
+                          : exampleCast
+                      }
+                      alt={actor.name}
+                    />
+                    <PeopleName>{actor.name}</PeopleName>
+                    <PeopleRole>{actor.character}</PeopleRole>
+                  </PeopleTile>
+                </StyledLink>
               ))}
             </PeopleContainer>
           </Section>
@@ -185,22 +183,20 @@ const MovieDetails = () => {
             <Title>Crew ({movieCredits.crew?.length || 0})</Title>
             <PeopleContainer>
               {movieCredits.crew?.map((crew) => (
-                <PeopleTile key={crew.id}>
-                  <Image
-                    src={
-                      crew.profile_path
-                        ? `https://image.tmdb.org/t/p/w185${crew.profile_path}`
-                        : exampleCast
-                    }
-                    alt={crew.name}
-                  />
-                  <PeopleName>
-                    <StyledLink to={`/people/${crew.id}`}>
-                      {crew.name}
-                    </StyledLink>
-                  </PeopleName>
-                  <PeopleRole>{crew.job}</PeopleRole>
-                </PeopleTile>
+                <StyledLink key={crew.id} to={`/people/person/${crew.id}`}>
+                  <PeopleTile>
+                    <Image
+                      src={
+                        crew.profile_path
+                          ? `https://image.tmdb.org/t/p/w185${crew.profile_path}`
+                          : exampleCast
+                      }
+                      alt={crew.name}
+                    />
+                    <PeopleName>{crew.name}</PeopleName>
+                    <PeopleRole>{crew.job}</PeopleRole>
+                  </PeopleTile>
+                </StyledLink>
               ))}
             </PeopleContainer>
           </Section>
