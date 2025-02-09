@@ -24,7 +24,7 @@ const PersonTile = () => {
         }
     }, [query, currentPage]);
 
-    const peopleData = useSelector(selectPeople).results;
+    const peopleData = useSelector(selectPeople)?.results;
     const people = peopleData || [];
 
     return (

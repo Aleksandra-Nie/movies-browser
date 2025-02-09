@@ -10,7 +10,7 @@ const PeopleContainer = () => {
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search).get(searchQueryParamName);
     const peopleData = useSelector(selectPeople);
-    const people = peopleData.results;
+    const people = peopleData?.results;
     const loading = useSelector(selectLoading);
 
     const resultCount = people ? people.length : 0;

@@ -18,7 +18,7 @@ const MoviesPage = () => {
   const searchParams = new URLSearchParams(location.search).get(searchQueryParamName);
 
   const moviesData = useSelector(selectMovies);
-  const movies = moviesData.results;
+  const movies = moviesData?.results;
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -55,7 +55,7 @@ const MoviesPage = () => {
 
   if (loading) {
     return <Loader />;
-  } else if (error) {
+  } else if (!moviesData) {
     return <ErrorScreen />;
   } else if (Array.isArray(movies) && movies.length === 0 && searchParams) {
     return <NoResults />;

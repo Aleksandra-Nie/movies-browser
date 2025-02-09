@@ -16,7 +16,7 @@ const PeoplePage = () => {
     const navigate = useNavigate();
     const searchParams = new URLSearchParams(location.search).get(searchQueryParamName);
     const peopleData = useSelector(selectPeople);
-    const people = peopleData.results;
+    const people = peopleData?.results;
 
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
@@ -52,7 +52,7 @@ const PeoplePage = () => {
 
     if (loading) {
         return <Loader />;
-    } else if (error) {
+    } else if (!peopleData) {
         return <ErrorScreen />;
     } else if (Array.isArray(people) && people.length === 0 && searchParams) {
         return <NoResults />;

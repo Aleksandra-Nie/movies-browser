@@ -27,7 +27,7 @@ const MoviesContainer = () => {
 
   const moviesData = useSelector(selectMovies);
   const genres = useSelector(selectGenres);
-  const movies = moviesData.results || [];
+  const movies = moviesData?.results || [];
   const loading = useSelector(selectLoading);
   const resultCount = movies ? movies.length : 0;
 
