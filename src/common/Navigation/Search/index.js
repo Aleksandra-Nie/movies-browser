@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import searchQueryParamName from "../../../features/searchQueryParamName";
 import { Wrapper, SearchInput, StyledSearchIcon } from "./styled";
 
 const Search = () => {
-  const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
   const query = new URLSearchParams(location.search).get(searchQueryParamName);
