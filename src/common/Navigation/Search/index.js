@@ -24,15 +24,21 @@ const Search = () => {
 
     const timeoutId = setTimeout(() => {
       const searchParams = new URLSearchParams(location.search);
+      searchParams.set("page", 1);
 
       if (searchQuery.trim() === "") {
         searchParams.delete(searchQueryParamName);
       } else {
-        searchParams.set("page", 1);
         searchParams.set(searchQueryParamName, searchQuery);
       }
 
-      navigate(`${location.pathname}?${searchParams.toString()}`);
+      if (location.pathname.includes("/movies/details")) {
+        navigate(`/movies?${searchParams.toString()}`);
+      } else if (location.pathname.includes("/people/person")) {
+        navigate(`/people?${searchParams.toString()}`);
+      } else {
+        navigate(`${location.pathname}?${searchParams.toString()}`);
+      }
     }, 500);
 
     setDebounceTimeout(timeoutId);
