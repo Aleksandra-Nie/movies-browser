@@ -86,7 +86,7 @@ const MovieDetails = () => {
   } else if (error) {
     return <ErrorScreen />;
   } else if (!movieDetails || !movieCredits) {
-    return <div>No data available</div>;
+    return <ErrorScreen />;
   } else {
 
     return (
