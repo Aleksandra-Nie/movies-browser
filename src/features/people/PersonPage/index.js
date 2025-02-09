@@ -63,10 +63,6 @@ const PersonPage = () => {
 
     if (loading) {
         return <Loader />;
-    }
-
-    if (loading) {
-        return <Loader />;
     } else if (error) {
         return <ErrorScreen />;
     } else if (!personDetails || !personCredits) {
