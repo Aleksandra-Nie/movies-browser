@@ -18,7 +18,7 @@ function* fetchMoviesDataHandler(action) {
   } catch (error) {
     yield put(fetchMoviesFailure(error));
   };
-}
+};
 
 function* fetchMoviesByQueryHandler(action) {
   try {

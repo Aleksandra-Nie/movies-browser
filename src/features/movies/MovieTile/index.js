@@ -48,10 +48,10 @@ const MovieTile = ({
         )}
         <MovieRating>
           <StyledStarIcon />
-          {vote_average && (
+          {vote_average ? (
             <Rating>{vote_average.toFixed(1)}</Rating>
-          )}
-          <Votes>{vote_count} votes</Votes>
+          ) : ("")}
+          <Votes>{vote_count ? "votes" : "No votes"}</Votes>
         </MovieRating>
       </div>
     </StyledLink>
