@@ -2,11 +2,12 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { useQueryCurrentPage } from "../../useQueryCurrentPage";
-import { fetchMoviesByQueryRequest, fetchMoviesRequest, selectGenres, selectMovies } from "../moviesSlice";
+import { fetchMoviesByQueryRequest, fetchMoviesRequest, selectGenres, selectMovies, selectLoading } from "../moviesSlice";
 import useGenresMap from "../useGenresMap";
 import MovieTile from "../MovieTile";
 import { MovieTilesContainer, Header } from "../../sharedStyles";
 import searchQueryParamName from "../../searchQueryParamName";
+import Loader from "../../Loader";
 
 const MoviesContainer = () => {
   const dispatch = useDispatch();
@@ -27,12 +28,20 @@ const MoviesContainer = () => {
   const moviesData = useSelector(selectMovies);
   const genres = useSelector(selectGenres);
   const movies = moviesData.results || [];
+  const loading = useSelector(selectLoading);
+  const resultCount = movies ? movies.length : 0;
 
   const genresMap = useGenresMap(genres);
 
   return (
     <>
-      <Header>Popular movies</Header>
+      {loading && <Loader />}
+      <Header>
+        {query
+          ? `Search results for "${query}" (${resultCount})`
+          : `Popular movies`}
+      </Header>
+
       <MovieTilesContainer>
         {movies.map((movie, index) => (
           <MovieTile
