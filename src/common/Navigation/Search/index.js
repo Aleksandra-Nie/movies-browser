@@ -32,7 +32,7 @@ const Search = () => {
         searchParams.set(searchQueryParamName, searchQuery);
       }
 
-      if (location.pathname.includes("/movies/details")) {
+      if (location.pathname.includes("/movies")) {
         navigate(`/movies?${searchParams.toString()}`);
       } else if (location.pathname.includes("/people/person")) {
         navigate(`/people?${searchParams.toString()}`);
