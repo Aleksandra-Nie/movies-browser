@@ -8,7 +8,6 @@ import MovieTile from "../MovieTile";
 import Loader from "../../Loader";
 import { MovieTilesContainer, Header } from "../../sharedStyles";
 import searchQueryParamName from "../../searchQueryParamName";
-import Loader from "../../Loader";
 
 const MoviesContainer = () => {
   const dispatch = useDispatch();
