@@ -29,6 +29,11 @@ export const Tile = styled.div`
 
 export const PersonPageTile = styled(Tile)`
     margin-top: 64px;  
+    transition: none;
+    
+    &:hover {
+        transform: none;
+    }
 `;
 
 export const PersonPhoto = styled.img`

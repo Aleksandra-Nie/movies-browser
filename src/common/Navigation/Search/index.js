@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import searchQueryParamName from "../../../features/searchQueryParamName";
 import { Wrapper, SearchInput, StyledSearchIcon } from "./styled";
 
 const Search = () => {
-  const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
   const query = new URLSearchParams(location.search).get(searchQueryParamName);
@@ -26,15 +24,21 @@ const Search = () => {
 
     const timeoutId = setTimeout(() => {
       const searchParams = new URLSearchParams(location.search);
+      searchParams.set("page", 1);
 
       if (searchQuery.trim() === "") {
         searchParams.delete(searchQueryParamName);
       } else {
-        searchParams.set("page", 1);
         searchParams.set(searchQueryParamName, searchQuery);
       }
 
-      navigate(`${location.pathname}?${searchParams.toString()}`);
+      if (location.pathname.includes("/movies")) {
+        navigate(`/movies?${searchParams.toString()}`);
+      } else if (location.pathname.includes("/people/person")) {
+        navigate(`/people?${searchParams.toString()}`);
+      } else {
+        navigate(`${location.pathname}?${searchParams.toString()}`);
+      }
     }, 500);
 
     setDebounceTimeout(timeoutId);
