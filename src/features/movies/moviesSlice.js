@@ -87,7 +87,6 @@ export const selectMovieDetails = (state) =>
   selectMoviesState(state).movieDetails || {};
 export const selectMovieCredits = (state) =>
   selectMoviesState(state).movieCredits || {};
-export const selectLoading = (state) => selectMoviesState(state).loading;
 
 export const getMovieDetailsById = (state, movieId) => {
   const movieDetails = selectMovieDetails(state);
