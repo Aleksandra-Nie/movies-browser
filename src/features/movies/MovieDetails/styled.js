@@ -244,6 +244,7 @@ export const Description = styled.p`
 export const Section = styled.section`
   max-width: 1368px;
   margin: auto;
+  padding: 16px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     padding: 26px;
@@ -275,7 +276,7 @@ export const PeopleContainer = styled.section`
   }
 `;
 
-export const PeopleTile = styled.a`
+export const PeopleTile = styled(Link)`
   background-color: ${({ theme }) => theme.color.white};
   padding: 16px;
   box-shadow: ${({ theme }) => theme.shadow.tile};
