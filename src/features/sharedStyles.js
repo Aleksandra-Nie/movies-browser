@@ -3,10 +3,11 @@ import styled from "styled-components";
 export const Header = styled.h2`
     font-size: 36px;
     font-weight: 600;
-    margin-top: 56px;
+    margin-top: 64px;
 
     @media(max-width: ${({ theme }) => theme.breakpoints.mobile}px){
         font-size: 18px;
+        margin-top: 24px;
     };
 `;
 
