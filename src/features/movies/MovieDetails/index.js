@@ -159,7 +159,9 @@ const MovieDetails = () => {
               <Title>Cast ({movieCredits.cast?.length || 0})</Title>
               <PeopleContainer>
                 {movieCredits.cast?.map((actor) => (
-                  <PeopleTile key={actor.id}>
+                  <PeopleTile
+                    to={`/people/person/${actor.id}`}
+                    key={actor.id}>
                     <Image
                       src={
                         actor.profile_path
@@ -179,7 +181,9 @@ const MovieDetails = () => {
               <Title>Crew ({movieCredits.crew?.length || 0})</Title>
               <PeopleContainer>
                 {movieCredits.crew?.map((crew) => (
-                  <PeopleTile key={crew.id}>
+                  <PeopleTile
+                    to={`/people/person/${crew.id}`}
+                    key={crew.id}>
                     <Image
                       src={
                         crew.profile_path
