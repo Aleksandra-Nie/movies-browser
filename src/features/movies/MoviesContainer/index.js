@@ -1,15 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { useQueryCurrentPage } from "../../useQueryCurrentPage";
-import {
-  fetchMoviesByQueryRequest,
-  fetchMoviesRequest,
-  selectGenres,
-  selectMovies,
-  selectLoading,
-  selectTotalResults,
-} from "../moviesSlice";
+import { fetchMoviesByQueryRequest, fetchMoviesRequest, selectGenres, selectMovies, selectLoading } from "../moviesSlice";
 import useGenresMap from "../useGenresMap";
 import MovieTile from "../MovieTile";
 import Loader from "../../Loader";
@@ -36,17 +29,18 @@ const MoviesContainer = () => {
   const moviesData = useSelector(selectMovies);
   const genres = useSelector(selectGenres);
   const movies = moviesData?.results || [];
-  const totalResults = useSelector(selectTotalResults);
+  const loading = useSelector(selectLoading);
+  const resultCount = movies ? movies.length : 0;
 
   const genresMap = useGenresMap(genres);
 
   return (
     <>
-      {isLoading && <Loader />}
+      {loading && <Loader />}
       <Header>
         {query
-          ? `Search results for "${query}" ${isLoading ? "..." : `(${totalResults})`}`
-          : "Popular movies"}
+          ? `Search results for "${query}" (${resultCount})`
+          : `Popular movies`}
       </Header>
 
       <MovieTilesContainer>

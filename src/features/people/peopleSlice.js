@@ -8,7 +8,6 @@ const peopleSlice = createSlice({
     peopleCredits: [],
     currentPage: 1,
     totalPages: 500,
-    totalResults: 0,
     loading: false,
     error: null,
   },
@@ -19,11 +18,10 @@ const peopleSlice = createSlice({
       state.currentPage = action.payload.page;
     },
     fetchPeopleSuccess: (state, { payload }) => {
-      state.people = payload.results;
+      state.people = payload;
       state.loading = false;
       state.error = null;
-      state.totalPages = payload.total_pages;
-      state.totalResults = payload.total_results;
+      state.totalPages = 500;
     },
     fetchPeopleFailure: (state) => {
       state.loading = false;
@@ -36,9 +34,8 @@ const peopleSlice = createSlice({
     fetchPeopleByQuerySuccess: (state, { payload }) => {
       state.loading = false;
       state.error = null;
-      state.people = payload.results;
+      state.people = payload;
       state.totalPages = payload.total_pages;
-      state.totalResults = payload.total_results;
     },
     fetchPeopleByQueryFailure: (state) => {
       state.loading = false;
@@ -75,15 +72,10 @@ export const {
 export const selectPeopleState = (state) => state.people;
 export const selectPeople = (state) => selectPeopleState(state).people;
 export const selectLoading = (state) => selectPeopleState(state).loading;
-export const selectCurrentPage = (state) =>
-  selectPeopleState(state).currentPage;
+export const selectCurrentPage = (state) => selectPeopleState(state).currentPage;
 export const selectTotalPages = (state) => selectPeopleState(state).totalPages;
-export const selectTotalResults = (state) =>
-  selectPeopleState(state).totalResults;
-export const selectPersonDetails = (state) =>
-  selectPeopleState(state).personDetails || [];
-export const selectPeopleCredits = (state) =>
-  selectPeopleState(state).peopleCredits || [];
+export const selectPersonDetails = (state) => selectPeopleState(state).personDetails || [];
+export const selectPeopleCredits = (state) => selectPeopleState(state).peopleCredits || [];
 
 export const getPersonCreditsById = (state, personId) => {
   const peopleCredits = selectPeopleCredits(state);
