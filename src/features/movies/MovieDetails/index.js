@@ -155,49 +155,52 @@ const MovieDetails = () => {
 
         {movieCredits && (
           <>
-            <Section>
-              <Title>Cast ({movieCredits.cast?.length || 0})</Title>
-              <PeopleContainer>
-                {movieCredits.cast?.map((actor) => (
-                  <PeopleTile
-                    to={`/people/person/${actor.id}`}
-                    key={actor.id}>
-                    <Image
-                      src={
-                        actor.profile_path
-                          ? `https://image.tmdb.org/t/p/w185${actor.profile_path}`
-                          : exampleCast
-                      }
-                      alt={actor.name}
-                    />
-                    <PeopleName>{actor.name}</PeopleName>
-                    <PeopleRole>{actor.character}</PeopleRole>
-                  </PeopleTile>
-                ))}
-              </PeopleContainer>
-            </Section>
-
-            <Section>
-              <Title>Crew ({movieCredits.crew?.length || 0})</Title>
-              <PeopleContainer>
-                {movieCredits.crew?.map((crew) => (
-                  <PeopleTile
-                    to={`/people/person/${crew.id}`}
-                    key={crew.id}>
-                    <Image
-                      src={
-                        crew.profile_path
-                          ? `https://image.tmdb.org/t/p/w185${crew.profile_path}`
-                          : exampleCast
-                      }
-                      alt={crew.name}
-                    />
-                    <PeopleName>{crew.name}</PeopleName>
-                    <PeopleRole>{crew.job}</PeopleRole>
-                  </PeopleTile>
-                ))}
-              </PeopleContainer>
-            </Section>
+            {movieCredits.cast?.length > 0 && (
+              <Section>
+                <Title>Cast ({movieCredits.cast?.length})</Title>
+                <PeopleContainer>
+                  {movieCredits.cast?.map((actor) => (
+                    <PeopleTile
+                      to={`/people/person/${actor.id}`}
+                      key={actor.id}>
+                      <Image
+                        src={
+                          actor.profile_path
+                            ? `https://image.tmdb.org/t/p/w185${actor.profile_path}`
+                            : exampleCast
+                        }
+                        alt={actor.name}
+                      />
+                      <PeopleName>{actor.name}</PeopleName>
+                      <PeopleRole>{actor.character}</PeopleRole>
+                    </PeopleTile>
+                  ))}
+                </PeopleContainer>
+              </Section>
+            )}
+            {movieCredits.crew?.length > 0 && (
+              <Section>
+                <Title>Crew ({movieCredits.crew?.length})</Title>
+                <PeopleContainer>
+                  {movieCredits.crew?.map((crew) => (
+                    <PeopleTile
+                      to={`/people/person/${crew.id}`}
+                      key={crew.id}>
+                      <Image
+                        src={
+                          crew.profile_path
+                            ? `https://image.tmdb.org/t/p/w185${crew.profile_path}`
+                            : exampleCast
+                        }
+                        alt={crew.name}
+                      />
+                      <PeopleName>{crew.name}</PeopleName>
+                      <PeopleRole>{crew.job}</PeopleRole>
+                    </PeopleTile>
+                  ))}
+                </PeopleContainer>
+              </Section>
+            )}
           </>
         )}
       </>
