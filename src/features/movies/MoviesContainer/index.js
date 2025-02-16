@@ -12,7 +12,6 @@ import searchQueryParamName from "../../searchQueryParamName";
 const MoviesContainer = () => {
   const dispatch = useDispatch();
   const location = useLocation();
-  const isLoading = useSelector(selectLoading);
   const currentPage = useQueryCurrentPage();
 
   const searchParams = new URLSearchParams(location.search);

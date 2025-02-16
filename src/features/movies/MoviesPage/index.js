@@ -55,11 +55,17 @@ const MoviesPage = () => {
 
   if (loading) {
     return <Loader />;
-  } else if (!moviesData) {
+  }
+  else if (error) {
     return <ErrorScreen />;
-  } else if (Array.isArray(movies) && movies.length === 0 && searchParams) {
+  }
+  else if (!moviesData) {
+    return <ErrorScreen />;
+  }
+  else if (Array.isArray(movies) && movies.length === 0 && searchParams) {
     return <NoResults />;
-  } else {
+  }
+  else {
 
     return (
       <FadeInWrapper>
