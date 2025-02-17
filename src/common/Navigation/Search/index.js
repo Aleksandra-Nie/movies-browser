@@ -24,7 +24,6 @@ const Search = () => {
 
     const timeoutId = setTimeout(() => {
       const searchParams = new URLSearchParams(location.search);
-      searchParams.set("page", 1);
 
       if (searchQuery.trim() === "") {
         searchParams.delete(searchQueryParamName);
@@ -33,9 +32,19 @@ const Search = () => {
       }
 
       if (location.pathname.includes("/movies")) {
-        navigate(`/movies?${searchParams.toString()}`);
-      } else if (location.pathname.includes("/people/person")) {
-        navigate(`/people?${searchParams.toString()}`);
+        if (location.pathname.includes("/movies/")) {
+          navigate(`/movies?${searchParams.toString()}`);
+        } else {
+          navigate(`/movies?${searchParams.toString()}`);
+        }
+      } else if (location.pathname.includes("/people")) {
+        if (searchQuery.trim().length > 0) {
+          navigate(`/people?search=${searchQuery.trim()}`);
+        } else {
+          if (!location.pathname.includes("/person/")) {
+            navigate(`/people?${searchParams.toString()}`);
+          }
+        }
       } else {
         navigate(`${location.pathname}?${searchParams.toString()}`);
       }
