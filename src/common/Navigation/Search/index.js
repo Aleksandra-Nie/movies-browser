@@ -18,6 +18,13 @@ const Search = () => {
   }, [query]);
 
   useEffect(() => {
+    if (
+      location.pathname.includes("/movies/") ||
+      location.pathname.includes("/people/")
+    ) {
+      return;
+    }
+
     if (debounceTimeout) {
       clearTimeout(debounceTimeout);
     }
@@ -33,18 +40,20 @@ const Search = () => {
       }
 
       if (location.pathname.includes("/movies")) {
-        navigate(`/movies?${searchParams.toString()}`);
-      } else if (location.pathname.includes("/people/person")) {
-        navigate(`/people?${searchParams.toString()}`);
+        navigate(`/movies?${searchParams.toString()}`, { replace: true });
+      } else if (location.pathname.includes("/people")) {
+        navigate(`/people?${searchParams.toString()}`, { replace: true });
       } else {
-        navigate(`${location.pathname}?${searchParams.toString()}`);
+        navigate(`${location.pathname}?${searchParams.toString()}`, {
+          replace: true,
+        });
       }
     }, 500);
 
     setDebounceTimeout(timeoutId);
 
     return () => clearTimeout(timeoutId);
-  }, [searchQuery]);
+  }, [searchQuery, location]);
 
   const onInputChange = ({ target }) => {
     setSearchQuery(target.value);
