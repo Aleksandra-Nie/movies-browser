@@ -24,7 +24,6 @@ const PersonPage = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-
     const personDetails = useSelector(state => getPersonDetailsById(state, id));
     const personCredits = useSelector(state => getPersonCreditsById(state, id));
     const genres = useSelector(selectGenres);
