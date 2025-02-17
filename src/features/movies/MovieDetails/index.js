@@ -38,7 +38,6 @@ import {
   PeopleName,
   PeopleRole,
 } from "./styled";
-import { StyledLink } from "../MovieDetails/styled";
 
 import exampleMoviePoster from "../../../images/exampleMoviePoster.png";
 import exampleCast from "../../../images/person.png";

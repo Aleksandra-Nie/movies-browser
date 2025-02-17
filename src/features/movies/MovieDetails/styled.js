@@ -333,11 +333,4 @@ export const PeopleRole = styled.p`
     font-size: 11px;
   }
 `;
-export const StyledLink = styled(Link)`
-  color: black;
-  text-decoration: none;
 
-  &:hover {
-    text-decoration: none;
-  }
-`;
