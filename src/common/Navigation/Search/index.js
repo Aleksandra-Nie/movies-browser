@@ -34,6 +34,8 @@ const Search = () => {
       if (location.pathname.includes("/movies")) {
         if (location.pathname.includes("/movies/")) {
           navigate(`/movies?${searchParams.toString()}`);
+        } else {
+          navigate(`/movies?${searchParams.toString()}`);
         }
       } else if (location.pathname.includes("/people")) {
         if (searchQuery.trim().length > 0) {
