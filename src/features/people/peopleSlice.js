@@ -47,6 +47,9 @@ const peopleSlice = createSlice({
         setCurrentPage: (state, { payload }) => {
             state.currentPage = payload;
         },
+        setTotalPages: (state, { payload }) => {
+            state.totalPages = payload;
+        },
         setPersonDetails: (state, { payload }) => {
             state.personDetails = payload;
         },
@@ -65,6 +68,7 @@ export const {
     fetchPeopleByQueryRequest,
     setPeople,
     setCurrentPage,
+    setTotalPages,
     setPersonDetails,
     setPeopleCredits,
 } = peopleSlice.actions;
