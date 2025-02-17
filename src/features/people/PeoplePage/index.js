@@ -1,25 +1,32 @@
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 import { fetchPeople, fetchPeopleByQuery } from "../fetchPeopleData";
-import { selectPeople, selectTotalPages, setPeople } from "../peopleSlice";
+import {
+    selectPeople,
+    selectTotalPages,
+    setPeople,
+    setTotalPages
+} from "../peopleSlice";
 import PeopleContainer from "../PeopleContainer";
 import Scrollbar from "../../Scrollbar";
-import NoResults from "../../NoResults";
-import { Wrapper } from "../../../common/index";
 import searchQueryParamName from "../../searchQueryParamName";
 import Loader from "../../Loader";
 import ErrorScreen from "../../ErrorScreen";
+import { Header } from "../../sharedStyles";
+import { FadeInWrapper } from "../../../common/index";
 
 const PeoplePage = () => {
+    const dispatch = useDispatch();
     const location = useLocation();
-    const navigate = useNavigate();
     const searchParams = new URLSearchParams(location.search).get(searchQueryParamName);
-    const peopleData = useSelector(selectPeople);
-    const people = peopleData?.results;
+
+    const peopleData = useSelector(selectPeople) || {};
+    const people = peopleData.results || [];
 
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
+    const [contentReady, setContentReady] = useState(false);
 
     const loadData = async (fetchFunction) => {
         try {
@@ -27,46 +34,58 @@ const PeoplePage = () => {
             setError(false);
             await fetchFunction();
         } catch (err) {
-            console.error("Error loading data", err);
+            console.error("Error loading people", err);
             setError(true);
         } finally {
             setTimeout(() => {
                 setLoading(false);
-            }, 1000);
+            }, 500);
         }
     };
 
     useEffect(() => {
         if (!searchParams) {
+            dispatch(setTotalPages(500));
             loadData(fetchPeople);
         } else {
-            loadData(fetchPeopleByQuery);
+            loadData(() => fetchPeopleByQuery(searchParams));
         }
-    }, [searchParams]);
+    }, [searchParams, dispatch]);
 
     useEffect(() => {
-        if (!searchParams) {
-            navigate(location.pathname, { replace: true });
+        if (!loading && !error) {
+            setTimeout(() => {
+                setContentReady(true);
+            }, 50);
+        } else {
+            setContentReady(false);
         }
-    }, [searchParams, navigate, location.pathname]);
+    }, [loading, error]);
 
-    if (loading) {
-        return <Loader />;
-    } else if (!peopleData) {
+    if (error) {
         return <ErrorScreen />;
-    } else if (Array.isArray(people) && people.length === 0 && searchParams) {
-        return <NoResults />;
     }
 
     return (
-        <Wrapper>
-            <PeopleContainer />
-            <Scrollbar
-                fetchData={searchParams ? fetchPeopleByQuery : fetchPeople}
-                setData={setPeople}
-                selectTotalPages={selectTotalPages}
-            />
-        </Wrapper>
+        <>
+            {loading ? (
+                <FadeInWrapper>
+                    {searchParams && <Header>Search results for "{searchParams}"</Header>}
+                    <Loader />
+                </FadeInWrapper>
+            ) : (
+                <>
+                    <PeopleContainer />
+                    {contentReady && people.length > 0 && (
+                        <Scrollbar
+                            fetchData={searchParams ? fetchPeopleByQuery : fetchPeople}
+                            setData={setPeople}
+                            selectTotalPages={selectTotalPages}
+                        />
+                    )}
+                </>
+            )}
+        </>
     );
 };
 
