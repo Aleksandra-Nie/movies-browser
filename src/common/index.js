@@ -18,3 +18,20 @@ export const Wrapper = styled.main`
 export const FadeInWrapper = styled(Wrapper)`
   animation: ${fadeIn} 1s ease-out; 
 `;
+
+export const MoviesContentWrapper = styled.div`
+  min-height: 800px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const PageWrapper = styled.div`
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+`;
+
