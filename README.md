@@ -39,10 +39,6 @@ https://aleksandra-nie.github.io/movies-browser/
 
 - `✨ Interactive Animations`: subtle hover effects on movie cards and custom loading animations.
 
-## Description
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## Technologies
 
 | HTML         | CSS           | JavaScript                  | ReactJS                                                                               |
@@ -60,9 +56,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 |              |               |                             | Redux Toolkit                                                                         |
 |              |               |                             | React Router: useParams, useLocation, useHistory                                      |
 
-## Features
 
 ## Available Scripts
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 In the project directory, you can run:
 
