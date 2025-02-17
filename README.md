@@ -2,6 +2,8 @@
 
 Movie Browser is a web application that allows users to search, browse, and explore movies. It provides a user-friendly interface where users can view movie details, including titles, posters, release dates, and ratings. The application typically pulls movie data from API: The Movie Database (TMDB). Users can search for specific movies, actors and crew members, filter results, and even view additional information like movie and people descriptions. The main goal of the project is to offer an interactive, responsive, and efficient platform for discovering movies.
 
+![Movies Browser](https://github.com/Aleksandra-Nie/movies-browser/blob/main/public/moviesbrowser.gif)
+
 ## Demo
 
 https://aleksandra-nie.github.io/movies-browser/
