@@ -6,8 +6,10 @@ export const Wrapper = styled.div`
     justify-content: center;
     align-items: center;
     gap: 12px;
-    margin: 40px 0 100px 0;
-
+    margin: 40px 0px 100px;
+    padding-bottom: 100px;
+    ${({ loading }) => loading && `display: none;`};
+    
     @media(max-width: ${({ theme }) => theme.breakpoints.tablet}px){
         gap: 8px;
     };
