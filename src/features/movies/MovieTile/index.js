@@ -1,5 +1,4 @@
 import {
-  Tile,
   MoviePoster,
   MovieTileHeader,
   MovieTileYear,
