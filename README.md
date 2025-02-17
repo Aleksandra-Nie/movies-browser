@@ -1,10 +1,43 @@
 # Movies Browser 📽
 
-Movie Browser is a web application that allows users to search, browse, and explore movies. It provides a user-friendly interface where users can view movie details, including titles, posters, release dates, and ratings. The application typically pulls movie data from API: The Movie Database (TMDB). Users can search for specific movies, filter results, and even view additional information like movie descriptions and trailers. The main goal of the project is to offer an interactive, responsive, and efficient platform for discovering movies.
+Movie Browser is a web application that allows users to search, browse, and explore movies. It provides a user-friendly interface where users can view movie details, including titles, posters, release dates, and ratings. The application typically pulls movie data from API: The Movie Database (TMDB). Users can search for specific movies, actors and crew members, filter results, and even view additional information like movie and people descriptions. The main goal of the project is to offer an interactive, responsive, and efficient platform for discovering movies.
 
 ## Demo
 
 https://aleksandra-nie.github.io/movies-browser/
+
+## Features
+
+- `🎬 Popular movie page`: a curated list of the most popular films.
+
+- `🎥 Detailed Movie Information`:
+  - Poster image
+  - Cast & crew details
+  - Ratings & votes
+  - Release dates
+  - Production country
+  - Genres
+  - Plot summary
+
+- `🌟 Popular people page`: a list showcasing popular actors, directors, and other key figures in the film industry.
+
+- `🧑‍🎤 Person Profile Information`:
+  - Profile picture
+  - Biography
+  - Filmography
+  - Personal details
+
+- `🔍 Search Functionality`: easily search for both movies and celebrities.
+  
+- `📱 Mobile-Friendly Design`: fully responsive for a seamless experience across all devices.
+
+- `⏳ Loading and Error Handling`: smooth visual transitions with error handling for a user-friendly experience.
+
+- `📰 Page Navigation`: simple, intuitive buttons to move between pages.
+
+- `🔄 Navigation`: fluid transitions when navigating between movie and person pages.
+
+- `✨ Interactive Animations`: subtle hover effects on movie cards and custom loading animations.
 
 ## Description
 
