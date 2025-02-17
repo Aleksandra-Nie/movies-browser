@@ -17,11 +17,51 @@ const peopleSlice = createSlice({
       state.error = null;
       state.currentPage = action.payload.page;
     },
-    fetchPeopleSuccess: (state, { payload }) => {
-      state.people = payload;
-      state.loading = false;
-      state.error = null;
-      state.totalPages = 500;
+    reducers: {
+        fetchPeopleRequest: (state, action) => {
+            state.loading = true;
+            state.error = null;
+            state.currentPage = action.payload.page;
+        },
+        fetchPeopleSuccess: (state, { payload }) => {
+            state.people = payload;
+            state.loading = false;
+            state.error = null;
+            state.totalPages = 500;
+        },
+        fetchPeopleFailure: (state) => {
+            state.loading = false;
+            state.error = true;
+        },
+        fetchPeopleByQueryRequest: (state) => {
+            state.loading = true;
+            state.error = null;
+        },
+        fetchPeopleByQuerySuccess: (state, { payload }) => {
+            state.loading = false;
+            state.error = null;
+            state.people = payload;
+            state.totalPages = payload.total_pages;
+        },
+        fetchPeopleByQueryFailure: (state) => {
+            state.loading = false;
+            state.error = true;
+        },
+        setPeople: (state, { payload }) => {
+            state.people = payload;
+        },
+        setCurrentPage: (state, { payload }) => {
+            state.currentPage = payload;
+        },
+        setTotalPages: (state, { payload }) => {
+            state.totalPages = payload;
+        },
+        setPersonDetails: (state, { payload }) => {
+            state.personDetails = payload;
+        },
+        setPeopleCredits: (state, { payload }) => {
+            state.peopleCredits = payload;
+        },
     },
     fetchPeopleFailure: (state) => {
       state.loading = false;
@@ -57,16 +97,17 @@ const peopleSlice = createSlice({
 });
 
 export const {
-  fetchPeopleFailure,
-  fetchPeopleSuccess,
-  fetchPeopleRequest,
-  fetchPeopleByQueryFailure,
-  fetchPeopleByQuerySuccess,
-  fetchPeopleByQueryRequest,
-  setPeople,
-  setCurrentPage,
-  setPersonDetails,
-  setPeopleCredits,
+    fetchPeopleFailure,
+    fetchPeopleSuccess,
+    fetchPeopleRequest,
+    fetchPeopleByQueryFailure,
+    fetchPeopleByQuerySuccess,
+    fetchPeopleByQueryRequest,
+    setPeople,
+    setCurrentPage,
+    setTotalPages,
+    setPersonDetails,
+    setPeopleCredits,
 } = peopleSlice.actions;
 
 export const selectPeopleState = (state) => state.people;

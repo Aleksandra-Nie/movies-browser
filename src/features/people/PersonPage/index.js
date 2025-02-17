@@ -24,7 +24,6 @@ const PersonPage = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-
     const personDetails = useSelector(state => getPersonDetailsById(state, id));
     const personCredits = useSelector(state => getPersonCreditsById(state, id));
     const genres = useSelector(selectGenres);
@@ -102,9 +101,9 @@ const PersonPage = () => {
                         </PersonProfile>)}
                 </PersonPageTile>
 
-                {personCredits.cast && (
+                {personCredits.cast && personCredits.cast.length > 0 && (
                     <>
-                        <Header>Movies - Cast {`(${personCredits.cast.length})`}</Header>
+                        <Header>Movies - Cast ({personCredits.cast.length})</Header>
                         <MovieTilesContainer>
                             {personCredits.cast.map((cast, index) => (
                                 <MovieTile
@@ -123,9 +122,9 @@ const PersonPage = () => {
                     </>
                 )}
 
-                {personCredits.crew && (
+                {personCredits.crew && personCredits.crew.length > 0 && (
                     <>
-                        <Header>Movies - Crew {`(${personCredits.crew.length})`}</Header>
+                        <Header>Movies - Crew ({personCredits.crew.length})</Header>
                         <MovieTilesContainer>
                             {personCredits.crew.map((crewMember, index) => (
                                 <MovieTile

@@ -1,27 +1,27 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { fetchMovies, fetchMoviesByQuery } from "../fetchMoviesData";
 import { selectMovies, selectTotalPages, setMovies, setTotalPages } from "../moviesSlice";
 import MoviesContainer from "../MoviesContainer";
 import Scrollbar from "../../Scrollbar";
-import NoResults from "../../NoResults";
-import { FadeInWrapper } from "../../../common/index";
 import searchQueryParamName from "../../searchQueryParamName";
 import Loader from "../../Loader";
 import ErrorScreen from "../../ErrorScreen";
+import { Header } from "../../sharedStyles";
+import { FadeInWrapper } from "../../../common/index";
 
 const MoviesPage = () => {
   const dispatch = useDispatch();
   const location = useLocation();
-  const navigate = useNavigate();
   const searchParams = new URLSearchParams(location.search).get(searchQueryParamName);
 
   const moviesData = useSelector(selectMovies);
-  const movies = moviesData?.results;
+  const movies = moviesData?.results || [];
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [contentReady, setContentReady] = useState(false);
 
   const loadData = async (fetchFunction) => {
     try {
@@ -34,7 +34,7 @@ const MoviesPage = () => {
     } finally {
       setTimeout(() => {
         setLoading(false);
-      }, 1000);
+      }, 500);
     }
   };
 
@@ -43,35 +43,46 @@ const MoviesPage = () => {
       dispatch(setTotalPages(500));
       loadData(fetchMovies);
     } else {
-      loadData(fetchMoviesByQuery);
+      loadData(() => fetchMoviesByQuery(searchParams));
     }
-  }, [searchParams, dispatch,]);
+  }, [searchParams, dispatch]);
 
   useEffect(() => {
-    if (!searchParams) {
-      navigate(location.pathname, { replace: true });
+    if (!loading && !error) {
+      setTimeout(() => {
+        setContentReady(true);
+      }, 50);
+    } else {
+      setContentReady(false);
     }
-  }, [searchParams, navigate, location.pathname]);
+  }, [loading, error]);
 
-  if (loading) {
-    return <Loader />;
-  } else if (!moviesData) {
+  if (error) {
     return <ErrorScreen />;
-  } else if (Array.isArray(movies) && movies.length === 0 && searchParams) {
-    return <NoResults />;
-  } else {
-
-    return (
-      <FadeInWrapper>
-        <MoviesContainer />
-        <Scrollbar
-          fetchData={searchParams ? fetchMoviesByQuery : fetchMovies}
-          setData={setMovies}
-          selectTotalPages={selectTotalPages}
-        />
-      </FadeInWrapper>
-    );
   }
+
+  return (
+    <>
+      {loading ? (
+        <FadeInWrapper>
+          {searchParams && <Header>Search results for "{searchParams}"</Header>}
+          <Loader />
+        </FadeInWrapper>
+      ) : (
+        <>
+          <MoviesContainer />
+
+          {contentReady && movies.length > 0 && (
+            <Scrollbar
+              fetchData={searchParams ? fetchMoviesByQuery : fetchMovies}
+              setData={setMovies}
+              selectTotalPages={selectTotalPages}
+            />
+          )}
+        </>
+      )}
+    </>
+  );
 };
 
 export default MoviesPage;

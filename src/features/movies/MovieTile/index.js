@@ -1,5 +1,4 @@
 import {
-  Tile,
   MoviePoster,
   MovieTileHeader,
   MovieTileYear,
@@ -51,7 +50,7 @@ const MovieTile = ({
           {vote_average ? (
             <Rating>{vote_average.toFixed(1)}</Rating>
           ) : ("")}
-          <Votes>{vote_count ? "votes" : "No votes"}</Votes>
+          <Votes>{vote_count ? "votes" : "No votes yet"}</Votes>
         </MovieRating>
       </div>
     </StyledLink>
