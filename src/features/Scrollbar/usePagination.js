@@ -35,8 +35,10 @@ const usePagination = ({ fetchData, setData, selectTotalPages }) => {
 
       if (data) {
         dispatch(setData(data));
+        setLoading(false);
+      } else {
+        setLoading(false);
       }
-      setTimeout(() => setLoading(false), 500);
     };
 
     getData();
