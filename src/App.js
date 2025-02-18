@@ -12,7 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/movies" />} />
         <Route path="/movies" element={<MoviesPage />} />
-        <Route path="/movies/:id" element={<MovieDetails />} />
+        <Route path="/movies/details/:id" element={<MovieDetails />} />
         <Route path="/people" element={<PeoplePage />} />
         <Route path="/people/person/:id" element={<PersonPage />} />
         <Route path="/people/:id" element={<PersonPage />} />{" "}

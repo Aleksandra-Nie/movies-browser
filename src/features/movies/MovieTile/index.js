@@ -24,7 +24,7 @@ const MovieTile = ({
 }) => {
   return (
     <StyledLink
-      to={`/movies/${id}`}
+      to={`/movies/details/${id}`}
       key={id}
     >
       <MoviePoster
