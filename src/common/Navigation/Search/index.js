@@ -32,10 +32,12 @@ const Search = () => {
       }
 
       if (location.pathname.includes("/movies")) {
-        if (location.pathname.includes("/movies/")) {
-          navigate(`/movies?${searchParams.toString()}`);
+        if (searchQuery.trim().length > 0) {
+          navigate(`/movies?search=${searchQuery.trim()}`);
         } else {
-          navigate(`/movies?${searchParams.toString()}`);
+          if (!location.pathname.includes("/details/")) {
+            navigate(`/movies?${searchParams.toString()}`)
+          }
         }
       } else if (location.pathname.includes("/people")) {
         if (searchQuery.trim().length > 0) {
