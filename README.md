@@ -1,8 +1,11 @@
 # 📽 Movies Browser 
 
 Movie Browser is a web application that allows users to search, browse, and explore movies. It provides a user-friendly interface where users can view movie details, including titles, posters, release dates, and ratings. The application typically pulls movie data from API: The Movie Database (TMDB). Users can search for specific movies, actors and crew members, filter results, and even view additional information like movie and people descriptions. The main goal of the project is to offer an interactive, responsive, and efficient platform for discovering movies.
+![movies-browser](Introduction.png)
+
 
 ![Movies Browser](https://github.com/Aleksandra-Nie/movies-browser/blob/main/public/moviesbrowser.gif)
+
 
 ## 🌐 Demo
 
@@ -46,37 +49,56 @@ https://aleksandra-nie.github.io/movies-browser/
 ## ⚙️ Technologies
 
 - HTML
-- JavaScript
+- JavaScript:
+  - Error handling (try/catch)
+  - fetch & axios
+  - Promise, async/await
+  - API request 
 - React
 - React Router v7.1.3
 - Redux with react-redux v9.2.0
 - Redux Saga v1.3.0
+- Redux Toolkit
 - Styling: Styled Components, normalize.css, GlobalStyle, Theme  
 - CSS:
   - BEM
   - Flexbox
   - Grid
   - Media Queries
-  - Transition, animation: fadein  
+  - Transition, animation: fadein
+    
+ - React Hooks:
+   - `useState`
+     
+   - `useEffect`
+     
+   - `useRef`
+     
+- React Router Hooks:
+  - `useParams`
+    
+  - `useHistory`
+  - `useLocation`
+  - `useNavigate`
+    
+- Custom Hooks:
+  - `useQueryParameter`
+    
+- Development Tools:
+  - Create React App
+  - Webpack
+  - npm
+  - Babel
+ 
+## 💡 Presentation  
+
+Below you can find a brief app presentation:
+
+## Main Movies Page
 
 
-| HTML         | CSS           | JavaScript                  | ReactJS                                                                               |
-| ------------ | ------------- | --------------------------- | ------------------------------------------------------------------------------------- |
-| Google Fonts | Normalize CSS | ES6                         | create-react-app                                                                      |
-|              | grid          | JSON                        | Webpack                                                                               |
-|              | flex          | Error handling (try, catch) | Babel                                                                                 |
-|              | media queries | API request                 | React DOM                                                                             |
-|              | BEM           | fetch & axios               | useState, useEffect, useRef                                                           |
-|              |               | Promise, async / await      | Custom hooks: useQueryParameter, useLocalStorageState, useTasks, useLocalStorageState |
-|              |               | Redux                       | setInterval, setTimeout                                                               |
-|              |               |                             | Styled Components: GlobalStyle, Theme                                                 |
-|              |               |                             | react-redux                                                                           |
-|              |               |                             | Redux-Saga                                                                            |
-|              |               |                             | Redux Toolkit                                                                         |
-|              |               |                             | React Router: useParams, useLocation, useHistory                                      |
 
-
-## Available Scripts
+## 📜 Available Scripts
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
